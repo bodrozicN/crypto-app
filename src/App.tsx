@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={{ isDark: false }}>
+      <ThemeProvider theme={{ isDark: true }}>
         <Suspense fallback={<p>Loading...</p>}>
           <Router>
             <Routes>

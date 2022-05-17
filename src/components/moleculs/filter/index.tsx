@@ -12,7 +12,7 @@ const Filter = (props: Props) => {
       return (
         <StyledFilter role="filter">
           <Span type="heroLabel" title="Currency" />
-          <Select type="currencySelect" onChange={(e) => {}} />
+          <Select type="currencySelect" onChange={(e: any) => {}} />
         </StyledFilter>
       );
     case "bodyFilter":
