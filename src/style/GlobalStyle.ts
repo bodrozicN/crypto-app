@@ -7,9 +7,9 @@ export const GlobalStyle = createGlobalStyle`
   --blue-secondary: rgb(var(--blue-primary), 0.8);
   --white: #fff;
   //light theme colors
-  --grey-light-1: #666666;
-  --grey-light-2: 52,52,56;
-  --grey-light-3: rgb(var(--grey-2), 0.5);
+  --grey-light-1: #c4c4c4;
+  --grey-light-2: #343438;
+  /* --grey-light-3: rgb(var(--grey-2), 0.5); */
   --grey-light-4: #f5f5f7
   --red-light-theme: #dd0000;
   --green-light-theme: #00a137;
