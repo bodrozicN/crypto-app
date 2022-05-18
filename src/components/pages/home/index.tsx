@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
-import { HomeHero } from "../../organisms";
+import { HomeHero, FiltersContainer } from "../../organisms";
 import { OCurrency } from "../../../types";
 
 const Home = () => {
@@ -20,6 +20,7 @@ const Home = () => {
   return (
     <>
       <HomeHero {...stats} />
+      <FiltersContainer />
     </>
   );
 };
