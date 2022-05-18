@@ -22,7 +22,7 @@ const Stats = (props: IStats) => {
       <Stat title="Markets" value={totalMarkets} />
       <Stat title="24h Volume" value={volume} char={char} />
       <Stat title="Total Market Cap" value={marketCap} char={char} />
-      <Filter type="heroFilter" />
+      <Filter onChange={(e) => {}} type="currencyFilter" />
     </StyledStats>
   );
 };
