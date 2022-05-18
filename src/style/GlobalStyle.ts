@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   --grey-light-1: #c4c4c4;
   --grey-light-2: #343438;
   /* --grey-light-3: rgb(var(--grey-2), 0.5); */
-  --grey-light-4: #f5f5f7
+  --grey-light-4: #f5f5f7;
   --red-light-theme: #dd0000;
   --green-light-theme: #00a137;
   //dark theme colors
