@@ -14,7 +14,8 @@ export const HeroLabel = styled.span`
 
 export const FilterLabel = styled.span`
   ${LabelSpan}
-  color: var(--grey-light-2);
+  color: ${({ theme }) =>
+    theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
 `;
 
 const HeroSpanValue = css`
