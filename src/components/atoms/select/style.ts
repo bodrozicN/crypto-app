@@ -19,5 +19,6 @@ export const HeroSelect = styled.select`
 export const BodySelect = styled.select`
   ${Select}
   width: 10.5rem;
-  color: rgb(var(--blue-primary));
+  color: ${({ theme }) =>
+    theme.isDark ? "var(--white)" : "rgb(var(--blue-primary))"};
 `;

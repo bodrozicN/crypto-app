@@ -1,10 +1,7 @@
 import React from "react";
+//prettier-ignore
 import {
-  OCurrency,
-  OOrderBy,
-  OLimitPerPage,
-  OOrderDirection,
-  OTimePeriod,
+  OCurrency, OOrderBy, OLimitPerPage, OOrderDirection, OTimePeriod,
 } from "../../../types";
 import { HeroSelect, BodySelect } from "./style";
 
