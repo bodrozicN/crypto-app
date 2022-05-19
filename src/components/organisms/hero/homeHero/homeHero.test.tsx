@@ -1,15 +1,19 @@
 import { screen, render } from "@testing-library/react";
 import HomeHero from ".";
 
+const stats = {
+  total: 1,
+  total24hVolume: "5",
+  totalCoins: 12,
+  totalExchanges: 122,
+  totalMarketCap: "121212",
+  totalMarkets: 12000,
+};
+
+const changeTheme = jest.fn();
+
 const returnHomeHero = () => (
-  <HomeHero
-    total={1}
-    total24hVolume="5"
-    totalCoins={12}
-    totalExchanges={122}
-    totalMarketCap="121212"
-    totalMarkets={12000}
-  />
+  <HomeHero changeTheme={changeTheme} stats={stats} />
 );
 
 describe("HomeHero", () => {
