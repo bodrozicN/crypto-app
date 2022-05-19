@@ -2,8 +2,10 @@ import React from "react";
 import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
 import { HomeHero, FiltersContainer } from "../../organisms";
 import { OCurrency } from "../../../types";
+import { useTheme } from "../../../hooks";
 
 const Home = () => {
+  const { changeTheme } = useTheme();
   const { currentData } = useGetCoinsListAndMarketDataQuery({
     currency: OCurrency.btc,
     limit: 100,
@@ -17,9 +19,14 @@ const Home = () => {
 
   const stats = currentData.data.stats;
 
+  const heroProps = {
+    stats,
+    changeTheme,
+  };
+
   return (
     <>
-      <HomeHero {...stats} />
+      <HomeHero {...heroProps} />
       <FiltersContainer />
     </>
   );

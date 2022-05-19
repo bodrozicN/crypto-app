@@ -4,17 +4,18 @@ import { HeroHeading, ThemeButton } from "../../../moleculs";
 import { Stats } from "../../../organisms";
 import { StyledHomeHero } from "./style";
 
-const HomeHero = (props: IStats) => {
+type Props = {
+  stats: IStats;
+  changeTheme: () => void;
+};
+
+const HomeHero = ({ stats, changeTheme }: Props) => {
   return (
     <StyledHomeHero role="homeHero">
       <div>
         <HeroHeading value1="Crypto" value2="App" />
-        <Stats {...props} />
-        <ThemeButton
-          onClick={() => {
-            console.log("ide gas");
-          }}
-        />
+        <Stats {...stats} />
+        <ThemeButton onClick={changeTheme} />
       </div>
     </StyledHomeHero>
   );
