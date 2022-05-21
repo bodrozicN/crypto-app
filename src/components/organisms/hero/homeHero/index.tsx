@@ -2,7 +2,8 @@ import React from "react";
 import { IStats } from "../../../../interfaces";
 import { HeroHeading, ThemeButton } from "../../../moleculs";
 import { Stats } from "../../../organisms";
-import { StyledHomeHero } from "./style";
+import { StyledHomeHero, Wrapper } from "./style";
+import { Svg } from "../../../atoms";
 
 type Props = {
   stats: IStats;
@@ -11,13 +12,16 @@ type Props = {
 
 const HomeHero = ({ stats, changeTheme }: Props) => {
   return (
-    <StyledHomeHero role="homeHero">
-      <div>
-        <HeroHeading value1="Crypto" value2="App" />
-        <Stats {...stats} />
-        <ThemeButton onClick={changeTheme} />
-      </div>
-    </StyledHomeHero>
+    <Wrapper role="homeHero">
+      <Svg type="heroSvg" />
+      <StyledHomeHero>
+        <div>
+          <HeroHeading value1="Crypto" value2="App" />
+          <Stats {...stats} />
+          <ThemeButton onClick={changeTheme} />
+        </div>
+      </StyledHomeHero>
+    </Wrapper>
   );
 };
 

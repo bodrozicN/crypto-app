@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.section`
+  position: relative;
+  overflow: hidden;
+`;
+
 export const StyledHomeHero = styled.div`
   background-color: rgb(var(--blue-primary));
   height: 43rem;
