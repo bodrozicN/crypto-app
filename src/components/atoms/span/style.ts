@@ -1,35 +1,44 @@
 import styled, { css } from "styled-components";
 import { OFontWeight } from "../../../types";
+import { OSpan, TSpan } from "./";
 
-const LabelSpan = css`
+interface ISpan {
+  $type: TSpan;
+}
+
+export const StyledSpan = styled.span<ISpan>`
   font-size: 1.4rem;
-  font-weight: ${OFontWeight.light};
-  font-style: normal;
-`;
-
-export const HeroLabel = styled.span`
-  ${LabelSpan}
   color: var(--white);
-`;
+  cursor: default;
+  // styleing for labels in hero section
+  ${({ $type }) =>
+    $type === OSpan.heroPrimary &&
+    css`
+      font-weight: ${OFontWeight.light};
+    `}
 
-export const FilterLabel = styled.span`
-  ${LabelSpan}
-  color: ${({ theme }) =>
-    theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
-`;
+  // styleing for values in hero section
+  ${({ $type }) =>
+    $type === OSpan.heroSecondary &&
+    css`
+      font-weight: ${OFontWeight.bold};
+    `}
 
-const HeroSpanValue = css`
-  font-size: 1.4rem;
-  font-weight: ${OFontWeight.bold};
-  font-style: normal;
-`;
+    // styleing for currency char in hero section
+      ${({ $type }) =>
+    $type === OSpan.heroTertiary &&
+    css`
+      color: var(--grey-light-1);
+      font-weight: ${OFontWeight.bold};
+    `}
 
-export const HeroValue = styled.span`
-  ${HeroSpanValue}
-  color: var(--white);
-`;
-
-export const HeroChar = styled.span`
-  ${HeroSpanValue}
-  color: var(--grey-light-1);
+    // styleing for labels in filter section
+  ${({ $type, theme }) =>
+    $type === OSpan.filterLabel &&
+    css`
+      display: block;
+      font-weight: ${OFontWeight.light};
+      color: ${theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
+      margin-left 0.3rem;
+    `}
 `;

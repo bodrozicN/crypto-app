@@ -1,26 +1,26 @@
 import React from "react";
-import { FilterLabel, HeroLabel, HeroValue, HeroChar } from "./style";
+import { StyledSpan } from "./style";
 
-type LabelSpanProps = {
-  type: "heroLabel" | "filterLabel" | "heroChar" | "heroValue";
-  title: string | number;
+const OSpan = {
+  heroPrimary: "heroPrimary",
+  heroSecondary: "heroSecondary",
+  heroTertiary: "heroTertiary",
+  filterLabel: "filterLabel",
+} as const;
+
+type TSpan = typeof OSpan[keyof typeof OSpan];
+
+type Props = {
+  type: TSpan;
+  content: unknown;
 };
 
-type Props = LabelSpanProps;
-
-const Span = (props: Props) => {
-  switch (props.type) {
-    case "heroLabel":
-      return <HeroLabel role="span">{props.title}</HeroLabel>;
-    case "filterLabel":
-      return <FilterLabel role="span">{props.title}</FilterLabel>;
-    case "heroChar":
-      return <HeroChar role="span">{props.title}</HeroChar>;
-    case "heroValue":
-      return <HeroValue role="span">{props.title}</HeroValue>;
-    default:
-      throw new Error("Span type not found");
-  }
+const Span = ({ content, type }: Props) => {
+  return (
+    <StyledSpan role="span" $type={type}>
+      {content as string}
+    </StyledSpan>
+  );
 };
 
-export default Span;
+export { Span, type TSpan, OSpan };
