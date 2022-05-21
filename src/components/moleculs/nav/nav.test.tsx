@@ -14,6 +14,6 @@ describe("Nav", () => {
   });
   it("should render two link", () => {
     render(returnComponent());
-    expect(screen.getAllByRole("navLink")).toHaveLength(2);
+    expect(screen.getAllByRole("link")).toHaveLength(2);
   });
 });
