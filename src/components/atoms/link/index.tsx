@@ -1,27 +1,25 @@
 import React from "react";
-import { StyledHomeLink, StyledPortfolioLink } from "./style";
+import { StyledLink } from "./style";
+
+const OLink = {
+  linkPrimary: "linkPrimary",
+  linkSecondary: "linkSecondary",
+} as const;
+
+export type TLink = typeof OLink[keyof typeof OLink];
 
 type Props = {
   to: string;
   title: string;
-  type: "homeLink" | "portfolioLink";
+  type: TLink;
 };
 
-const Link = (props: Props) => {
-  switch (props.type) {
-    case "homeLink":
-      return (
-        <StyledHomeLink role="navLink" to={props.to}>
-          {props.title}
-        </StyledHomeLink>
-      );
-    case "portfolioLink":
-      return (
-        <StyledPortfolioLink role="navLink" to={props.to}>
-          {props.title}
-        </StyledPortfolioLink>
-      );
-  }
+const Link = ({ title, to, type }: Props) => {
+  return (
+    <StyledLink $type={type} to={to}>
+      {title}
+    </StyledLink>
+  );
 };
 
-export default Link;
+export { Link, OLink };
