@@ -1,20 +1,16 @@
 import Stat from ".";
-import { screen, render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("Stat", () => {
-  it("Expect to render Stat", () => {
-    render(<Stat title="title" value={10} />);
-    const statEl = screen.getByRole("stat");
-    expect(statEl).toBeInTheDocument();
+  it("renders without crashing", () => {
+    render(<Stat title="price" value={150000} char="$" />);
+    const stat = screen.getByRole("stat");
+    expect(stat).toBeInTheDocument();
   });
-  it("Expect to render Stat with out char", () => {
-    render(<Stat title="title" value={10} />);
-    const spanEl = screen.getAllByRole("span");
-    expect(spanEl).toHaveLength(2);
-  });
-  it("Expect to render Stat with char", () => {
-    render(<Stat title="title" value={10} char="$" />);
-    const spanEl = screen.getAllByRole("span");
-    expect(spanEl).toHaveLength(3);
+
+  it("should have correct children", () => {
+    render(<Stat title="price" value={150000} char="$" />);
+    const heading = screen.getAllByRole("span");
+    expect(heading).toHaveLength(3);
   });
 });

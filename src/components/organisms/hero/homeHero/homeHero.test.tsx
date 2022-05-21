@@ -1,31 +1,39 @@
-import { screen, render } from "@testing-library/react";
-import HomeHero from ".";
+import HomeHero from "./";
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { IStats } from "../../../../interfaces";
 
-const stats = {
-  total: 1,
-  total24hVolume: "5",
-  totalCoins: 12,
-  totalExchanges: 122,
-  totalMarketCap: "121212",
-  totalMarkets: 12000,
+const stats: IStats = {
+  total24hVolume: "123456",
+  totalCoins: 123,
+  totalExchanges: 12222,
+  totalMarketCap: "45545424",
+  totalMarkets: 12121,
+  total: 123456789,
 };
 
-const changeTheme = jest.fn();
+const props = {
+  stats,
+  changeTheme: jest.fn(),
+};
 
-const returnHomeHero = () => (
-  <HomeHero changeTheme={changeTheme} stats={stats} />
+const Component = () => (
+  <BrowserRouter>
+    <HomeHero {...props} />
+  </BrowserRouter>
 );
 
 describe("HomeHero", () => {
-  it("Should appear on screen", () => {
-    render(returnHomeHero());
-    const homeHero = screen.getByRole("homeHero");
-    expect(homeHero).toBeInTheDocument();
+  it("should render correctly", () => {
+    render(<Component />);
+    const hero = screen.getByRole("homeHero");
+    expect(hero).toBeInTheDocument();
   });
 
-  it("Should have correct style", () => {
-    render(returnHomeHero());
+  it("should have correct children", () => {
+    render(<Component />);
     expect(screen.getByRole("heroheading")).toBeInTheDocument();
     expect(screen.getByRole("stats")).toBeInTheDocument();
+    expect(screen.getByRole("heroSvg")).toBeInTheDocument();
   });
 });

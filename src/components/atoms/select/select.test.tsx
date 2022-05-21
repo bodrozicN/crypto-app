@@ -1,19 +1,20 @@
-import { screen, render, fireEvent } from "@testing-library/react";
 import Select from ".";
-import { OCurrency } from "../../../types";
+import { render, fireEvent, screen } from "@testing-library/react";
+import { OFIlter, OCurrency } from "../../../types";
 
 describe("Select", () => {
-  it("Should appear on screen", () => {
-    const onChange = jest.fn();
-    render(<Select onChange={onChange} type="currencySelect" />);
-    const select = screen.getByRole("select");
+  const onChange = jest.fn();
+  it("should render", () => {
+    render(<Select type={OFIlter.currency} onChange={onChange} />);
+    const select = screen.getByRole("listbox");
     expect(select).toBeInTheDocument();
   });
 
-  it("Test change", () => {
-    const onChange = jest.fn();
-    render(<Select onChange={onChange} type="currencySelect" />);
-    const select = screen.getByRole("select");
+  it("handle change", () => {
+    render(<Select type={OFIlter.currency} onChange={onChange} />);
+    const select = screen.getByRole("listbox");
+    fireEvent.change(select, { target: { value: OCurrency.btc } });
+    expect(onChange).toHaveBeenCalled();
     fireEvent.change(select, { target: { value: OCurrency.btc } });
     expect(select).toHaveValue(OCurrency.btc);
   });

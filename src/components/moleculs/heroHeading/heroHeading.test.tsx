@@ -1,24 +1,13 @@
-import HeroHeading from ".";
 import { screen, render } from "@testing-library/react";
+import HeroHeading from "./";
 
-describe("Heroheading", () => {
-  it("should appear on screen", () => {
-    render(<HeroHeading value1="Crypto" value2="App" />);
-    const heroHeading = screen.getByRole("heroheading");
-    expect(heroHeading).toBeInTheDocument();
-  });
+it("should render heroheading", () => {
+  render(<HeroHeading value1="Crypto" value2="App" />);
+  expect(screen.getByRole("heroheading")).toBeInTheDocument();
+});
 
-  it("should have correct childs", () => {
-    render(<HeroHeading value1="Crypto" value2="App" />);
-    expect(screen.getAllByRole("heading")).toHaveLength(2);
-  });
-
-  it("should have correct style", () => {
-    render(<HeroHeading value1="Crypto" value2="App" />);
-    const heroHeading = screen.getByRole("heroheading");
-    expect(heroHeading).toHaveStyle({
-      display: "flex",
-      alignItems: "center",
-    });
-  });
+it("should have correct children", () => {
+  render(<HeroHeading value1="Crypto" value2="App" />);
+  const heading = screen.getAllByRole("heading");
+  expect(heading).toHaveLength(2);
 });

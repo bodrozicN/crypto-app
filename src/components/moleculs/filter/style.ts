@@ -5,4 +5,5 @@ export const StyledFilter = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
+  z-index: 3;
 `;

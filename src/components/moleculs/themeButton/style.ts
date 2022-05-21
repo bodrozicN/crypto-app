@@ -7,7 +7,7 @@ export const StyledThemeButton = styled.div`
   height: 4rem;
   border-radius: 600px;
   background-color: var(--white);
-
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,10 +20,12 @@ export const StyledThemeButton = styled.div`
   }
 
   .icon--sun {
-    color: ${({ theme }) => (theme.isDark ? "#000" : "var(--white)")};
+    color: ${({ theme }) =>
+      theme.isDark ? "rgb(var(--blue-primary))" : "var(--white)"};
   }
   .icon--moon {
-    color: ${({ theme }) => (theme.isDark ? "var(--white)" : "#000")};
+    color: ${({ theme }) =>
+      theme.isDark ? "var(--white)" : "rgb(var(--blue-primary))"};
   }
 
   span {

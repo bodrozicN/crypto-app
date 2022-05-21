@@ -1,5 +1,5 @@
 import React from "react";
-import { Span } from "../../atoms";
+import { Span, OSpan } from "../../atoms";
 import { StyledStat } from "./style";
 
 type Props = {
@@ -11,10 +11,11 @@ type Props = {
 const Stat = ({ title, value, char }: Props) => {
   return (
     <StyledStat role="stat">
-      <Span type="heroLabel" title={title} />
+      <Span type={OSpan.heroPrimary} content={title} />
       <span>
-        {char && <Span type="heroChar" title={char} />}
-        <Span type="heroValue" title={value} />
+        {/* if we have a char prop it wil render currency char */}
+        {char && <Span type={OSpan.heroTertiary} content={char} />}
+        <Span type={OSpan.heroSecondary} content={value} />
       </span>
     </StyledStat>
   );
