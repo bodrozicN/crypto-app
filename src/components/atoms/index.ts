@@ -1,4 +1,5 @@
 export { default as Heading } from "./heading";
-export { default as Span } from "./span";
+export { Span, OSpan } from "./span";
 export { default as Select } from "./select";
-export { default as Link } from "./link";
+export { Link, OLink } from "./link";
+export { default as Svg } from "./svg";
