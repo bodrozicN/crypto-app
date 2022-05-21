@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import { TFontWeight } from "../../../types";
+import { OFontWeight } from "../../../types";
 
 type IHeadingPrimary = {
-  weight: TFontWeight;
+  $isBold?: boolean;
 };
 
 const Header = css`
@@ -13,5 +13,6 @@ const Header = css`
 export const HeadingPrimary = styled.h1<IHeadingPrimary>`
   ${Header}
   font-size: 8rem;
-  font-weight: ${({ weight }) => weight};
+  font-weight: ${({ $isBold }) =>
+    $isBold ? OFontWeight.bold : OFontWeight.light};
 `;

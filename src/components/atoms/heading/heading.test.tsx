@@ -1,29 +1,18 @@
 import Heading from ".";
 import { render, screen } from "@testing-library/react";
-import { OFontWeight } from "../../../types";
 
-describe("Heading", () => {
-  it("heading primary should appear", () => {
-    render(
-      <Heading title="HeadingPrimary" type="h1" weight={OFontWeight.light} />
-    );
-    const headingPrimary = screen.getByRole("heading", {
-      name: "HeadingPrimary",
-    });
-    expect(headingPrimary).toBeInTheDocument();
+describe("Heading primary", () => {
+  it("should render heading primary", () => {
+    render(<Heading title="heading" type="h1" />);
+    const heading = screen.getByRole("heading");
+    expect(heading).toBeInTheDocument();
   });
-
-  it("heading primary should have correct style", () => {
-    render(
-      <Heading title="HeadingPrimary" type="h1" weight={OFontWeight.light} />
-    );
-    const headingPrimary = screen.getByRole("heading", {
-      name: "HeadingPrimary",
-    });
-    expect(headingPrimary).toHaveStyle({
-      backgroundColor: "var(--white)",
+  it("should have correct style", () => {
+    render(<Heading title="heading" type="h1" />);
+    const heading = screen.getByRole("heading");
+    expect(heading).toHaveStyle({
+      color: "var(--white)",
       cursor: "default",
-      fontWeight: OFontWeight.light,
       fontSize: "8rem",
     });
   });
