@@ -4,55 +4,50 @@ import {
   OCurrency, OOrderBy, OLimitPerPage, OOrderDirection, OTimePeriod,
 } from "../../../types";
 import { HeroSelect, BodySelect } from "./style";
+import { TFilter, OFIlter } from "../../../types";
 
 type Props = {
-  type:
-    | "currencySelect"
-    | "orderBySelect"
-    | "limitSelect"
-    | "orderDirectionSelect"
-    | "timePeriodSelect";
-
+  type: TFilter;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
 const Select = ({ onChange, type }: Props) => {
   switch (type) {
-    case "currencySelect":
+    case OFIlter.currency:
       return (
-        <HeroSelect role="select" onChange={onChange}>
+        <HeroSelect role="listbox" onChange={onChange}>
           <option value={OCurrency.usd}>$ USD</option>
           <option value={OCurrency.eur}>€ EUR</option>
           <option value={OCurrency.btc}>BTC</option>
         </HeroSelect>
       );
-    case "orderBySelect":
+    case OFIlter.sortBy:
       return (
-        <BodySelect role="select" onChange={onChange}>
+        <BodySelect role="listbox" onChange={onChange}>
           <option value={OOrderBy.marketCap}>Market cap</option>
           <option value={OOrderBy.price}>Price</option>
           <option value={OOrderBy["24hVolume"]}>Volume</option>
           <option value={OOrderBy.change}>Change</option>
         </BodySelect>
       );
-    case "limitSelect":
+    case OFIlter.rows:
       return (
-        <BodySelect role="select" onChange={onChange}>
+        <BodySelect role="listbox" onChange={onChange}>
           <option value={OLimitPerPage.fifty}>50</option>
           <option value={OLimitPerPage.eighty}>80</option>
           <option value={OLimitPerPage.hundred}>100</option>
         </BodySelect>
       );
-    case "orderDirectionSelect":
+    case OFIlter.order:
       return (
-        <BodySelect role="select" onChange={onChange}>
+        <BodySelect role="listbox" onChange={onChange}>
           <option value={OOrderDirection.asc}>Ascending</option>
           <option value={OOrderDirection.desc}>Descending</option>
         </BodySelect>
       );
-    case "timePeriodSelect":
+    case OFIlter.period:
       return (
-        <BodySelect role="select" onChange={onChange}>
+        <BodySelect role="listbox" onChange={onChange}>
           <option value={OTimePeriod.daily}>24h</option>
           <option value={OTimePeriod.weekly}>7d</option>
           <option value={OTimePeriod.monthly}>1m</option>
