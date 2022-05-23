@@ -1,6 +1,6 @@
 import { TCurrency, OCurrency } from "../../types";
 
-export function numberFormatter(value: string | number, currency: TCurrency) {
+export function currencyFormatter(value: string | number, currency: TCurrency) {
   const numValue = +value;
 
   const formatter = (currency: string) => {
@@ -35,4 +35,16 @@ export function numberFormatter(value: string | number, currency: TCurrency) {
     default:
       throw new Error("Invalid currency");
   }
+}
+
+export function numberFormatter(
+  arg1: string | number,
+  arg2: TCurrency
+): string[];
+export function numberFormatter(arg1: string | number): string[];
+export function numberFormatter(arg1: unknown, arg2?: unknown): string[] {
+  const numberValue = Math.abs(arg1 as number);
+  if (isNaN(numberValue)) return ["", "no data"];
+  if (!arg2) return ["%", numberValue.toFixed(2)];
+  return currencyFormatter(numberValue, arg2 as TCurrency);
 }
