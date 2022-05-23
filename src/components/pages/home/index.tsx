@@ -1,8 +1,9 @@
 import React from "react";
 import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
-import { HomeHero, FiltersContainer } from "../../organisms";
+import { HomeHero, FiltersContainer, Table } from "../../organisms";
 import { OCurrency } from "../../../types";
 import { useTheme } from "../../../hooks";
+import { ICoinListData } from "../../../interfaces";
 
 const Home = () => {
   const { changeTheme } = useTheme();
@@ -24,10 +25,13 @@ const Home = () => {
     changeTheme,
   };
 
+  const coinsArr: ICoinListData[] | undefined = currentData?.data.coins;
+
   return (
     <>
       <HomeHero {...heroProps} />
       <FiltersContainer />
+      <Table coinsArr={coinsArr} />
     </>
   );
 };
