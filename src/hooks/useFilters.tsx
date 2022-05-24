@@ -13,7 +13,7 @@ type Props = Omit<IGetCoinsListAndMarketDataParams, "offset">;
 export const useFilters = () => {
   const [filters, setFilters] = useState<Props>({
     currency: OCurrency.usd,
-    limit: OLimitPerPage.hundred,
+    limit: OLimitPerPage.fifty,
     orderBy: OOrderBy.marketCap,
     orderDirection: OOrderDirection.desc,
     timePeriod: OTimePeriod.daily,

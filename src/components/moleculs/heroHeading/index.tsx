@@ -16,4 +16,4 @@ const HeroHeading = ({ value1, value2 }: Props) => {
   );
 };
 
-export default HeroHeading;
+export default React.memo(HeroHeading);

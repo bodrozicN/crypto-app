@@ -6,14 +6,17 @@ import { useTheme, useFilters } from "../../../hooks";
 const Home = () => {
   const { changeTheme } = useTheme();
   const { handleSelect, ...props } = useFilters();
-  const { currentData } = useGetCoinsListAndMarketDataQuery({
-    ...props,
-    offset: 0,
-  });
 
-  if (!currentData) return null;
-
-  const stats = currentData.data.stats;
+  // do memoization here
+  const { coins, stats } = useGetCoinsListAndMarketDataQuery(
+    { ...props, offset: 0 },
+    {
+      selectFromResult: ({ data }) => ({
+        stats: data?.data.stats,
+        coins: data?.data.coins,
+      }),
+    }
+  );
 
   const heroProps = {
     stats,
@@ -23,17 +26,17 @@ const Home = () => {
   };
 
   const tableProps = {
-    coinsArr: currentData?.data.coins,
+    coinsArr: coins,
     currency: props.currency,
   };
 
   return (
     <>
-      <HomeHero {...heroProps} />
+      <HomeHero heroProps={heroProps} />
       <FiltersContainer handleSelect={handleSelect} />
       <Table {...tableProps} />
     </>
   );
 };
 
-export default Home;
+export default React.memo(Home);

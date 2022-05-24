@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { IStats } from "../../../../interfaces";
 import { HeroHeading, ThemeButton } from "../../../moleculs";
 import { Stats } from "../../../organisms";
@@ -7,13 +7,15 @@ import { Svg } from "../../../atoms";
 import { TCurrency } from "../../../../types";
 
 type Props = {
-  stats: IStats;
-  changeTheme: () => void;
-  handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  currency: TCurrency;
+  heroProps: {
+    stats: IStats | undefined;
+    changeTheme: () => void;
+    handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+    currency: TCurrency;
+  };
 };
 
-const HomeHero = ({ stats, changeTheme, handleSelect, currency }: Props) => {
+const HomeHero = ({ heroProps }: Props) => {
   return (
     <Wrapper role="homeHero">
       <Svg type="heroSvg" />
@@ -21,15 +23,15 @@ const HomeHero = ({ stats, changeTheme, handleSelect, currency }: Props) => {
         <div>
           <HeroHeading value1="Crypto" value2="App" />
           <Stats
-            stats={stats}
-            handleSelect={handleSelect}
-            currency={currency}
+            stats={heroProps.stats}
+            handleSelect={heroProps.handleSelect}
+            currency={heroProps.currency}
           />
-          <ThemeButton onClick={changeTheme} />
+          <ThemeButton onClick={heroProps.changeTheme} />
         </div>
       </StyledHomeHero>
     </Wrapper>
   );
 };
 
-export default HomeHero;
+export default React.memo(HomeHero);

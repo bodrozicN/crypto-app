@@ -33,9 +33,9 @@ const Select = ({ onChange, type }: Props) => {
     case OFIlter.rows:
       return (
         <BodySelect name="limit" role="listbox" onChange={onChange}>
+          <option value={OLimitPerPage.fifty}>50</option>
           <option value={OLimitPerPage.hundred}>100</option>
           <option value={OLimitPerPage.eighty}>80</option>
-          <option value={OLimitPerPage.fifty}>50</option>
         </BodySelect>
       );
     case OFIlter.order:
