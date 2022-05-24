@@ -4,7 +4,7 @@ import { StyledStat } from "./style";
 
 type Props = {
   title: string;
-  value: string | number;
+  value: unknown;
   char?: string;
 };
 

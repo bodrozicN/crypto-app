@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { toggleTheme } from "../redux/features";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { useLocalStorage } from "./useLocalStorage";
@@ -8,10 +8,10 @@ export function useTheme() {
   const { isDark } = useAppSelector(({ theme }) => theme);
   const { getFromLocalStorage, setToLocalStorage } = useLocalStorage();
 
-  const changeTheme = () => {
+  const changeTheme = useCallback(() => {
     dispatch(toggleTheme(!isDark));
     setToLocalStorage("isDarkTheme", !isDark);
-  };
+  }, [isDark, dispatch, setToLocalStorage]);
 
   useEffect(() => {
     const theme = getFromLocalStorage("isDarkTheme");
