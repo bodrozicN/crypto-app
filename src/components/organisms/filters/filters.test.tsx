@@ -4,11 +4,11 @@ import { screen, render } from "@testing-library/react";
 
 describe("Filters", () => {
   it("should render", () => {
-    render(<Filters />);
+    render(<Filters handleSelect={jest.fn} />);
     expect(screen.getByRole("filters")).toBeInTheDocument();
   });
   it("should contain four filter components", () => {
-    render(<Filters />);
+    render(<Filters handleSelect={jest.fn} />);
     expect(screen.getAllByRole("filter")).toHaveLength(4);
   });
 });

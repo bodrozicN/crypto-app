@@ -15,7 +15,7 @@ const Select = ({ onChange, type }: Props) => {
   switch (type) {
     case OFIlter.currency:
       return (
-        <HeroSelect role="listbox" onChange={onChange}>
+        <HeroSelect name="currency" role="listbox" onChange={onChange}>
           <option value={OCurrency.usd}>$ USD</option>
           <option value={OCurrency.eur}>€ EUR</option>
           <option value={OCurrency.btc}>BTC</option>
@@ -23,7 +23,7 @@ const Select = ({ onChange, type }: Props) => {
       );
     case OFIlter.sortBy:
       return (
-        <BodySelect role="listbox" onChange={onChange}>
+        <BodySelect name="orderBy" role="listbox" onChange={onChange}>
           <option value={OOrderBy.marketCap}>Market cap</option>
           <option value={OOrderBy.price}>Price</option>
           <option value={OOrderBy["24hVolume"]}>Volume</option>
@@ -32,22 +32,22 @@ const Select = ({ onChange, type }: Props) => {
       );
     case OFIlter.rows:
       return (
-        <BodySelect role="listbox" onChange={onChange}>
-          <option value={OLimitPerPage.fifty}>50</option>
-          <option value={OLimitPerPage.eighty}>80</option>
+        <BodySelect name="limit" role="listbox" onChange={onChange}>
           <option value={OLimitPerPage.hundred}>100</option>
+          <option value={OLimitPerPage.eighty}>80</option>
+          <option value={OLimitPerPage.fifty}>50</option>
         </BodySelect>
       );
     case OFIlter.order:
       return (
-        <BodySelect role="listbox" onChange={onChange}>
-          <option value={OOrderDirection.asc}>Ascending</option>
+        <BodySelect name="orderDirection" role="listbox" onChange={onChange}>
           <option value={OOrderDirection.desc}>Descending</option>
+          <option value={OOrderDirection.asc}>Ascending</option>
         </BodySelect>
       );
     case OFIlter.period:
       return (
-        <BodySelect role="listbox" onChange={onChange}>
+        <BodySelect name="timePeriod" role="listbox" onChange={onChange}>
           <option value={OTimePeriod.daily}>24h</option>
           <option value={OTimePeriod.weekly}>7d</option>
           <option value={OTimePeriod.monthly}>1m</option>

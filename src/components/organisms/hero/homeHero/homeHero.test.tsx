@@ -2,6 +2,7 @@ import HomeHero from "./";
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { IStats } from "../../../../interfaces";
+import { OCurrency } from "../../../../types";
 
 const stats: IStats = {
   total24hVolume: "123456",
@@ -15,6 +16,8 @@ const stats: IStats = {
 const props = {
   stats,
   changeTheme: jest.fn(),
+  handleSelect: jest.fn(),
+  currency: OCurrency.usd,
 };
 
 const Component = () => (
