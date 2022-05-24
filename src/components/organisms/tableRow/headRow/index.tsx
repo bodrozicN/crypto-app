@@ -7,10 +7,10 @@ const headingContent = [
   "#",
   "Name",
   "Price",
-  "7d Change",
+  "Change",
   "Market Cap",
   "Volume",
-  "Last 7d",
+  "Sparkline",
 ];
 
 const HeadRow = () => {

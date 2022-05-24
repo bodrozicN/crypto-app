@@ -4,20 +4,22 @@ import { StyledBodyRow } from "./style";
 import { TableCell } from "../../../moleculs";
 import { numberFormatter } from "../../../../helpers";
 import { chartDataFormatter } from "../../../../helpers";
+import { TCurrency } from "../../../../types";
 
 type Props = {
   coin: ICoinListData;
+  currency: TCurrency;
 };
 
-const BodyRow = ({ coin }: Props) => {
+const BodyRow = ({ coin, currency }: Props) => {
   const { symbol } = coin;
   const { iconUrl } = coin;
   const { uuid } = coin;
   const sparkline = chartDataFormatter(coin.sparkline);
-  const [currency, price] = numberFormatter(coin.price, "5k-_VTxqtCEI");
+  const [curr, price] = numberFormatter(coin.price, currency);
   const [, change] = numberFormatter(coin.change);
-  const [, marketCap] = numberFormatter(coin.marketCap, "5k-_VTxqtCEI");
-  const [, volume] = numberFormatter(coin["24hVolume"], "5k-_VTxqtCEI");
+  const [, marketCap] = numberFormatter(coin.marketCap, currency);
+  const [, volume] = numberFormatter(coin["24hVolume"], currency);
   const rank = coin.rank < 10 ? `0${coin.rank}` : coin.rank;
   const name = coin.name.length > 7 ? `${coin.name.slice(0, 7)}...` : coin.name;
   return (
@@ -25,10 +27,10 @@ const BodyRow = ({ coin }: Props) => {
       <TableCell rank={rank} uuid={uuid} />
       {/*prettier-ignore*/}
       <TableCell name={name} src={iconUrl} alt={name} symbol={symbol} uuid={uuid} />
-      <TableCell currnecy={currency} price={price} uuid={uuid} />
+      <TableCell currnecy={curr} price={price} uuid={uuid} />
       <TableCell currnecy="%" price={change} $reverseOrder uuid={uuid} />
-      <TableCell currnecy={currency} price={marketCap} uuid={uuid} />
-      <TableCell currnecy={currency} price={volume} uuid={uuid} />
+      <TableCell currnecy={curr} price={marketCap} uuid={uuid} />
+      <TableCell currnecy={curr} price={volume} uuid={uuid} />
       <TableCell chartData={sparkline} uuid={uuid} />
     </StyledBodyRow>
   );

@@ -1,19 +1,14 @@
 import React from "react";
 import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
 import { HomeHero, FiltersContainer, Table } from "../../organisms";
-import { OCurrency } from "../../../types";
-import { useTheme } from "../../../hooks";
-import { ICoinListData } from "../../../interfaces";
+import { useTheme, useFilters } from "../../../hooks";
 
 const Home = () => {
   const { changeTheme } = useTheme();
+  const { handleSelect, ...props } = useFilters();
   const { currentData } = useGetCoinsListAndMarketDataQuery({
-    currency: OCurrency.btc,
-    limit: 100,
+    ...props,
     offset: 0,
-    orderBy: "marketCap",
-    orderDirection: "desc",
-    timePeriod: "1y",
   });
 
   if (!currentData) return null;
@@ -23,15 +18,20 @@ const Home = () => {
   const heroProps = {
     stats,
     changeTheme,
+    handleSelect,
+    currency: props.currency,
   };
 
-  const coinsArr: ICoinListData[] | undefined = currentData?.data.coins;
+  const tableProps = {
+    coinsArr: currentData?.data.coins,
+    currency: props.currency,
+  };
 
   return (
     <>
       <HomeHero {...heroProps} />
-      <FiltersContainer />
-      <Table coinsArr={coinsArr} />
+      <FiltersContainer handleSelect={handleSelect} />
+      <Table {...tableProps} />
     </>
   );
 };
