@@ -1,10 +1,8 @@
 import styled, { css } from "styled-components";
-import { OFontWeight } from "../../../types";
 
 const Select = css`
-  font-family: inherit;
+  font-family: boldFont;
   font-size: 1.4rem;
-  font-weight: ${OFontWeight.bold};
   background-color: transparent;
   border: none;
   outline: none;

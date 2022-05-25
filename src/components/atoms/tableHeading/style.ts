@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { OFontWeight } from "../../../types";
 
 export const StyledTableHeading = styled.th`
+  font-family: lightFont;
   font-size: 1.5rem;
   color: ${({ theme }) =>
-    theme.isDark ? "var(--white)" : "var(--grey-light-3)"};
+    theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
   justify-self: start;
-  font-weight: ${OFontWeight.light};
+  cursor: default;
 `;

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style";
 import { useTheme } from "./hooks";
+import "./style/style.css";
 
 const Home = lazy(() => import("./components/pages/home"));
 const Coin = lazy(() => import("./components/pages/coin"));

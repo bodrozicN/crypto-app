@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { OFontWeight } from "../../../types";
 import { TLink, OLink } from "./";
 
 interface ILink {
@@ -15,25 +14,25 @@ export const StyledLink = styled(Link)<ILink>`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: ${({ $type }) =>
+    $type === OLink.linkSecondary ? "lightFont" : "boldFont"};
+  font-weight: 400;
 
   // home link styling
-  ${({ $type }) =>
+  ${({ $type, theme }) =>
     $type === OLink.linkPrimary &&
     css`
-      color: ${({ theme }) =>
-        theme.isDark ? "rgb(var(--blue-primary))" : "var(--white)"};
-      font-weight: ${OFontWeight.bold};
-      background-color: ${({ theme }) =>
-        theme.isDark ? "var(--white)" : "rgb(var(--blue-primary))"};
+      color: ${theme.isDark ? "rgb(var(--blue-primary))" : "var(--white)"};
+      background-color: ${theme.isDark
+        ? "var(--white)"
+        : "rgb(var(--blue-primary))"};
       border-radius: 300px;
     `}
 
   // other nav links styling
-  ${({ $type }) =>
+  ${({ $type, theme }) =>
     $type === OLink.linkSecondary &&
     css`
-      color: ${({ theme }) =>
-        theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
-      font-weight: ${OFontWeight.light};
+      color: ${theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
     `}
 `;
