@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
+
 :root {
   --blue-primary: 35, 0, 250;
   --blue-secondary: rgb(var(--blue-primary), 0.8);
@@ -34,7 +35,7 @@ html {
 }
 
 body {
-  font-family: Gilory, sans-serif;
+  font-weight: 600;
 }
 
 `;

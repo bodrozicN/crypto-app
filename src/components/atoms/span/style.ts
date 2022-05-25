@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { OFontWeight } from "../../../types";
 import { OSpan, TSpan } from "./";
 
 interface ISpan {
@@ -10,18 +9,20 @@ export const StyledSpan = styled.span<ISpan>`
   font-size: 1.4rem;
   color: var(--white);
   cursor: default;
-  // styleing for labels in hero section
+  font-weight: 400;
+
+  // styling for labels in hero section
   ${({ $type }) =>
     $type === OSpan.heroPrimary &&
     css`
-      font-weight: ${OFontWeight.light};
+      font-family: lightFont;
     `}
 
   // styleing for values in hero section
-  ${({ $type }) =>
+      ${({ $type }) =>
     $type === OSpan.heroSecondary &&
     css`
-      font-weight: ${OFontWeight.bold};
+      font-family: boldFont;
     `}
 
     // styleing for currency char in hero section
@@ -29,7 +30,7 @@ export const StyledSpan = styled.span<ISpan>`
     $type === OSpan.heroTertiary &&
     css`
       color: var(--grey-light-1);
-      font-weight: ${OFontWeight.bold};
+      font-family: boldFont;
     `}
 
     // styleing for labels in filter section
@@ -37,7 +38,7 @@ export const StyledSpan = styled.span<ISpan>`
     $type === OSpan.filterLabel &&
     css`
       display: block;
-      font-weight: ${OFontWeight.light};
+     font-family: lightFont;
       color: ${theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
       margin-left 0.3rem;
     `}

@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { OFontWeight } from "../../../types";
 
 type IHeadingPrimary = {
   $isBold?: boolean;
@@ -12,7 +11,7 @@ const Header = css`
 
 export const HeadingPrimary = styled.h1<IHeadingPrimary>`
   ${Header}
+  font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
+  font-weight: 400;
   font-size: 8rem;
-  font-weight: ${({ $isBold }) =>
-    $isBold ? OFontWeight.bold : OFontWeight.light};
 `;
