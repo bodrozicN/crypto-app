@@ -8,3 +8,4 @@ export { default as Symbol } from "./symbol";
 export { default as Paragraph } from "./paragraph";
 export { default as Img } from "./img";
 export { default as Chart } from "./chart";
+export { default as Input } from "./input";

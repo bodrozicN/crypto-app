@@ -6,12 +6,19 @@ type IHeadingPrimary = {
 
 const Header = css`
   color: var(--white);
-  cursor: default;
 `;
 
 export const HeadingPrimary = styled.h1<IHeadingPrimary>`
   ${Header}
+  cursor: default;
   font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
   font-weight: 400;
   font-size: 8rem;
+`;
+
+export const HeadingSenary = styled.h6<IHeadingPrimary>`
+  ${Header}
+  font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
+  font-weight: 400;
+  font-size: 1.6rem;
 `;
