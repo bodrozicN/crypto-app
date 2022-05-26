@@ -1,3 +1,3 @@
 export * from "./getCoinsListAndMarketData";
-export * from "./coinListData";
+export * from "./getSearchRecommendations";
 export * from "./stats";

@@ -1,4 +1,4 @@
-export interface ICoinListData {
+export type CoinListData = {
   "24hVolume": string;
   change: string;
   iconUrl: string;
@@ -9,4 +9,4 @@ export interface ICoinListData {
   sparkline: string[];
   symbol: string;
   uuid: string;
-}
+};

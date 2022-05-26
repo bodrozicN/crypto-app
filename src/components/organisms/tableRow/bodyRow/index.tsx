@@ -1,5 +1,5 @@
 import React from "react";
-import { ICoinListData } from "../../../../interfaces";
+import { CoinListData } from "../../../../types";
 import { StyledBodyRow } from "./style";
 import { TableCell } from "../../../moleculs";
 import { numberFormatter } from "../../../../helpers";
@@ -7,7 +7,7 @@ import { chartDataFormatter } from "../../../../helpers";
 import { TCurrency } from "../../../../types";
 
 type Props = {
-  coin: ICoinListData;
+  coin: CoinListData;
   currency: TCurrency;
 };
 

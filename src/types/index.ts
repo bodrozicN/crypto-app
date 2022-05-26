@@ -4,3 +4,4 @@ export * from "./order";
 export * from "./limitPerPage";
 export * from "./filter";
 export * from "./chart";
+export * from "./coinListData";

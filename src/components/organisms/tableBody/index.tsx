@@ -1,11 +1,11 @@
 import React from "react";
-import { ICoinListData } from "../../../interfaces";
+import { CoinListData } from "../../../types";
 import { BodyRow } from "../../organisms";
 import uniqid from "uniqid";
 import { TCurrency } from "../../../types";
 
 type Props = {
-  coinsArr: ICoinListData[] | undefined;
+  coinsArr: CoinListData[] | undefined;
   currency: TCurrency;
 };
 
@@ -20,7 +20,7 @@ const TableBody = ({ coinsArr, currency }: Props) => {
     );
   return (
     <tbody>
-      {coinsArr.map((coin: ICoinListData) => (
+      {coinsArr.map((coin: CoinListData) => (
         <BodyRow key={uniqid()} coin={coin} currency={currency} />
       ))}
     </tbody>
