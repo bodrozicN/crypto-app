@@ -3,6 +3,8 @@ import { headers } from "./headers";
 import {
   IGetCoinsListAndMarketDataParams,
   IGetCoinsListAndMarketDataResponse,
+  IGetSearchRecommendationsParams,
+  IGetSearchRecommendationsResponse,
 } from "../interfaces";
 
 const url = process.env.REACT_APP_BACIC_URL!;
@@ -29,7 +31,20 @@ export const cryptoApi = createApi({
           `coins?referenceCurrencyUuid=${currency}&timePeriod=${timePeriod}&orderBy=${orderBy}&orderDirection=${orderDirection}&limit=${limit}&offset=${offset}`
         ),
     }),
+
+    getSearchRecommendations: builder.query<
+      IGetSearchRecommendationsResponse,
+      IGetSearchRecommendationsParams
+    >({
+      query: ({ currency, query }) =>
+        createRequest(
+          `search-suggestions?referenceCurrencyUuid=${currency}&query=${query}`
+        ),
+    }),
   }),
 });
 
-export const { useGetCoinsListAndMarketDataQuery } = cryptoApi;
+export const {
+  useGetCoinsListAndMarketDataQuery,
+  useGetSearchRecommendationsQuery,
+} = cryptoApi;

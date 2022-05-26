@@ -5,8 +5,8 @@ import {
   TTimePeriod,
   TLimitPerPage,
 } from "../types";
-import { IStats, ICoinListData } from "./";
-
+import { IStats } from "./";
+import { CoinListData } from "../types";
 export interface IGetCoinsListAndMarketDataParams {
   currency: TCurrency;
   timePeriod: TTimePeriod;
@@ -19,6 +19,6 @@ export interface IGetCoinsListAndMarketDataParams {
 export interface IGetCoinsListAndMarketDataResponse {
   data: {
     stats: IStats;
-    coins: ICoinListData[];
+    coins: CoinListData[];
   };
 }

@@ -1,11 +1,11 @@
 import React from "react";
-import { ICoinListData } from "../../../interfaces";
+import { CoinListData } from "../../../types";
 import { TCurrency } from "../../../types";
 import { TableBody, TableHead } from "../../organisms";
 import { StyledTable } from "./style";
 
 type Props = {
-  coinsArr: ICoinListData[] | undefined;
+  coinsArr: CoinListData[] | undefined;
   currency: TCurrency;
 };
 
