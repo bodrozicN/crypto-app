@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
-import { HomeHero, FiltersContainer, Table } from "../../organisms";
+import { HomeHero, FiltersContainer, Table, Header } from "../../organisms";
 import { useTheme, useFilters } from "../../../hooks";
 
 const Home = () => {
@@ -32,6 +32,7 @@ const Home = () => {
 
   return (
     <>
+      <Header />
       <HomeHero heroProps={heroProps} />
       <FiltersContainer handleSelect={handleSelect} />
       <Table {...tableProps} />

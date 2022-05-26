@@ -1,9 +1,9 @@
 import React from "react";
-import { HeadingPrimary } from "./style";
+import { HeadingPrimary, HeadingSenary } from "./style";
 
 type HeadingPrimaryProps = {
   title: unknown;
-  type: "h1";
+  type: "h1" | "h6";
   $isBold?: boolean;
 };
 
@@ -16,6 +16,12 @@ const Heading = (props: Props) => {
         <HeadingPrimary $isBold={props.$isBold}>
           {props.title as string}
         </HeadingPrimary>
+      );
+    case "h6":
+      return (
+        <HeadingSenary $isBold={props.$isBold}>
+          {props.title as string}
+        </HeadingSenary>
       );
     default:
       throw new Error("Heading type not supported");
