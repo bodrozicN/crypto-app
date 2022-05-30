@@ -36,9 +36,9 @@ export const cryptoApi = createApi({
       IGetSearchRecommendationsResponse,
       IGetSearchRecommendationsParams
     >({
-      query: ({ currency, query }) =>
+      query: ({ query }) =>
         createRequest(
-          `search-suggestions?referenceCurrencyUuid=${currency}&query=${query}`
+          `search-suggestions?referenceCurrencyUuid=yhjMzLPhuIDl&query=${query}`
         ),
     }),
   }),

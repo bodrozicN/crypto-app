@@ -8,3 +8,4 @@ export { default as TableBody } from "./tableBody";
 export { default as TableHead } from "./tableHead";
 export * from "././tableRow";
 export { default as Header } from "./header";
+export { default as List } from "./list";
