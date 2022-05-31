@@ -6,7 +6,6 @@ export const Wrapper = styled.section`
 `;
 
 export const StyledHomeHero = styled.div`
-  background-color: rgb(var(--blue-primary));
   height: 43rem;
   padding-top: 4.8rem;
   padding-bottom: 8rem;

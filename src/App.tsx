@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style";
 import { useTheme } from "./hooks";
-import { Header } from "./components/organisms";
 import "./style/style.css";
 
 const Home = lazy(() => import("./components/pages/home"));
@@ -20,7 +19,6 @@ function App() {
       <ThemeProvider theme={{ isDark }}>
         <Suspense fallback={<p>Loading...</p>}>
           <Router>
-            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/coin/:id" element={<Coin />} />
