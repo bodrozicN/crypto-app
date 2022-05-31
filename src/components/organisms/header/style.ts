@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  background-color: rgb(var(--blue-primary));
   border-bottom: 1px solid rgb(255, 255, 255, 0.2);
   & > div {
     position: relative;
