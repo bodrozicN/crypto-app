@@ -22,9 +22,9 @@ export const StyledLink = styled(Link)<ILink>`
   ${({ $type, theme }) =>
     $type === OLink.linkPrimary &&
     css`
-      color: ${theme.isDark ? "rgb(var(--blue-primary))" : "var(--white)"};
+      color: #fff;
       background-color: ${theme.isDark
-        ? "var(--white)"
+        ? "#EF00B6"
         : "rgb(var(--blue-primary))"};
       border-radius: 300px;
     `}
