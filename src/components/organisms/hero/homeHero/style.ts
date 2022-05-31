@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.section`
-  position: relative;
-  overflow: hidden;
-`;
-
 export const StyledHomeHero = styled.div`
   height: 43rem;
   padding-top: 4.8rem;
