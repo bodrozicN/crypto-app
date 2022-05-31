@@ -1,13 +1,9 @@
 import React from "react";
-import {
-  useGetCoinsListAndMarketDataQuery,
-  useGetSearchRecommendationsQuery,
-} from "../../../redux/api";
-import { HomeHero, FiltersContainer, Table, Header } from "../../organisms";
-import { useTheme, useFilters } from "../../../hooks";
+import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
+import { HomeHero, FiltersContainer, Table } from "../../organisms";
+import { useFilters } from "../../../hooks";
 
 const Home = () => {
-  const { changeTheme } = useTheme();
   const { handleSelect, ...props } = useFilters();
 
   const { coins, stats } = useGetCoinsListAndMarketDataQuery(
@@ -22,7 +18,6 @@ const Home = () => {
 
   const heroProps = {
     stats,
-    changeTheme,
     handleSelect,
     currency: props.currency,
   };
@@ -34,7 +29,6 @@ const Home = () => {
 
   return (
     <>
-      <Header />
       <HomeHero heroProps={heroProps} />
       <FiltersContainer handleSelect={handleSelect} />
       <Table {...tableProps} />
