@@ -2,8 +2,7 @@ import React from "react";
 import { IStats } from "../../../../interfaces";
 import { HeroHeading } from "../../../moleculs";
 import { Stats } from "../../../organisms";
-import { StyledHomeHero, Wrapper } from "./style";
-import { Svg } from "../../../atoms";
+import { StyledHomeHero } from "./style";
 import { TCurrency } from "../../../../types";
 
 type Props = {
@@ -16,19 +15,16 @@ type Props = {
 
 const HomeHero = ({ heroProps }: Props) => {
   return (
-    <Wrapper role="homeHero">
-      <Svg type="heroSvg" />
-      <StyledHomeHero>
-        <div>
-          <HeroHeading value1="Crypto" value2="App" />
-          <Stats
-            stats={heroProps.stats}
-            handleSelect={heroProps.handleSelect}
-            currency={heroProps.currency}
-          />
-        </div>
-      </StyledHomeHero>
-    </Wrapper>
+    <StyledHomeHero>
+      <div>
+        <HeroHeading value1="Crypto" value2="App" />
+        <Stats
+          stats={heroProps.stats}
+          handleSelect={heroProps.handleSelect}
+          currency={heroProps.currency}
+        />
+      </div>
+    </StyledHomeHero>
   );
 };
 
