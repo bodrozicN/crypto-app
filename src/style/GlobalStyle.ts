@@ -15,8 +15,8 @@ export const GlobalStyle = createGlobalStyle`
   --red-light-theme: #dd0000;
   --green-light-theme: #00a137;
   //dark theme colors
-  --grey-dark-1: #211f2a;
-  --grey-dark-2: #373640;
+  --grey-dark-1: #1C1C1C;
+  --grey-dark-2: #121212;
   --grey-dark-3: #555555;
   --red-dark-theme: #ff4747;
   --green-dark-theme: #20ff6c;
