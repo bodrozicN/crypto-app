@@ -29,12 +29,5 @@ export const StyledHomeHero = styled.div`
       grid-row: 2 / 3;
       grid-column: 1 / 10;
     }
-
-    & > div:nth-child(3) {
-      grid-row: 2 / 3;
-      grid-column: 12 / -1;
-      align-self: end;
-      justify-self: end;
-    }
   }
 `;

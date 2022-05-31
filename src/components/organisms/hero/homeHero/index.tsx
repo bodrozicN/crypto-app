@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { IStats } from "../../../../interfaces";
-import { HeroHeading, ThemeButton } from "../../../moleculs";
+import { HeroHeading } from "../../../moleculs";
 import { Stats } from "../../../organisms";
 import { StyledHomeHero, Wrapper } from "./style";
 import { Svg } from "../../../atoms";
@@ -9,7 +9,6 @@ import { TCurrency } from "../../../../types";
 type Props = {
   heroProps: {
     stats: IStats | undefined;
-    changeTheme: () => void;
     handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
     currency: TCurrency;
   };
@@ -27,7 +26,6 @@ const HomeHero = ({ heroProps }: Props) => {
             handleSelect={heroProps.handleSelect}
             currency={heroProps.currency}
           />
-          <ThemeButton onClick={heroProps.changeTheme} />
         </div>
       </StyledHomeHero>
     </Wrapper>

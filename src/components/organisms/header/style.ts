@@ -8,8 +8,19 @@ export const StyledHeader = styled.header`
     height: 6.8rem;
     margin: 0 auto;
     max-width: var(--screen-width-desktop);
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
     align-items: center;
-    justify-content: space-between;
+    column-gap: 15px;
+
+    & > *:nth-child(1) {
+      grid-column: 1 / 2;
+    }
+    & > *:nth-child(2) {
+      grid-column: 8 / 9;
+    }
+    & > *:nth-child(3) {
+      grid-column: 11 / -1;
+    }
   }
 `;
