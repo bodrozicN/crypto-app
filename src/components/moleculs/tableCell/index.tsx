@@ -35,9 +35,9 @@ const TableCell = ({
         {rank && <Paragraph type="light" title={rank} />}
         {src && <Img type="tableImg" src={src} alt={alt} />}
         {name && <Paragraph type="bold" title={name} />}
-        {symbol && <Symbol title={symbol} />}
+        {symbol && <Symbol $type="primary" title={symbol} />}
         <span>
-          {currnecy && <Symbol title={currnecy} />}
+          {currnecy && <Symbol $type="primary" title={currnecy} />}
           {price && <Paragraph type="bold" title={price} />}
         </span>
         {chartData && <Chart {...chartData} />}

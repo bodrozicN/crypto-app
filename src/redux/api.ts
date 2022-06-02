@@ -62,7 +62,7 @@ export const cryptoApi = createApi({
         if (coinDetails.error) throw coinDetails.error;
         const coinOHLC = await fetchWithBQ(
           createRequest(
-            `coin/${uuid}/ohlc?referenceCurrencyUuid=${currency}&interval=hour&limit=1`
+            `coin/${uuid}/ohlc?referenceCurrencyUuid=${currency}&interval=day&limit=1`
           )
         );
         if (coinOHLC.error) throw coinOHLC.error;
