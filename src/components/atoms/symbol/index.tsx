@@ -3,10 +3,15 @@ import { StyledCoinSymbol } from "./style";
 
 type Props = {
   title: unknown;
+  $type: "primary" | "secondary";
 };
 
-const Symbol = ({ title }: Props) => {
-  return <StyledCoinSymbol role="symbol">{title as string}</StyledCoinSymbol>;
+const Symbol = ({ title, $type }: Props) => {
+  return (
+    <StyledCoinSymbol $type={$type} role="symbol">
+      {title as string}
+    </StyledCoinSymbol>
+  );
 };
 
 export default Symbol;

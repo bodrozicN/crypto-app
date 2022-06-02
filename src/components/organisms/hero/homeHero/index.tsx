@@ -1,7 +1,7 @@
 import React from "react";
 import { IStats } from "../../../../interfaces";
 import { HeroHeading } from "../../../moleculs";
-import { Stats } from "../../../organisms";
+import { HomeStats } from "../../../organisms";
 import { StyledHomeHero } from "./style";
 import { TCurrency } from "../../../../types";
 
@@ -18,7 +18,7 @@ const HomeHero = ({ heroProps }: Props) => {
     <StyledHomeHero>
       <div>
         <HeroHeading value1="Crypto" value2="App" />
-        <Stats
+        <HomeStats
           stats={heroProps.stats}
           handleSelect={heroProps.handleSelect}
           currency={heroProps.currency}

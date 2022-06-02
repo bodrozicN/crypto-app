@@ -16,8 +16,8 @@ export function currencyFormatter(value: string | number, currency: TCurrency) {
 
     const price =
       currency !== "BTC"
-        ? formattedValue.slice(1, length - 3)
-        : formattedValue.slice(4, length - 3);
+        ? formattedValue.slice(1, length)
+        : formattedValue.slice(4, length);
 
     return [char, price];
   };
@@ -38,7 +38,7 @@ export function currencyFormatter(value: string | number, currency: TCurrency) {
 }
 
 export function numberFormatter(arg1: unknown, arg2: TCurrency): string[];
-export function numberFormatter(arg1: string | number): string[];
+export function numberFormatter(arg1: unknown): string[];
 export function numberFormatter(arg1: unknown, arg2?: unknown): string[] {
   if (typeof arg1 === "undefined") return [];
   const numberValue = Math.abs(arg1 as number);

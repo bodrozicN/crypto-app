@@ -8,3 +8,5 @@ export { default as Paragraph } from "./paragraph";
 export { default as Img } from "./img";
 export { default as Chart } from "./chart";
 export { default as Input } from "./input";
+export { default as Anchor } from "./anchor";
+export { default as Svg } from "./svg";

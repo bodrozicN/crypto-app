@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { StyledStats } from "./style";
-import { Stat, Filter } from "../../moleculs";
-import { IStats } from "../../../interfaces";
-import { numberFormatter } from "../../../helpers";
-import { OFIlter, TCurrency } from "../../../types";
+import { Stat, Filter } from "../../../moleculs";
+import { IStats } from "../../../../interfaces";
+import { numberFormatter } from "../../../../helpers";
+import { OFIlter, TCurrency } from "../../../../types";
 
 type Props = {
   stats: IStats | undefined;
@@ -11,7 +11,7 @@ type Props = {
   currency: TCurrency;
 };
 
-const Stats = ({ handleSelect, stats, currency }: Props) => {
+const HomeStats = ({ handleSelect, stats, currency }: Props) => {
   const [char, volume] = numberFormatter(stats?.total24hVolume, currency);
   const [, marketCap] = numberFormatter(stats?.totalMarketCap, currency);
 
@@ -28,4 +28,4 @@ const Stats = ({ handleSelect, stats, currency }: Props) => {
   );
 };
 
-export default React.memo(Stats);
+export default React.memo(HomeStats);

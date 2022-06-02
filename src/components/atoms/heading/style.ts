@@ -14,6 +14,7 @@ export const HeadingPrimary = styled.h1<IHeadingPrimary>`
   font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
   font-weight: 400;
   font-size: 8rem;
+  line-height: 100px;
 `;
 
 export const HeadingSenary = styled.h6<IHeadingPrimary>`
