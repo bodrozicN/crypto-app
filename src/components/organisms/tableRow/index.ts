@@ -1,2 +1,2 @@
-export { default as BodyRow } from "./bodyRow";
-export { default as HeadRow } from "./headRow";
+export { CoinsTbodyTr, CoinsTheadTr } from "./coinsTr";
+export { ExcangesTheadTr, ExcangesTbodyTr } from "./excangesTr";

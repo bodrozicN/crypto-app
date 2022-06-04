@@ -21,8 +21,8 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/coin/:id" element={<Coin />} />
-              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="coin/:uuid" element={<Coin />} />
+              <Route path="portfolio" element={<Portfolio />} />
               <Route path="*" element={<Error />} />
             </Routes>
           </Router>

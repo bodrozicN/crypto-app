@@ -1,6 +1,6 @@
-import { css } from "styled-components";
+import styled from "styled-components";
 
-export const Row = css`
+export const StyledCoinsRow = styled.tr`
   display: grid;
   align-items: center;
   grid-template-columns: repeat(12, 1fr);

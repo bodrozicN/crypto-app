@@ -4,22 +4,26 @@ type IHeadingPrimary = {
   $isBold?: boolean;
 };
 
-const Header = css`
+const Header = css<IHeadingPrimary>`
   color: var(--white);
+  font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
+  cursor: default;
 `;
 
-export const HeadingPrimary = styled.h1<IHeadingPrimary>`
+export const HeadingPrimary = styled.h1`
   ${Header}
-  cursor: default;
-  font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
-  font-weight: 400;
   font-size: 8rem;
   line-height: 100px;
 `;
 
-export const HeadingSenary = styled.h6<IHeadingPrimary>`
+export const HeadingQuaternary = styled.h4`
   ${Header}
-  font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
-  font-weight: 400;
+  color: ${({ theme }) =>
+    theme.isDark ? "var(--white)" : "var(--grey-dark-2)"};
+  font-size: 2.4rem;
+`;
+
+export const HeadingSenary = styled.h6`
+  ${Header}
   font-size: 1.6rem;
 `;

@@ -10,3 +10,4 @@ export { default as Chart } from "./chart";
 export { default as Input } from "./input";
 export { default as Anchor } from "./anchor";
 export { default as Svg } from "./svg";
+export { default as Button } from "./button";

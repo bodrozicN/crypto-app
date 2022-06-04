@@ -14,7 +14,7 @@ type Props = {
   currnecy?: string;
   $reverseOrder?: boolean;
   uuid: string;
-  chartData?: ChratProps;
+  chartData?: ChratProps | null;
 };
 
 const TableCell = ({
@@ -40,7 +40,7 @@ const TableCell = ({
           {currnecy && <Symbol $type="primary" title={currnecy} />}
           {price && <Paragraph type="bold" title={price} />}
         </span>
-        {chartData && <Chart {...chartData} />}
+        {chartData && <Chart type="homePageChart" priceHistory={chartData} />}
       </Link>
     </StyledTableCell>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { CoinDetails, TCurrency } from "../../../../types";
 import { StyledCoinHero } from "./style";
 import { CoinCredentials } from "../../../moleculs";
-import { CoinStats, CoinOhlc } from "../../../organisms";
+import { CoinStats, CoinPriceSection } from "../../../organisms";
 import { CoinOHLC } from "../../../../types/coinOHLC";
 
 type Props = {
@@ -37,7 +37,7 @@ const CoinHero = ({ coinDetails, currency, handleSelect, ohlc }: Props) => {
       <div>
         <CoinCredentials coinCredentials={coinCredentials} />
         <CoinStats {...{ coinStatsProps, currency, handleSelect }} />
-        <CoinOhlc {...{ ohlc, currency }} />
+        <CoinPriceSection {...{ ohlc, currency }} />
       </div>
     </StyledCoinHero>
   );
