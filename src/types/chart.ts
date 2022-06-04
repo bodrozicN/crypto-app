@@ -1,3 +1,5 @@
+import { TTimePeriod } from "./timePeriod";
+
 export type ChratProps = {
   labels: unknown[];
   datasets: {
@@ -6,4 +8,9 @@ export type ChratProps = {
     borderColor: string;
     backgroundColor: string;
   }[];
+};
+
+export type ChartFilter = {
+  name: string;
+  value: TTimePeriod;
 };

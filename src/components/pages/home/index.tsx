@@ -1,9 +1,10 @@
 import React from "react";
 import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
-import { HomeHero, FiltersContainer, Table } from "../../organisms";
+import { HomeHero, FiltersContainer, CoinsTable } from "../../organisms";
 import { useFilters } from "../../../hooks";
 import { Header } from "../../organisms";
 import { Wrapper } from "./style";
+import { coinTableHead } from "../../../helpers";
 
 const Home = () => {
   const { handleSelect, ...props } = useFilters();
@@ -36,7 +37,7 @@ const Home = () => {
         <HomeHero heroProps={heroProps} />
       </Wrapper>
       <FiltersContainer handleSelect={handleSelect} />
-      <Table {...tableProps} />
+      <CoinsTable tHeadContent={coinTableHead} {...tableProps} />
     </>
   );
 };

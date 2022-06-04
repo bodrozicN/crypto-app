@@ -1,9 +1,9 @@
 import React from "react";
-import { HeadingPrimary, HeadingSenary } from "./style";
+import { HeadingPrimary, HeadingSenary, HeadingQuaternary } from "./style";
 
 type HeadingPrimaryProps = {
   title: unknown;
-  type: "h1" | "h6";
+  type: "h1" | "h4" | "h6";
   $isBold?: boolean;
 };
 
@@ -16,6 +16,13 @@ const Heading = (props: Props) => {
         <HeadingPrimary $isBold={props.$isBold}>
           {props.title as string}
         </HeadingPrimary>
+      );
+
+    case "h4":
+      return (
+        <HeadingQuaternary $isBold={props.$isBold}>
+          {props.title as string}
+        </HeadingQuaternary>
       );
     case "h6":
       return (

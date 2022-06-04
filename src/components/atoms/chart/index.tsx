@@ -51,10 +51,15 @@ export const options = {
   },
 };
 
-const Chart = (props: ChratProps) => {
+type Props = {
+  type: "homePageChart" | "coinPageChart";
+  priceHistory: ChratProps;
+};
+
+const Chart = ({ priceHistory, type }: Props) => {
   return (
-    <Wrapper>
-      <Line role="lineChart" options={options} data={props} />
+    <Wrapper $type={type}>
+      <Line options={options} data={priceHistory} />
     </Wrapper>
   );
 };

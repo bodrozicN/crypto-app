@@ -6,6 +6,4 @@ export type ExcangesDetails = {
   price: string;
   rank: number;
   recommended: true;
-  uuid: string;
-  verified: false;
 };
