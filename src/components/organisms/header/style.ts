@@ -1,7 +1,17 @@
 import styled from "styled-components";
+import img from "../../../img/heroImg.png";
+import img2 from "../../../img/heroImg2.png";
 
 export const StyledHeader = styled.header`
   border-bottom: 1px solid rgb(255, 255, 255, 0.2);
+
+  background-image: ${({ theme }) =>
+    theme.isDark ? `url(${img2})` : `url(${img})`};
+  background-color: rgb(0, 0, 0, 0.15);
+
+  background-size: cover;
+  background-position: top;
+
   & > div {
     position: relative;
     height: 6.8rem;

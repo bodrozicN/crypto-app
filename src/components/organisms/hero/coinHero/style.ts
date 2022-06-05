@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import img from "../../../../img/heroImg.png";
+import img2 from "../../../../img/heroImg2.png";
 
 export const StyledCoinHero = styled.div`
+  background-image: ${({ theme }) =>
+    theme.isDark ? `url(${img2})` : `url(${img})`};
+  background-color: rgb(0, 0, 0);
+  background-size: cover;
+
   height: 60.5rem;
   padding-top: 9rem;
   padding-bottom: 7.7rem;

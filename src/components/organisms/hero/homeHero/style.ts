@@ -1,6 +1,14 @@
 import styled from "styled-components";
+import img from "../../../../img/heroImg.png";
+import img2 from "../../../../img/heroImg2.png";
 
 export const StyledHomeHero = styled.div`
+  background-image: ${({ theme }) =>
+    theme.isDark ? `url(${img2})` : `url(${img})`};
+  background-color: rgb(0, 0, 0);
+  background-position: bottom;
+  background-size: cover;
+
   height: 43rem;
   padding-top: 4.8rem;
   padding-bottom: 8rem;

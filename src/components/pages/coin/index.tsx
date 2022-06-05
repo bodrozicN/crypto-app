@@ -1,5 +1,4 @@
-import { CoinHero, Header, ChartSection, CoinInfo } from "../../organisms";
-import { Wrapper } from "./style";
+import { CoinHero, ChartSection, CoinInfo } from "../../organisms";
 import { useCoinLogic } from "./useCoinLogic";
 
 const Coin = () => {
@@ -7,10 +6,7 @@ const Coin = () => {
 
   return (
     <>
-      <Wrapper>
-        <Header />
-        <CoinHero {...coinHeroProps} />
-      </Wrapper>
+      <CoinHero {...coinHeroProps} />
       <ChartSection {...chartSectionProps} />
       <CoinInfo {...coinInfoProps} />
     </>

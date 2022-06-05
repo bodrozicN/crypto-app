@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style";
 import { useTheme } from "./hooks";
 import "./style/style.css";
+import { Header } from "./components/organisms";
 
 const Home = lazy(() => import("./components/pages/home"));
 const Coin = lazy(() => import("./components/pages/coin"));
@@ -19,6 +20,7 @@ function App() {
       <ThemeProvider theme={{ isDark }}>
         <Suspense fallback={<p>Loading...</p>}>
           <Router>
+            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="coin/:uuid" element={<Coin />} />
