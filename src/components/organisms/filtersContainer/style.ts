@@ -1,17 +1,15 @@
 import styled from "styled-components";
+import { ScreenWidth, Grid_12_col } from "../../../style";
 
 export const StyledFiltersContainer = styled.div`
-  height: 12.5rem;
   background-color: ${({ theme }) =>
     theme.isDark ? "var(--grey-dark-1)" : "var(--grey-light-4)"};
+  height: 12.5rem;
   & > div {
-    margin: 0 auto;
-    max-width: var(--screen-width-desktop);
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 15px;
+    ${ScreenWidth};
+    ${Grid_12_col};
     align-items: center;
+    height: 100%;
 
     & > *:nth-child(1) {
       grid-column: 1 /4;

@@ -2,7 +2,7 @@ import React from "react";
 import { CoinListData } from "../../../../types";
 import { TCurrency } from "../../../../types";
 import { CoinsTbody, CoinsThead } from "../../../organisms";
-import { StyledTable } from "./style";
+import { StyledCoinsTable } from "./style";
 
 type Props = {
   coinsArr: CoinListData[] | undefined;
@@ -12,10 +12,10 @@ type Props = {
 
 const CoinsTable = (props: Props) => {
   return (
-    <StyledTable>
+    <StyledCoinsTable>
       <CoinsThead tHeadContent={props.tHeadContent} />
       <CoinsTbody {...props} />
-    </StyledTable>
+    </StyledCoinsTable>
   );
 };
 

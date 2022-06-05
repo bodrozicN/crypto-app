@@ -1,17 +1,16 @@
 import styled from "styled-components";
+import { BackgroundImage, Grid_12_col, ScreenWidth } from "../../../../style";
 
 export const StyledCoinHero = styled.div`
+  ${BackgroundImage};
+
   height: 60.5rem;
   padding-top: 9rem;
   padding-bottom: 7.7rem;
   & > div {
-    max-width: var(--screen-width-desktop);
-    margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    ${Grid_12_col};
+    ${ScreenWidth};
     grid-auto-rows: minmax(130px, auto);
-    column-gap: 15px;
     row-gap: 6.4rem;
 
     & > *:nth-child(1) {

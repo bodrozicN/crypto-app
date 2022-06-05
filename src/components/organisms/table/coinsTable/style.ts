@@ -1,13 +1,13 @@
 import styled from "styled-components";
+import { Background, ScreenWidth } from "../../../../style";
 
-export const StyledTable = styled.table`
-  display: block;
-  background-color: ${({ theme }) =>
-    theme.isDark ? "var(--grey-dark-2)" : "var(--white)"};
-
+export const StyledCoinsTable = styled.table`
+  &,
   & > * {
     display: block;
-    max-width: var(--screen-width-desktop);
-    margin: 0 auto;
+  }
+  ${Background}
+  & > * {
+    ${ScreenWidth};
   }
 `;

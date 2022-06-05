@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
+import { Grid_12_col } from "../../../../style";
+
 export const StyledCoinStats = styled.div`
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 15px;
+  ${Grid_12_col};
   row-gap: 3.4rem;
+  position: relative;
 
   .anchor-container {
     display: flex;

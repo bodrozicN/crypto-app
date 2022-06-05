@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { Grid_9_col } from "../../../style";
 
 export const StyledFilters = styled.div`
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  ${Grid_9_col}
 
   & > *:nth-child(1) {
     grid-column: 1 / 4;
