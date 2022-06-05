@@ -2,7 +2,6 @@ import React from "react";
 import { ExcangesDetails } from "../../../../types";
 import { TableCell } from "../../../moleculs";
 import { StyledExcangesBodyTr } from "./style";
-import uniqid from "uniqid";
 import { numberFormatter } from "../../../../helpers";
 
 type Props = {
@@ -17,7 +16,6 @@ const ExcangesTbodyTr = ({ excange }: Props) => {
   return (
     <StyledExcangesBodyTr>
       <TableCell
-        uuid={uniqid()}
         rank={
           excange && excange?.rank < 10 ? `0${excange?.rank}` : excange?.rank
         }
@@ -25,17 +23,16 @@ const ExcangesTbodyTr = ({ excange }: Props) => {
         alt={excange?.name}
       />
       <TableCell
-        uuid={uniqid()}
         name={
           excange && excange?.name.length > 8
             ? excange?.name.slice(0, 8) + "..."
             : excange?.name
         }
       />
-      <TableCell uuid={uniqid()} price={price} currnecy={currency} />
-      <TableCell uuid={uniqid()} price={btcPrice} />
-      <TableCell uuid={uniqid()} price={volume} currnecy={currency} />
-      <TableCell uuid={uniqid()} symbol={excange?.recommended ? "Yes" : "No"} />
+      <TableCell price={price} currnecy={currency} />
+      <TableCell price={btcPrice} />
+      <TableCell price={volume} currnecy={currency} />
+      <TableCell symbol={excange?.recommended ? "Yes" : "No"} />
     </StyledExcangesBodyTr>
   );
 };

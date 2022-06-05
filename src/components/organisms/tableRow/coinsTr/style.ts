@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Grid_12_col } from "../../../../style";
 
-export const StyledCoinsRow = styled.tr`
+const CoinsRow = css`
   ${Grid_12_col}
   align-items: center;
   height: 9.8rem;
@@ -28,4 +28,16 @@ export const StyledCoinsRow = styled.tr`
   & > *:nth-child(7) {
     grid-column: 11 / -1;
   }
+`;
+
+export const StyledCoinsBodyRow = styled.tr`
+  a {
+    text-decoration: none;
+    color: inherit;
+    ${CoinsRow}
+  }
+`;
+
+export const StyledCoinsHeadRow = styled.tr`
+  ${CoinsRow}
 `;

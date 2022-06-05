@@ -1,19 +1,19 @@
 import React from "react";
-import { StyledCoinsRow } from "./style";
+import { StyledCoinsHeadRow } from "./style";
 import { TableHeading } from "../../../atoms";
 import uniqid from "uniqid";
 
 type Props = {
-  tHeadContent: string[];
+  theadContent: string[];
 };
 
-const CoinsHeadRow = ({ tHeadContent }: Props) => {
+const CoinsHeadRow = ({ theadContent }: Props) => {
   return (
-    <StyledCoinsRow>
-      {tHeadContent.map((title) => (
+    <StyledCoinsHeadRow>
+      {theadContent.map((title) => (
         <TableHeading key={uniqid()} title={title} />
       ))}
-    </StyledCoinsRow>
+    </StyledCoinsHeadRow>
   );
 };
 
