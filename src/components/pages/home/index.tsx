@@ -1,34 +1,12 @@
 import React from "react";
-import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
 import { HomeHero, FiltersContainer, CoinsTable } from "../../organisms";
-import { useFilters } from "../../../hooks";
 import { Header } from "../../organisms";
 import { Wrapper } from "./style";
-import { coinTableHead } from "../../../helpers";
+import { useHomeLogic } from "./useHomeLogic";
 
 const Home = () => {
-  const { handleSelect, ...props } = useFilters();
-
-  const { coins, stats } = useGetCoinsListAndMarketDataQuery(
-    { ...props, offset: 0 },
-    {
-      selectFromResult: ({ data }) => ({
-        stats: data?.data.stats,
-        coins: data?.data.coins,
-      }),
-    }
-  );
-
-  const heroProps = {
-    stats,
-    handleSelect,
-    currency: props.currency,
-  };
-
-  const tableProps = {
-    coinsArr: coins,
-    currency: props.currency,
-  };
+  const { coinTableHead, handleSelect, heroProps, tableProps, isError } =
+    useHomeLogic();
 
   return (
     <>
