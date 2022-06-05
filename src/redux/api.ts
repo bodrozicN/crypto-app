@@ -5,8 +5,11 @@ import {
   IGetCoinsListAndMarketDataResponse,
   IGetSearchRecommendationsParams,
   IGetSearchRecommendationsResponse,
-  IGetCoinDataParams,
-  IGetCoinDataResponse,
+  IGetCoinDetailsResponse,
+  IGetCoinOhlcResponse,
+  IGetCoinPriceHistoryResponse,
+  IGetCoinExcangesResponse,
+  IGetCoinParams,
 } from "../interfaces";
 
 const url = process.env.REACT_APP_BACIC_URL!;
@@ -44,50 +47,35 @@ export const cryptoApi = createApi({
         ),
     }),
 
-    getCoinDetails: builder.query<
-      IGetCoinDataResponse | undefined,
-      IGetCoinDataParams
+    getCoin: builder.query<IGetCoinDetailsResponse, IGetCoinParams>({
+      query: ({ currency, uuid }) =>
+        createRequest(
+          `coin/${uuid}?referenceCurrencyUuid=${currency}&timePeriod=24h`
+        ),
+    }),
+
+    getCoinOhlc: builder.query<IGetCoinOhlcResponse, IGetCoinParams>({
+      query: ({ currency, uuid }) =>
+        createRequest(
+          `coin/${uuid}/ohlc?referenceCurrencyUuid=${currency}&interval=day&limit=1`
+        ),
+    }),
+
+    getCoinPriceHistory: builder.query<
+      IGetCoinPriceHistoryResponse,
+      IGetCoinParams
     >({
-      async queryFn(
-        { currency, timePeriod, uuid },
-        _queryApi,
-        _extraOptions,
-        fetchWithBQ
-      ) {
-        const coinDetails = await fetchWithBQ(
-          createRequest(
-            `coin/${uuid}?referenceCurrencyUuid=${currency}&timePeriod=24h`
-          )
-        );
-        if (coinDetails.error) throw coinDetails.error;
-        const coinOHLC = await fetchWithBQ(
-          createRequest(
-            `coin/${uuid}/ohlc?referenceCurrencyUuid=${currency}&interval=day&limit=1`
-          )
-        );
-        if (coinOHLC.error) throw coinOHLC.error;
-        const coinPriceHistory = await fetchWithBQ(
-          createRequest(
-            `coin/${uuid}/history?referenceCurrencyUuid=${currency}&timePeriod=${timePeriod}`
-          )
-        );
-        if (coinPriceHistory.error) throw coinPriceHistory.error;
-        const coinExcanges = await fetchWithBQ(
-          createRequest(
-            `coin/${uuid}/exchanges?referenceCurrencyUuid=${currency}&limit=7&offset=0&orderBy=24hVolume&orderDirection=desc`
-          )
-        );
-        if (coinExcanges.error) throw coinExcanges.error;
-        const response = {
-          coinDetails: coinDetails.data,
-          coinOHLC: coinOHLC.data,
-          coinPriceHistory: coinPriceHistory.data,
-          coinExcanges: coinExcanges.data,
-        };
-        return coinDetails.data
-          ? { data: { ...response } as any }
-          : { error: coinDetails.error };
-      },
+      query: ({ currency, timePeriod, uuid }) =>
+        createRequest(
+          `coin/${uuid}/history?referenceCurrencyUuid=${currency}&timePeriod=${timePeriod}`
+        ),
+    }),
+
+    getCoinExcanges: builder.query<IGetCoinExcangesResponse, IGetCoinParams>({
+      query: ({ currency, uuid }) =>
+        createRequest(
+          `coin/${uuid}/exchanges?referenceCurrencyUuid=${currency}&limit=7&offset=0&orderBy=24hVolume&orderDirection=desc`
+        ),
     }),
   }),
 });
@@ -95,5 +83,8 @@ export const cryptoApi = createApi({
 export const {
   useGetCoinsListAndMarketDataQuery,
   useGetSearchRecommendationsQuery,
-  useGetCoinDetailsQuery,
+  useGetCoinOhlcQuery,
+  useGetCoinQuery,
+  useGetCoinPriceHistoryQuery,
+  useGetCoinExcangesQuery,
 } = cryptoApi;
