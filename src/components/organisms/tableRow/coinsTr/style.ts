@@ -1,10 +1,9 @@
 import styled from "styled-components";
+import { Grid_12_col } from "../../../../style";
 
 export const StyledCoinsRow = styled.tr`
-  display: grid;
+  ${Grid_12_col}
   align-items: center;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: 15px;
   height: 9.8rem;
 
   & > *:nth-child(1) {

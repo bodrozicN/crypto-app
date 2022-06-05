@@ -1,9 +1,8 @@
 import styled from "styled-components";
+import { Grid_9_col } from "../../../../style";
 
 export const StyledStats = styled.div`
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  column-gap: 15px;
+  ${Grid_9_col}
   row-gap: 4.8rem;
 
   & > *:nth-child(1),
