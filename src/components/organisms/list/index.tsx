@@ -9,8 +9,6 @@ type Props = {
 };
 
 const List = ({ searchList }: Props) => {
-  console.log("List");
-
   return (
     <StyledList>
       {searchList?.map((coin) => (

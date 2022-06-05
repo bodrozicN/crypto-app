@@ -1,26 +1,18 @@
 import styled from "styled-components";
-import img from "../../../img/heroImg.png";
-import img2 from "../../../img/heroImg2.png";
+import { Grid_12_col, BackgroundImage, ScreenWidth } from "../../../style";
 
 export const StyledHeader = styled.header`
-  border-bottom: 1px solid rgb(255, 255, 255, 0.2);
-
-  background-image: ${({ theme }) =>
-    theme.isDark ? `url(${img2})` : `url(${img})`};
-  background-color: rgb(0, 0, 0, 0.15);
-
-  background-size: cover;
+  ${BackgroundImage}
   background-position: top;
+  background-color: rgb(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgb(255, 255, 255, 0.15);
 
   & > div {
+    ${ScreenWidth};
+    ${Grid_12_col};
+    align-items: center;
     position: relative;
     height: 6.8rem;
-    margin: 0 auto;
-    max-width: var(--screen-width-desktop);
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    align-items: center;
-    column-gap: 15px;
 
     & > *:nth-child(1) {
       grid-column: 1 / 2;

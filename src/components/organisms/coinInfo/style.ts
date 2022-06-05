@@ -1,14 +1,11 @@
 import styled from "styled-components";
+import { Background, Grid_12_col, ScreenWidth } from "../../../style";
 
 export const StyledCoinInfo = styled.section`
-  background-color: ${({ theme }) =>
-    theme.isDark ? "var(--grey-dark-2)" : "var(--white)"};
+  ${Background}
   & > div {
-    max-width: var(--screen-width-desktop);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 15px;
+    ${Grid_12_col};
+    ${ScreenWidth};
 
     & > *:nth-child(1) {
       grid-column: 1/5;

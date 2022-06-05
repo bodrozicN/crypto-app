@@ -1,25 +1,16 @@
 import styled from "styled-components";
-import img from "../../../../img/heroImg.png";
-import img2 from "../../../../img/heroImg2.png";
+import { Grid_12_col, ScreenWidth, BackgroundImage } from "../../../../style";
 
 export const StyledHomeHero = styled.div`
-  background-image: ${({ theme }) =>
-    theme.isDark ? `url(${img2})` : `url(${img})`};
-  background-color: rgb(0, 0, 0);
-  background-position: bottom;
-  background-size: cover;
-
+  ${BackgroundImage};
   height: 43rem;
   padding-top: 4.8rem;
   padding-bottom: 8rem;
-  & > div {
-    max-width: var(--screen-width-desktop);
-    margin: 0 auto;
 
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
+  & > div {
+    ${Grid_12_col};
+    ${ScreenWidth};
     grid-auto-rows: minmax(100px, auto);
-    column-gap: 15px;
     row-gap: 6.4rem;
 
     & > div:nth-child(1) {

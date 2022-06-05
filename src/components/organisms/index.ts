@@ -12,6 +12,5 @@ export { default as List } from "./list";
 export { default as CoinStats } from "./stats/coinStats";
 export { default as CoinPriceSection } from "./coinPriceSection";
 export { default as ChartSection } from "./chartSection";
-export { default as PriceHistory } from "./priceHistory";
 export { default as CoinInfo } from "./coinInfo";
 export { default as CoinOhlc } from "./coinOhlc";
