@@ -1,5 +1,5 @@
 import React from "react";
-import { HomeHero, FiltersContainer, CoinsTable } from "../../organisms";
+import { HomeHero, FiltersContainer, Table } from "../../organisms";
 import { useHomeLogic } from "./useHomeLogic";
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <HomeHero heroProps={heroProps} />
       <FiltersContainer handleSelect={handleSelect} />
-      <CoinsTable tHeadContent={coinTableHead} {...tableProps} />
+      <Table type="coins" theadContent={coinTableHead} {...tableProps} />
     </>
   );
 };
