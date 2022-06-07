@@ -6,7 +6,7 @@ import { coinTableHead } from "../../../helpers";
 import { CoinsTableProps, HomeHeroProps } from "../../../types";
 
 const Home = () => {
-  const props = useFilters();
+  const { handleSelect, ...props } = useFilters();
   const { coins, stats, isError } = useGetCoinsListAndMarketDataQuery(
     { ...props, offset: 0 },
     {
@@ -20,7 +20,7 @@ const Home = () => {
 
   const heroProps: HomeHeroProps = {
     stats,
-    handleSelect: props.handleSelect,
+    handleSelect,
     currency: props.currency,
   };
 

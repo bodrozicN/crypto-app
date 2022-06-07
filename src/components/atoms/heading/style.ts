@@ -7,13 +7,13 @@ type IHeadingPrimary = {
 const Header = css<IHeadingPrimary>`
   color: var(--white);
   font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
-  cursor: default;
 `;
 
 export const HeadingPrimary = styled.h1`
   ${Header}
   font-size: 8rem;
   line-height: 100px;
+  cursor: default;
 `;
 
 export const HeadingQuaternary = styled.h4`

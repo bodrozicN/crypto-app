@@ -1,22 +1,14 @@
 import React from "react";
+import { FormProps } from "../../../types";
 import { StyledInput } from "./style";
 
-type Props = {
+type Props = Pick<FormProps, "value" | "onChange"> & {
   placeholder: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 };
 
-const Input = ({ placeholder, onChange, value, className }: Props) => {
-  return (
-    <StyledInput
-      className={className}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    />
-  );
+const Input = (props: Props) => {
+  return <StyledInput {...props} />;
 };
 
 export default Input;

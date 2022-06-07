@@ -12,3 +12,4 @@ export * from "./excangesDetails";
 export * from "./priceHistory";
 export * from "./homeHero";
 export * from "./coinsTable";
+export * from "./form";
