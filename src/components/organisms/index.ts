@@ -1,14 +1,12 @@
 export * from "./hero";
-export * from "./stats";
-export * from "./hero";
 export { default as Filters } from "./filters";
 export { default as FiltersContainer } from "./filtersContainer";
 export { default as Table } from "./table";
 export { default as TableHead } from "./tableHead";
-export * from "././tableRow";
+export * from "./tableRow";
 export { default as Header } from "./header";
 export { default as List } from "./list";
-export { default as CoinStats } from "./stats/coinStats";
+export * from "./stats";
 export { default as CoinPriceSection } from "./coinPriceSection";
 export { default as ChartSection } from "./chartSection";
 export { default as CoinInfo } from "./coinInfo";

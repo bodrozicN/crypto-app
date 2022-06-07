@@ -1,2 +1,2 @@
-export { CoinsTbodyTr, CoinsTheadTr } from "./coinsTr";
-export { ExcangesTheadTr, ExcangesTbodyTr } from "./excangesTr";
+export * from "./coinsTr";
+export * from "./excangesTr";
