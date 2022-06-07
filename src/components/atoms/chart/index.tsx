@@ -23,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   responsive: true,
   maintainAspectRatio: false,
   elements: {
@@ -31,11 +31,9 @@ export const options = {
       radius: 0,
     },
   },
+
   scales: {
     x: {
-      display: false,
-    },
-    y: {
       display: false,
     },
   },
@@ -51,12 +49,29 @@ export const options = {
   },
 };
 
+export const homeChartOptions = {
+  ...options,
+  scales: {
+    ...options.scales,
+    y: {
+      display: false,
+    },
+  },
+};
+
+export const coinChartOptions = {
+  ...options,
+};
+
 type Props = {
   type: "homePageChart" | "coinPageChart";
   priceHistory: ChratProps;
 };
 
 const Chart = ({ priceHistory, type }: Props) => {
+  const options =
+    type === "coinPageChart" ? coinChartOptions : homeChartOptions;
+
   return (
     <Wrapper $type={type}>
       <Line options={options} data={priceHistory} />

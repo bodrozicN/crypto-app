@@ -5,8 +5,8 @@ export type ChratProps = {
   datasets: {
     label: string;
     data: number[];
-    borderColor: string;
-    backgroundColor: string;
+    borderColor: any;
+    backgroundColor: any;
   }[];
 };
 
