@@ -2,12 +2,11 @@ import React from "react";
 import { StyledOhlc } from "./style";
 import { Stat, PriceLine } from "../../moleculs";
 import { Heading } from "../../atoms";
-import { CoinOHLC } from "../../../types/coinOHLC";
 import { numberFormatter } from "../../../helpers";
-import { TCurrency } from "../../../types";
+import { TCurrency, CoinOHLC } from "../../../types";
 
 type Props = {
-  ohlc: Partial<CoinOHLC>;
+  ohlc: CoinOHLC;
   currency: TCurrency;
 };
 

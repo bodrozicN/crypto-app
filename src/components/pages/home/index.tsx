@@ -27,7 +27,7 @@ const Home = () => {
   const tableProps: CoinsTableProps = {
     coinsArr: coins,
     currency: props.currency,
-    theadContent: coinTableHead,
+    tableHead: coinTableHead,
   };
 
   return <HomeTemplate {...{ heroProps, tableProps, isError }} />;

@@ -1,4 +1,4 @@
-import { CoinListData } from "./coinListData";
+import { CoinListData } from "./";
 
 export type SearchList = Pick<
   CoinListData,

@@ -6,7 +6,7 @@ type CoinsTable = {
 
 type ExcangesTable = {
   type: "excanges";
-  theadContent: string[];
+  tableHead: string[];
   excanges: ExcangesDetails[] | undefined;
 };
 

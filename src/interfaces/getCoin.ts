@@ -5,7 +5,7 @@ import {
   TCurrency,
   TTimePeriod,
 } from "../types";
-import { CoinOHLC } from "../types/coinOHLC";
+import { CoinOHLC } from "../types";
 
 export interface IGetCoinParams {
   uuid: string | undefined;
