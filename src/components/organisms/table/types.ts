@@ -1,16 +1,13 @@
-import { CoinListData, ExcangesDetails, TCurrency } from "../../../types";
+import { CoinsTableProps, ExcangesDetails } from "../../../types";
 
-type CoinsTableProps = {
+type CoinsTable = {
   type: "coins";
-  theadContent: string[];
-  coinsArr: CoinListData[] | undefined;
-  currency: TCurrency;
-};
+} & CoinsTableProps;
 
-type ExcangesTableProps = {
+type ExcangesTable = {
   type: "excanges";
   theadContent: string[];
   excanges: ExcangesDetails[] | undefined;
 };
 
-export type Props = CoinsTableProps | ExcangesTableProps;
+export type Props = CoinsTable | ExcangesTable;

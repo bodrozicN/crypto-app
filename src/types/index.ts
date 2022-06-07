@@ -10,3 +10,5 @@ export * from "./coinDetails";
 export * from "./excangesDetails";
 export * from "./excangesDetails";
 export * from "./priceHistory";
+export * from "./homeHero";
+export * from "./coinsTable";

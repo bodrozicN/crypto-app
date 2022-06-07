@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyledStats } from "./style";
 import { Stat, Filter } from "../../../moleculs";
-import { IStats } from "../../../../interfaces";
 import { numberFormatter } from "../../../../helpers";
-import { OFIlter, TCurrency } from "../../../../types";
+import { HomeHeroProps, OFIlter } from "../../../../types";
 
-type Props = {
-  stats: IStats | undefined;
-  handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  currency: TCurrency;
-};
-
-const HomeStats = ({ handleSelect, stats, currency }: Props) => {
+const HomeStats = ({ handleSelect, stats, currency }: HomeHeroProps) => {
   const [char, volume] = numberFormatter(stats?.total24hVolume, currency);
   const [, marketCap] = numberFormatter(stats?.totalMarketCap, currency);
 
