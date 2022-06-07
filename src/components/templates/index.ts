@@ -1,1 +1,2 @@
-export { default as HomeTemplate } from "./homeTemplate.ts";
+export { default as HomeTemplate } from "./homeTemplate";
+export { default as CoinTemplate } from "./coinTemplate";

@@ -1,23 +1,14 @@
 import React from "react";
-import { ExcangesDetails } from "../../../types";
+import { CoinExcanges } from "../../../types";
 import { CoinOhlc, Table } from "../../organisms";
 import { StyledCoinInfo } from "./style";
 
-type Props = {
-  theadContent: string[];
-  excanges: ExcangesDetails[] | undefined;
-};
-
-const CoinInfo = ({ theadContent, excanges }: Props) => {
+const CoinInfo = (props: CoinExcanges) => {
   return (
     <StyledCoinInfo>
       <div>
         <CoinOhlc />
-        <Table
-          type="excanges"
-          theadContent={theadContent}
-          excanges={excanges}
-        />
+        <Table type="excanges" {...props} />
       </div>
     </StyledCoinInfo>
   );

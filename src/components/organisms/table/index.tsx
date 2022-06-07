@@ -8,7 +8,7 @@ const Table = (props: Props) => {
     case "coins":
       return (
         <StyledTable>
-          <TableHead type="coins" theadContent={props.theadContent} />
+          <TableHead type="coins" theadContent={props.tableHead} />
           <TableBody
             type="coins"
             coinsArr={props.coinsArr}
@@ -19,7 +19,7 @@ const Table = (props: Props) => {
     case "excanges":
       return (
         <StyledTable>
-          <TableHead type="excanges" theadContent={props.theadContent} />
+          <TableHead type="excanges" theadContent={props.tableHead} />
           <TableBody type="excanges" excanges={props.excanges} />
         </StyledTable>
       );
