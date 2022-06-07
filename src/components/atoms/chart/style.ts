@@ -11,6 +11,6 @@ export const Wrapper = styled.div<IStyledWrapper>`
   ${({ $type }) =>
     $type === "coinPageChart" &&
     css`
-      height: 53rem;
+      height: 37.8rem;
     `}
 `;
