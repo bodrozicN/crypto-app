@@ -16,11 +16,7 @@ type Props = {
 };
 
 const Span = ({ content, type }: Props) => {
-  return (
-    <StyledSpan role="span" $type={type}>
-      {content as string}
-    </StyledSpan>
-  );
+  return <StyledSpan $type={type}>{content as string}</StyledSpan>;
 };
 
 export { Span, type TSpan, OSpan };

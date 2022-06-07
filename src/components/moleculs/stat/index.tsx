@@ -10,7 +10,7 @@ type Props = {
 
 const Stat = ({ title, value, char }: Props) => {
   return (
-    <StyledStat role="stat">
+    <StyledStat>
       <Span type={OSpan.heroPrimary} content={title} />
       <span>
         {/* if we have a char prop it wil render currency char */}

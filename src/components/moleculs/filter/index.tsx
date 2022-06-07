@@ -14,7 +14,7 @@ const Filter = (props: Props) => {
     props.type === OFIlter.currency ? OSpan.heroPrimary : OSpan.filterLabel;
 
   return (
-    <StyledFilter role="filter">
+    <StyledFilter>
       <Span type={spanType} content={props.type} />
       <Select type={props.type} onChange={props.onChange} />
     </StyledFilter>

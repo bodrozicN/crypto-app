@@ -7,11 +7,7 @@ type Props = {
 };
 
 const Symbol = ({ title, $type }: Props) => {
-  return (
-    <StyledCoinSymbol $type={$type} role="symbol">
-      {title as string}
-    </StyledCoinSymbol>
-  );
+  return <StyledCoinSymbol $type={$type}>{title as string}</StyledCoinSymbol>;
 };
 
 export default Symbol;

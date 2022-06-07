@@ -1,7 +1,7 @@
 import React from "react";
 import { Filter } from "../../moleculs";
 import { StyledFilters } from "./style";
-import { OFIlter } from "../../../types";
+import { OFIlter, TFilter } from "../../../types";
 
 type Props = {
   handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -9,11 +9,15 @@ type Props = {
 
 const Filters = ({ handleSelect }: Props) => {
   return (
-    <StyledFilters role="filters">
-      <Filter onChange={handleSelect} type={OFIlter.sortBy} />
-      <Filter onChange={handleSelect} type={OFIlter.order} />
-      <Filter onChange={handleSelect} type={OFIlter.period} />
-      <Filter onChange={handleSelect} type={OFIlter.rows} />
+    <StyledFilters>
+      {Object.values(OFIlter).reduce((acc: JSX.Element[], filter: TFilter) => {
+        filter !== OFIlter.currency &&
+          acc.push(
+            <Filter key={filter} type={filter} onChange={handleSelect} />
+          );
+
+        return acc;
+      }, [])}
     </StyledFilters>
   );
 };

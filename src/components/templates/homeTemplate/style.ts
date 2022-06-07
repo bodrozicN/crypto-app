@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Background } from "../../../style";
+import { Background, FlexPage } from "../../../style";
 
 export const StyledHomeTemplate = styled.div`
-  ${Background};
+  ${Background}
+  ${FlexPage}
 `;

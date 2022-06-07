@@ -20,6 +20,13 @@ export const Grid_7_col = css`
   column-gap: 1.5rem;
 `;
 
+export const FlexPage = css`
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
 export const ScreenWidth = css`
   max-width: var(--screen-width-desktop);
   margin: 0 auto;

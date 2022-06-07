@@ -9,7 +9,7 @@ type Props = {
 
 const FiltersContainer = ({ handleSelect }: Props) => {
   return (
-    <StyledFiltersContainer role="filtersContainer">
+    <StyledFiltersContainer>
       <div>
         <Nav />
         <Filters handleSelect={handleSelect} />

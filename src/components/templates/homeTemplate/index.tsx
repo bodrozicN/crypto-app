@@ -8,13 +8,15 @@ const HomeTemplate = (props: Props) => {
 
   if (isError) {
     //toDo: add error component
-    return <div>Error occured</div>;
+    return <StyledHomeTemplate>Error occured</StyledHomeTemplate>;
   }
 
   return (
     <StyledHomeTemplate>
-      <HomeHero {...heroProps} />
-      <FiltersContainer handleSelect={heroProps.handleSelect} />
+      <div>
+        <HomeHero {...heroProps} />
+        <FiltersContainer handleSelect={heroProps.handleSelect} />
+      </div>
       <Table type="coins" {...tableProps} />
     </StyledHomeTemplate>
   );
