@@ -2,25 +2,22 @@ import React from "react";
 import { FormWrapper } from "./style";
 import { Input } from "../../atoms";
 import { CgSearch } from "react-icons/cg";
+import { FormProps } from "../../../types";
 
-type Props = {
-  query: string;
-  handleChangeInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+type Props = FormProps & {
+  placeHolder: string;
 };
 
-const Form = ({ handleChangeInputValue, query }: Props) => {
+const Form = (props: Props) => {
+  const { onChange, value, onSubmit, placeHolder } = props;
   return (
     <FormWrapper>
       <CgSearch className="searchIcon" />
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-        }}
-      >
+      <form onSubmit={onSubmit}>
         <Input
-          placeholder="Search..."
-          onChange={handleChangeInputValue}
-          value={query}
+          placeholder={placeHolder}
+          onChange={onChange}
+          value={value}
           className="searchInput"
         />
       </form>
@@ -28,4 +25,4 @@ const Form = ({ handleChangeInputValue, query }: Props) => {
   );
 };
 
-export default Form;
+export default React.memo(Form);

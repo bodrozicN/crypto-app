@@ -1,17 +1,14 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { Logo, Form, ThemeButton } from "../../moleculs";
 import { StyledHeader } from "./style";
 import { List } from "../../organisms";
 import { useGetSearchRecommendationsQuery } from "../../../redux/api";
-import { handleShowSearchList } from "../../../helpers";
-import { useDebounce, useTheme } from "../../../hooks";
+import { useTheme, useSearch } from "../../../hooks";
 
 const Header = () => {
-  const [query, setQuery] = useState<string>("");
-  const [isActiveElement, setIsActiveElement] = useState<boolean>(false);
-  const debouncedValue = useDebounce(query, 500);
   const { changeTheme } = useTheme();
-
+  const { debouncedValue, isActiveElement, formProps } =
+    useSearch(".searchInput");
   const { coins: searchList } = useGetSearchRecommendationsQuery(
     { query: debouncedValue },
     {
@@ -21,23 +18,12 @@ const Header = () => {
     }
   );
 
-  const handleChangeInputValue = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setQuery(e.target.value);
-    },
-    []
-  );
-
-  useEffect(() => {
-    handleShowSearchList(setIsActiveElement, ".searchInput");
-  }, []);
-
   return (
     <StyledHeader>
       <div>
         <Logo value1="Crypto" value2="App" />
         <ThemeButton onClick={changeTheme} />
-        <Form handleChangeInputValue={handleChangeInputValue} query={query} />
+        <Form placeHolder="Search..." {...formProps} />
         {isActiveElement && <List searchList={searchList} />}
       </div>
     </StyledHeader>

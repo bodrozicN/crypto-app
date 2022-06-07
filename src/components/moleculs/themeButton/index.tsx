@@ -17,4 +17,4 @@ const ThemeButton = ({ onClick }: Props) => {
   );
 };
 
-export default React.memo(ThemeButton);
+export default ThemeButton;
