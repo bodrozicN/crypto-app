@@ -5,7 +5,6 @@ import { Img, Paragraph } from "../../atoms";
 import { Link } from "react-router-dom";
 
 const ListItem = ({ iconUrl, name, uuid }: SearchList) => {
-  console.log(uuid);
   return (
     <StyledListItem>
       <Link to={`coin/${uuid}`}>

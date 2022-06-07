@@ -1,28 +1,15 @@
 import React from "react";
-import { IStats } from "../../../../interfaces";
 import { HeroHeading } from "../../../moleculs";
 import { HomeStats } from "../../../organisms";
 import { StyledHomeHero } from "./style";
-import { TCurrency } from "../../../../types";
+import { HomeHeroProps } from "../../../../types";
 
-type Props = {
-  heroProps: {
-    stats: IStats | undefined;
-    handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-    currency: TCurrency;
-  };
-};
-
-const HomeHero = ({ heroProps }: Props) => {
+const HomeHero = (props: HomeHeroProps) => {
   return (
     <StyledHomeHero>
       <div>
         <HeroHeading value1="Crypto" value2="App" />
-        <HomeStats
-          stats={heroProps.stats}
-          handleSelect={heroProps.handleSelect}
-          currency={heroProps.currency}
-        />
+        <HomeStats {...props} />
       </div>
     </StyledHomeHero>
   );
