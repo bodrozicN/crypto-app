@@ -2,16 +2,18 @@ import React from "react";
 import { StyledButton } from "./style";
 
 type Props = {
-  type: "chartButton";
-  content: unknown;
+  $type: "chartButton" | "paginationButton" | "arrowButton";
+  content?: unknown;
   className?: string;
   onClick: () => void;
+  disabled?: boolean;
+  children?: React.ReactNode;
 };
 
-const Button = ({ content, className, type, onClick }: Props) => {
+const Button = (props: Props) => {
   return (
-    <StyledButton onClick={onClick} className={className} $type={type}>
-      {content as string}
+    <StyledButton {...props}>
+      {props.children ? props.children : (props.content as string)}
     </StyledButton>
   );
 };

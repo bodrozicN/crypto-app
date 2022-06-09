@@ -18,7 +18,7 @@ const ChartFilters = ({ chartFilters, timePeriod, setTimePeriod }: Props) => {
           key={uniqid()}
           className={value === timePeriod ? "active-btn" : ""}
           onClick={() => setTimePeriod(value)}
-          type="chartButton"
+          $type="chartButton"
           content={name}
         />
       ))}

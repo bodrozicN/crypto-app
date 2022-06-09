@@ -6,3 +6,4 @@ export * from "./hero";
 export * from "./form";
 export * from "./coin";
 export * from "./filters";
+export * from "./pagination";

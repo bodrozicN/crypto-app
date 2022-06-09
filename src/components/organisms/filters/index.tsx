@@ -1,23 +1,19 @@
 import React from "react";
 import { Filter } from "../../moleculs";
 import { StyledFilters } from "./style";
-import { OFIlter, TFilter } from "../../../types";
 
 type Props = {
   handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSelectLimit: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const Filters = ({ handleSelect }: Props) => {
+const Filters = ({ handleSelect, handleSelectLimit }: Props) => {
   return (
     <StyledFilters>
-      {Object.values(OFIlter).reduce((acc: JSX.Element[], filter: TFilter) => {
-        filter !== OFIlter.currency &&
-          acc.push(
-            <Filter key={filter} type={filter} onChange={handleSelect} />
-          );
-
-        return acc;
-      }, [])}
+      <Filter type="Rows" onChange={handleSelectLimit} />
+      <Filter type="SortBy" onChange={handleSelect} />
+      <Filter type="Order" onChange={handleSelect} />
+      <Filter type="Period" onChange={handleSelect} />
     </StyledFilters>
   );
 };

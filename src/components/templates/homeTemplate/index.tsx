@@ -1,23 +1,26 @@
 import React from "react";
-import { FiltersContainer, HomeHero, Table } from "../../organisms";
+import { FiltersContainer, HomeHero, Table, Pagination } from "../../organisms";
 import { StyledHomeTemplate } from "./style";
 import { Props } from "./types";
 
 const HomeTemplate = (props: Props) => {
-  const { heroProps, tableProps, isError } = props;
+  const { heroProps, tableProps, isError, paginationProps } = props;
 
   if (isError) {
     //toDo: add error component
-    return <StyledHomeTemplate>Error occured</StyledHomeTemplate>;
+    return <>Error occured</>;
   }
 
   return (
     <StyledHomeTemplate>
-      <div>
-        <HomeHero {...heroProps} />
-        <FiltersContainer handleSelect={heroProps.handleSelect} />
-      </div>
+      <HomeHero {...heroProps} />
+      <FiltersContainer
+        handleSelect={heroProps.handleSelectFilters}
+        handleSelectLimit={heroProps.handleSelectLimit}
+      />
+
       <Table type="coins" {...tableProps} />
+      <Pagination {...paginationProps} />
     </StyledHomeTemplate>
   );
 };

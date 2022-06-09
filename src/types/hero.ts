@@ -4,7 +4,8 @@ import { CoinCredentials, CoinHeroStats, CoinOHLC } from "./coin";
 
 export type HomeHeroProps = {
   stats: IStats | undefined;
-  handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSelectFilters: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSelectLimit: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   currency: TCurrency;
 };
 
