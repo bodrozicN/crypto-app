@@ -4,7 +4,7 @@ export const StyledChartFilters = styled.div`
   width: 20rem;
   border-radius: 400px;
   background-color: ${({ theme }) =>
-    theme.isDark ? "#1C1C1C" : "var(--grey-light-4)"};
+    theme.isDark ? "#292929" : "var(--grey-light-4)"};
   display: flex;
   align-items: center;
   justify-content: space-between;
