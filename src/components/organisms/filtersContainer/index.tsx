@@ -5,14 +5,15 @@ import { Nav } from "../../moleculs";
 
 type Props = {
   handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSelectLimit: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const FiltersContainer = ({ handleSelect }: Props) => {
+const FiltersContainer = (props: Props) => {
   return (
     <StyledFiltersContainer>
       <div>
         <Nav />
-        <Filters handleSelect={handleSelect} />
+        <Filters {...props} />
       </div>
     </StyledFiltersContainer>
   );

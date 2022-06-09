@@ -12,3 +12,4 @@ export { default as ChartSection } from "./chartSection";
 export { default as CoinInfo } from "./coinInfo";
 export { default as CoinOhlc } from "./coinOhlc";
 export { default as TableBody } from "./tableBody";
+export { default as Pagination } from "./pagination";

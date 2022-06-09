@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HomeTemplate } from "../../templates";
-import { useFilters } from "../../../hooks";
+import { useFilters, usePagination } from "../../../hooks";
 import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
 import { coinTableHead } from "../../../helpers";
-import { CoinsTableProps, HomeHeroProps } from "../../../types";
+import { CoinsTableProps, HomeHeroProps, Pagination } from "../../../types";
 
 const Home = () => {
-  const { handleSelect, ...props } = useFilters();
+  const [numOfCoins, setNumOfCoins] = useState<number | undefined>(undefined);
+
+  const {
+    handleChangePage,
+    limit,
+    offset,
+    page,
+    lastPage,
+    handleSelect: handleSelectLimit,
+  } = usePagination(numOfCoins);
+  const { handleSelect: handleSelectFilters, ...props } = useFilters();
   const { coins, stats, isError } = useGetCoinsListAndMarketDataQuery(
-    { ...props, offset: 0 },
+    { ...props, offset, limit },
     {
       selectFromResult: ({ data, isError }) => ({
         stats: data?.data.stats,
@@ -18,9 +28,14 @@ const Home = () => {
     }
   );
 
+  useEffect(() => {
+    setNumOfCoins(stats?.totalCoins);
+  }, [stats]);
+
   const heroProps: HomeHeroProps = {
     stats,
-    handleSelect,
+    handleSelectFilters,
+    handleSelectLimit,
     currency: props.currency,
   };
 
@@ -30,7 +45,15 @@ const Home = () => {
     tableHead: coinTableHead,
   };
 
-  return <HomeTemplate {...{ heroProps, tableProps, isError }} />;
+  const paginationProps: Pagination = {
+    page,
+    lastPage,
+    handleChangePage,
+  };
+
+  return (
+    <HomeTemplate {...{ heroProps, tableProps, isError, paginationProps }} />
+  );
 };
 
 export default React.memo(Home);
