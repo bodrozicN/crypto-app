@@ -1,3 +1,4 @@
+import { Heading } from "../../atoms";
 import { ChartSection, CoinHero, CoinSupply, Table } from "../../organisms";
 import { StyledCoinTemplate } from "./style";
 import { Props } from "./types";
@@ -22,7 +23,10 @@ const CoinTemplate = ({
       <div>
         <div>
           {coinSupply && ath && <CoinSupply {...{ ath, coinSupply }} />}
-          <Table type="excanges" {...excangeTable} />
+          <div className="container">
+            <Heading type="h4" title="Markets" $isBold />
+            <Table type="excanges" {...excangeTable} />
+          </div>
         </div>
       </div>
     </StyledCoinTemplate>
