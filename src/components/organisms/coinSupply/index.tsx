@@ -1,28 +1,15 @@
 import React from "react";
-import { Heading } from "../../atoms";
-import { PriceBox, Stat } from "../../moleculs";
+import { Stat } from "../../moleculs";
 import { StyledCoinSupply } from "./style";
-import { CoinSupply as TCoinSupply, TCurrency } from "../../../types";
-import { nFormatter, dateFormatter, numberFormatter } from "../../../helpers";
+import { CoinSupply as TCoinSupply } from "../../../types";
+import { nFormatter, dateFormatter } from "../../../helpers";
 
-type Props = {
-  coinSupply: TCoinSupply;
-  ath: {
-    price: string;
-    timestamp: number;
-  };
-};
-
-const CoinSupply = ({ coinSupply, ath }: Props) => {
-  const { circulatingAmount, circulatingSyncedAt, totalAmount, maxAmount } =
-    coinSupply;
-  const { price, timestamp: athDate } = ath;
-
-  const [curr, coinAthPrice] = numberFormatter(price, "yhjMzLPhuIDl");
+const CoinSupply = (props: TCoinSupply) => {
+  const { circulatingAmount, circulatingSyncedAt, maxAmount, totalAmount } =
+    props;
 
   return (
     <StyledCoinSupply>
-      <Heading type="h4" title="CoinSupply" $isBold />
       <div>
         <Stat
           title="Total Supply"
@@ -47,11 +34,6 @@ const CoinSupply = ({ coinSupply, ath }: Props) => {
           $switchColor
         />
       </div>
-      <PriceBox
-        date={dateFormatter(athDate)}
-        price={`${curr} ${coinAthPrice}`}
-        title="All time high"
-      />
     </StyledCoinSupply>
   );
 };

@@ -1,10 +1,7 @@
 import styled from "styled-components";
 
 export const StyledCoinSupply = styled.div`
-  & > *:first-child {
-    margin-bottom: 3rem;
-  }
-  & > *:nth-child(2) {
+  & > *:nth-child(1) {
     margin-bottom: 2.2rem;
     background-color: ${({ theme }) => (theme.isDark ? "#292929" : "#fff")};
     height: 32.4rem;
