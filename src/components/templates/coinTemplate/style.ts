@@ -25,4 +25,10 @@ export const StyledCoinTemplate = styled.div`
       }
     }
   }
+
+  .container {
+    & > *:first-child {
+      margin-bottom: 5.8rem;
+    }
+  }
 `;
