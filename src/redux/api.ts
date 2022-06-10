@@ -1,4 +1,8 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+  createApi,
+  fetchBaseQuery,
+  FetchBaseQueryError,
+} from "@reduxjs/toolkit/query/react";
 import { headers } from "./headers";
 import {
   IGetCoinsListAndMarketDataParams,
@@ -10,6 +14,8 @@ import {
   IGetCoinPriceHistoryResponse,
   IGetCoinExcangesResponse,
   IGetCoinParams,
+  IGetCoinSupplyParams,
+  IGetCoinSupplyResponse,
 } from "../interfaces";
 
 const url = process.env.REACT_APP_BACIC_URL!;
@@ -77,6 +83,10 @@ export const cryptoApi = createApi({
           `coin/${uuid}/exchanges?referenceCurrencyUuid=${currency}&limit=7&offset=0&orderBy=24hVolume&orderDirection=desc`
         ),
     }),
+
+    getCoinSupply: builder.query<IGetCoinSupplyResponse, IGetCoinSupplyParams>({
+      query: ({ uuid }) => createRequest(`coin/${uuid}/supply`),
+    }),
   }),
 });
 
@@ -87,4 +97,5 @@ export const {
   useGetCoinQuery,
   useGetCoinPriceHistoryQuery,
   useGetCoinExcangesQuery,
+  useGetCoinSupplyQuery,
 } = cryptoApi;

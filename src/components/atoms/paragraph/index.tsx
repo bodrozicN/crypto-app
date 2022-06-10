@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledParagraph } from "./style";
 
-export type ParagraphType = "bold" | "light";
+export type ParagraphType = "bold" | "light" | "priceParagraph";
 
 type Props = {
   title: unknown;

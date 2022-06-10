@@ -4,6 +4,7 @@ import {
   CoinExcanges,
   CoinHeroStats,
   CoinOHLC,
+  CoinSupply,
   TCurrency,
 } from "../../../types";
 
@@ -15,4 +16,11 @@ export type Props = {
   coinHeroStats: CoinHeroStats;
   handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   excangeTable: CoinExcanges;
+  coinSupply: CoinSupply | undefined;
+  ath:
+    | {
+        price: string;
+        timestamp: number;
+      }
+    | undefined;
 };

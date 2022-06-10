@@ -10,3 +10,4 @@ export { default as ListItem } from "./listItem";
 export { default as CoinCredentials } from "./coinCredentials";
 export { default as PriceLine } from "./priceLine";
 export { default as ChartFilters } from "./chartFilters";
+export { default as PriceBox } from "./priceBox";

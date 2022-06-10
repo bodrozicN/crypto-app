@@ -65,3 +65,11 @@ export type CoinsTableProps = {
   tableHead: string[];
   currency: TCurrency;
 };
+
+export type CoinSupply = {
+  maxAmount: string;
+  totalSyncedAt: string;
+  totalAmount: string;
+  circulatingSyncedAt: string;
+  circulatingAmount: string;
+};

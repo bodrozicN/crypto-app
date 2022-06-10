@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ParagraphType } from "./index";
 
 interface IStyledParagraph {
@@ -12,4 +12,11 @@ export const StyledParagraph = styled.p<IStyledParagraph>`
   color: ${({ theme }) =>
     theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
   white-space: nowrap;
+
+  ${({ $type }) =>
+    $type === "priceParagraph" &&
+    css`
+      font-size: 3.6rem;
+      font-family: boldFont;
+    `}
 `;
