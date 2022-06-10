@@ -123,8 +123,6 @@ const Coin = () => {
     name: coinDetails?.name,
   };
 
-  console.log(coinDetails?.allTimeHigh);
-
   return (
     <CoinTemplate
       {...{
