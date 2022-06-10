@@ -16,6 +16,7 @@ import {
   useGetCoinOhlcQuery,
   useGetCoinPriceHistoryQuery,
   useGetCoinQuery,
+  useGetCoinSupplyQuery,
 } from "../../../redux/api";
 import {
   coinPageChartDataFormatter,
@@ -33,6 +34,15 @@ const Coin = () => {
     {
       selectFromResult: ({ data }) => ({
         coinDetails: data?.data.coin,
+      }),
+    }
+  );
+
+  const { coinSupply } = useGetCoinSupplyQuery(
+    { uuid },
+    {
+      selectFromResult: ({ data }) => ({
+        coinSupply: data?.data.supply,
       }),
     }
   );
@@ -113,16 +123,20 @@ const Coin = () => {
     name: coinDetails?.name,
   };
 
+  console.log(coinDetails?.allTimeHigh);
+
   return (
     <CoinTemplate
       {...{
         ohlc,
         chartProps,
         excangeTable,
+        coinSupply,
         coinCredentials,
         coinHeroStats,
         handleSelect,
         currency,
+        ath: coinDetails?.allTimeHigh,
       }}
     />
   );

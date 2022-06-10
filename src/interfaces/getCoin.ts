@@ -1,5 +1,6 @@
 import {
   CoinDetails,
+  CoinSupply,
   ExcangesDetails,
   PriceHistory,
   TCurrency,
@@ -34,5 +35,15 @@ export interface IGetCoinOhlcResponse {
 export interface IGetCoinPriceHistoryResponse {
   data: {
     history: PriceHistory[];
+  };
+}
+
+export interface IGetCoinSupplyParams {
+  uuid: string | undefined;
+}
+
+export interface IGetCoinSupplyResponse {
+  data: {
+    supply: CoinSupply;
   };
 }

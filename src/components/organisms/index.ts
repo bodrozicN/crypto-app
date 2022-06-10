@@ -9,7 +9,6 @@ export { default as List } from "./list";
 export * from "./stats";
 export { default as CoinPriceSection } from "./coinPriceSection";
 export { default as ChartSection } from "./chartSection";
-export { default as CoinInfo } from "./coinInfo";
-export { default as CoinOhlc } from "./coinOhlc";
+export { default as CoinSupply } from "./coinSupply";
 export { default as TableBody } from "./tableBody";
 export { default as Pagination } from "./pagination";
