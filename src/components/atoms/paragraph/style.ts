@@ -12,7 +12,7 @@ export const StyledParagraph = styled.p<IStyledParagraph>`
   color: ${({ theme }) =>
     theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
   white-space: nowrap;
-
+  cursor: default;
   ${({ $type }) =>
     $type === "priceParagraph" &&
     css`

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyledOhlc } from "./style";
 import { Stat, PriceLine } from "../../moleculs";
 import { Heading } from "../../atoms";
@@ -16,8 +16,22 @@ const CoinPriceSection = ({ currency, ohlc }: Props) => {
   const [, highPrice] = numberFormatter(high, currency);
   const closePrice = numberFormatter(close, currency);
 
-  const fillPercentage =
-    ((Number(close) - Number(low)) / (Number(high) - Number(low))) * 100;
+  const [fillPercentage, setFillPercentage] = React.useState(0);
+
+  useEffect(() => {
+    if (Number(low) > Number(close)) {
+      setFillPercentage(0);
+    }
+    if (Number(low) < Number(close) && Number(high) > Number(close)) {
+      setFillPercentage(
+        ((Number(close) - Number(low)) / (Number(high) - Number(low))) * 100
+      );
+    }
+
+    if (Number(high) < Number(close)) {
+      setFillPercentage(100);
+    }
+  }, [close, high, low]);
 
   return (
     <StyledOhlc $percentage={fillPercentage}>

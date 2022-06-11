@@ -19,4 +19,4 @@ const CoinHero = (props: CoinHeroProps) => {
   );
 };
 
-export default CoinHero;
+export default React.memo(CoinHero);

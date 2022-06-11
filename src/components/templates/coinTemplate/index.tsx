@@ -1,3 +1,4 @@
+import React from "react";
 import { dateFormatter, numberFormatter } from "../../../helpers";
 import { Heading } from "../../atoms";
 import { PriceBox } from "../../moleculs";
@@ -37,7 +38,7 @@ const CoinTemplate = ({
               />
             </div>
           )}
-          {excangeTable && (
+          {excangeTable.excanges && (
             <div className="container">
               <Heading type="h4" title="Markets" $isBold />
               <Table type="excanges" {...excangeTable} />

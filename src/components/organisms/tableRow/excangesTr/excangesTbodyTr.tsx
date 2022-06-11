@@ -1,38 +1,31 @@
 import React from "react";
-import { ExcangesDetails } from "../../../../types";
+import { ExcangesDetails, TCurrency } from "../../../../types";
 import { TableCell } from "../../../moleculs";
 import { StyledExcangesBodyTr } from "./style";
-import { numberFormatter } from "../../../../helpers";
+import { numberFormatter, formatString } from "../../../../helpers";
 
 type Props = {
-  excange: ExcangesDetails | undefined;
+  item: ExcangesDetails | undefined;
+  currency: TCurrency;
 };
 
-const ExcangesTbodyTr = ({ excange }: Props) => {
-  const [currency, price] = numberFormatter(excange?.price, "5k-_VTxqtCEI");
-  const [, btcPrice] = numberFormatter(excange?.btcPrice, "Qwsogvtv82FCd");
-  const [, volume] = numberFormatter(excange?.["24hVolume"], "Qwsogvtv82FCd");
+const ExcangesTbodyTr = ({ item, currency }: Props) => {
+  const [curr, price] = numberFormatter(item?.price, currency);
+  const [, btcPrice] = numberFormatter(item?.btcPrice, currency);
+  const [, volume] = numberFormatter(item?.["24hVolume"], currency);
 
   return (
     <StyledExcangesBodyTr>
       <TableCell
-        rank={
-          excange && excange?.rank < 10 ? `0${excange?.rank}` : excange?.rank
-        }
-        src={excange?.iconUrl}
-        alt={excange?.name}
+        rank={item && item?.rank < 10 ? `0${item?.rank}` : item?.rank}
+        src={item?.iconUrl}
+        alt={item?.name}
       />
-      <TableCell
-        name={
-          excange && excange?.name.length > 8
-            ? excange?.name.slice(0, 8) + "..."
-            : excange?.name
-        }
-      />
-      <TableCell price={price} currnecy={currency} />
+      <TableCell name={formatString(item?.name, 7, true)} />
+      <TableCell price={price} currnecy={curr} />
       <TableCell price={btcPrice} />
-      <TableCell price={volume} currnecy={currency} />
-      <TableCell symbol={excange?.recommended ? "Yes" : "No"} />
+      <TableCell price={volume} currnecy={curr} />
+      <TableCell symbol={item?.recommended ? "Yes" : "No"} />
     </StyledExcangesBodyTr>
   );
 };

@@ -18,6 +18,7 @@ export const HeadingPrimary = styled.h1`
 
 export const HeadingQuaternary = styled.h4`
   ${Header}
+  cursor: default;
   color: ${({ theme }) =>
     theme.isDark ? "var(--white)" : "var(--grey-dark-2)"};
   font-size: 2.4rem;
