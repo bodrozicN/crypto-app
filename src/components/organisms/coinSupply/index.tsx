@@ -18,9 +18,7 @@ const CoinSupply = (props: TCoinSupply) => {
         />
         <Stat
           title="Max Amount"
-          value={
-            nFormatter(maxAmount, 2) === "0" ? "N/A" : nFormatter(maxAmount, 2)
-          }
+          value={nFormatter(maxAmount, 2)}
           $switchColor
         />
         <Stat
@@ -38,4 +36,4 @@ const CoinSupply = (props: TCoinSupply) => {
   );
 };
 
-export default CoinSupply;
+export default React.memo(CoinSupply);

@@ -67,5 +67,5 @@ export function nFormatter(num: number | string, digits: number) {
     });
   return item
     ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol
-    : "0";
+    : "N/A";
 }

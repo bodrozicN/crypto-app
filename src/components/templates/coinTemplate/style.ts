@@ -11,6 +11,7 @@ export const StyledCoinTemplate = styled.div`
 
   & > :nth-child(3) {
     ${Background}
+    padding-bottom: 19rem;
     & > div {
       padding-top: 5.8rem;
       ${Grid_12_col};

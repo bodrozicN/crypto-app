@@ -1,3 +1,4 @@
+import React from "react";
 import TableBody from "../tableBody";
 import TableHead from "../tableHead";
 import { StyledTable } from "./style";
@@ -11,7 +12,7 @@ const Table = (props: Props) => {
           <TableHead type="coins" theadContent={props.tableHead} />
           <TableBody
             type="coins"
-            coinsArr={props.coinsArr}
+            items={props.coinsArr}
             currency={props.currency}
           />
         </StyledTable>
@@ -20,10 +21,14 @@ const Table = (props: Props) => {
       return (
         <StyledTable>
           <TableHead type="excanges" theadContent={props.tableHead} />
-          <TableBody type="excanges" excanges={props.excanges} />
+          <TableBody
+            type="excanges"
+            currency={props.currency}
+            items={props.excanges}
+          />
         </StyledTable>
       );
   }
 };
 
-export default Table;
+export default React.memo(Table);

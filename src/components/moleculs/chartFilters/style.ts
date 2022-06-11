@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledChartFilters = styled.div`
-  width: 20rem;
   border-radius: 400px;
   background-color: ${({ theme }) =>
     theme.isDark ? "#292929" : "var(--grey-light-4)"};

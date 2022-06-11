@@ -1,4 +1,5 @@
-export function dateFormatter(date: string | number): string {
+export function dateFormatter(date: number | string | undefined): string {
+  if (!date) return "";
   while (date.toString().length < 13) {
     date += "0";
   }

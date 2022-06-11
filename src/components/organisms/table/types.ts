@@ -1,4 +1,4 @@
-import { CoinsTableProps, ExcangesDetails } from "../../../types";
+import { CoinsTableProps, CoinExcanges } from "../../../types";
 
 type CoinsTable = {
   type: "coins";
@@ -6,8 +6,6 @@ type CoinsTable = {
 
 type ExcangesTable = {
   type: "excanges";
-  tableHead: string[];
-  excanges: ExcangesDetails[] | undefined;
-};
+} & CoinExcanges;
 
 export type Props = CoinsTable | ExcangesTable;

@@ -1,7 +1,7 @@
 import { CoinTemplate } from "../../templates";
 import { useFilters } from "../../../hooks";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   CoinChartSectionProps,
   CoinCredentials,
@@ -84,11 +84,14 @@ const Coin = () => {
     }
   );
 
-  const ohlc: CoinOHLC = {
-    low: coinOhlc && coinOhlc[0]?.low,
-    high: coinOhlc && coinOhlc[0]?.high,
-    close: coinOhlc && coinOhlc[0]?.close,
-  };
+  const ohlc: CoinOHLC = useMemo(
+    () => ({
+      low: coinOhlc && coinOhlc[0]?.low,
+      high: coinOhlc && coinOhlc[0]?.high,
+      close: coinOhlc && coinOhlc[0]?.close,
+    }),
+    [coinOhlc]
+  );
 
   const chartProps: CoinChartSectionProps = {
     timePeriod,
@@ -98,30 +101,39 @@ const Coin = () => {
     chartFilters,
   };
 
-  const excangeTable: CoinExcanges = {
-    excanges,
-    currency,
-    tableHead: excangesTableHead,
-  };
+  const excangeTable: CoinExcanges = useMemo(
+    () => ({
+      excanges,
+      currency,
+      tableHead: excangesTableHead,
+    }),
+    [currency, excanges]
+  );
 
-  const coinCredentials: CoinCredentials = {
-    name: coinDetails?.name,
-    symbol: coinDetails?.symbol,
-    iconUrl: coinDetails?.iconUrl,
-    rank: coinDetails?.rank,
-  };
+  const coinCredentials: CoinCredentials = useMemo(
+    () => ({
+      name: coinDetails?.name,
+      symbol: coinDetails?.symbol,
+      iconUrl: coinDetails?.iconUrl,
+      rank: coinDetails?.rank,
+    }),
+    [coinDetails]
+  );
 
-  const coinHeroStats: CoinHeroStats = {
-    "24hVolume": coinDetails?.["24hVolume"],
-    change: coinDetails?.change,
-    listedAt: coinDetails?.listedAt,
-    marketCap: coinDetails?.marketCap,
-    numberOfExchanges: coinDetails?.numberOfExchanges,
-    numberOfMarkets: coinDetails?.numberOfMarkets,
-    symbol: coinDetails?.symbol,
-    websiteUrl: coinDetails?.websiteUrl,
-    name: coinDetails?.name,
-  };
+  const coinHeroStats: CoinHeroStats = useMemo(
+    () => ({
+      "24hVolume": coinDetails?.["24hVolume"],
+      change: coinDetails?.change,
+      listedAt: coinDetails?.listedAt,
+      marketCap: coinDetails?.marketCap,
+      numberOfExchanges: coinDetails?.numberOfExchanges,
+      numberOfMarkets: coinDetails?.numberOfMarkets,
+      symbol: coinDetails?.symbol,
+      websiteUrl: coinDetails?.websiteUrl,
+      name: coinDetails?.name,
+    }),
+    [coinDetails]
+  );
 
   return (
     <CoinTemplate
