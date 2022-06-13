@@ -5,20 +5,22 @@ import { CgSearch } from "react-icons/cg";
 import { FormProps } from "../../../types";
 
 type Props = FormProps & {
+  $type: "small" | "large";
   placeHolder: string;
+  className?: string;
 };
 
 const Form = (props: Props) => {
-  const { onChange, value, onSubmit, placeHolder } = props;
+  const { onChange, value, onSubmit, placeHolder, className, $type } = props;
   return (
-    <FormWrapper>
+    <FormWrapper $type={$type}>
       <CgSearch className="searchIcon" />
       <form onSubmit={onSubmit}>
         <Input
           placeholder={placeHolder}
           onChange={onChange}
           value={value}
-          className="searchInput"
+          className={className}
         />
       </form>
     </FormWrapper>
