@@ -23,7 +23,12 @@ const Header = () => {
       <div>
         <Logo value1="Crypto" value2="App" />
         <ThemeButton onClick={changeTheme} />
-        <Form placeHolder="Search..." {...formProps} />
+        <Form
+          $type="small"
+          placeHolder="Search..."
+          {...formProps}
+          className="searchInput"
+        />
         {isActiveElement && <List searchList={searchList} />}
       </div>
     </StyledHeader>

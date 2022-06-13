@@ -1,11 +1,11 @@
 import React from "react";
-import { Header } from "../../organisms";
+import { PortfolioHero } from "../../organisms";
 
 const Portfolio = () => {
   return (
-    <div>
-      <Header />
-    </div>
+    <>
+      <PortfolioHero />
+    </>
   );
 };
 

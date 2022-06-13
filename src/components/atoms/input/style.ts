@@ -5,7 +5,7 @@ export const StyledInput = styled.input`
   font-size: 1.4rem;
   color: var(--white);
   width: 100%;
-  height: 3.8rem;
+  height: 100%;
   border: none;
   border-radius: 300px;
   outline: none;
