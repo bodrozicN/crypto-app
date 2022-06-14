@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style";
 import { useTheme } from "./hooks";
 import "./style/style.css";
-import { Header } from "./components/organisms";
+import { Header, RequireAuth } from "./components/organisms";
 
 const Home = lazy(() => import("./components/pages/home"));
 const Coin = lazy(() => import("./components/pages/coin"));
@@ -24,7 +24,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="coin/:uuid" element={<Coin />} />
-              <Route path="portfolio" element={<Portfolio />} />
+              <Route
+                path="portfolio"
+                element={
+                  <RequireAuth>
+                    <Portfolio />
+                  </RequireAuth>
+                }
+              />
               <Route path="*" element={<Error />} />
             </Routes>
           </Router>

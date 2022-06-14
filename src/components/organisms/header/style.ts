@@ -21,6 +21,9 @@ export const StyledHeader = styled.header`
       grid-column: 8 / 9;
     }
     & > *:nth-child(3) {
+      grid-column: 10 / 11;
+    }
+    & > *:nth-child(4) {
       grid-column: 11 / -1;
     }
   }

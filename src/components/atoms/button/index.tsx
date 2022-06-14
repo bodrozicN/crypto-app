@@ -2,7 +2,7 @@ import React from "react";
 import { StyledButton } from "./style";
 
 type Props = {
-  $type: "chartButton" | "paginationButton" | "arrowButton";
+  $type: "chartButton" | "paginationButton" | "arrowButton" | "loginButton";
   content?: unknown;
   className?: string;
   onClick: () => void;

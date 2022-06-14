@@ -7,3 +7,4 @@ export * from "./form";
 export * from "./coin";
 export * from "./filters";
 export * from "./pagination";
+export * from "./user";
