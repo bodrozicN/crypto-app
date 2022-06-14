@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 interface IStyledButton {
-  $type: "chartButton" | "paginationButton" | "arrowButton";
+  $type: "chartButton" | "paginationButton" | "arrowButton" | "loginButton";
 }
 
 export const StyledButton = styled.button<IStyledButton>`
@@ -29,5 +29,16 @@ export const StyledButton = styled.button<IStyledButton>`
     $type === "chartButton" &&
     css`
       font-size: 1.4rem;
+    `}
+
+    ${({ $type }) =>
+    $type === "loginButton" &&
+    css`
+      background-color: var(--white);
+      color: #000;
+      font-family: boldFont;
+      height: 3.8rem;
+      width: 100%;
+      border-radius: 300px;
     `}
 `;

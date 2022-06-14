@@ -12,3 +12,5 @@ export { default as ChartSection } from "./chartSection";
 export { default as CoinSupply } from "./coinSupply";
 export { default as TableBody } from "./tableBody";
 export { default as Pagination } from "./pagination";
+export { default as LoginBox } from "./loginBox";
+export { default as RequireAuth } from "./requireAuth";
