@@ -1,4 +1,4 @@
-import { SearchList } from "../types";
+import { CoinSearchResult } from "../types";
 
 export interface IGetSearchRecommendationsParams {
   query: string;
@@ -6,6 +6,6 @@ export interface IGetSearchRecommendationsParams {
 
 export interface IGetSearchRecommendationsResponse {
   data: {
-    coins: SearchList[];
+    coins: CoinSearchResult[];
   };
 }

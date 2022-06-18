@@ -12,4 +12,5 @@ export const StyledPortfolioSearchList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+  z-index: 300;
 `;

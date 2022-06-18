@@ -5,3 +5,4 @@ export * from "./content/chartFilters";
 export * from "./content/tHead";
 export * from "./functions/dateFormatter";
 export * from "./functions/formatString";
+export * from "./functions/portfolioValue";

@@ -28,6 +28,19 @@ const Table = (props: Props) => {
           />
         </StyledTable>
       );
+
+    case "portfolio":
+      return (
+        <StyledTable>
+          <TableHead type="coins" theadContent={props.tableHead} />
+          <TableBody
+            type="portfolio"
+            items={props.coinsArr}
+            currency={props.currency}
+            handleDeleteCoin={props.handleDeleteCoin}
+          />
+        </StyledTable>
+      );
   }
 };
 

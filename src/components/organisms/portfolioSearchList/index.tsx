@@ -1,23 +1,19 @@
 import React from "react";
-import { SearchList } from "../../../types/searchList";
+import { CoinSearchResult, PortfolioCoin } from "../../../types";
 import { StyledPortfolioSearchList } from "./style";
-import { CoinForStore } from "../../../types";
 import { PortfolioSearchListItem } from "../../organisms";
 
 type Props = {
-  searchResult: SearchList[] | undefined;
-  handleSetCoinForStoring: (values: Partial<CoinForStore>) => void;
+  searchResult: CoinSearchResult[] | undefined;
+  handleSetCoin: (values: Partial<PortfolioCoin>) => void;
 };
 
-const PortfolioList = ({ searchResult, handleSetCoinForStoring }: Props) => {
+const PortfolioList = ({ searchResult, handleSetCoin }: Props) => {
   return (
     <StyledPortfolioSearchList>
       {searchResult?.map((item) => {
         return (
-          <PortfolioSearchListItem
-            coin={item}
-            handleSetCoinForStoring={handleSetCoinForStoring}
-          />
+          <PortfolioSearchListItem coin={item} handleSetCoin={handleSetCoin} />
         );
       })}
     </StyledPortfolioSearchList>

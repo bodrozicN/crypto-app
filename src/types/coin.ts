@@ -1,20 +1,4 @@
-import { TCurrency } from "./";
-
 // types related with coins
-
-export type CoinListData = {
-  "24hVolume": string;
-  change: string;
-  iconUrl: string;
-  marketCap: string;
-  name: string;
-  price: string;
-  rank: number;
-  sparkline: string[];
-  symbol: string;
-  uuid: string;
-};
-
 export type CoinDetails = {
   "24hVolume": string;
   allTimeHigh: {
@@ -33,6 +17,21 @@ export type CoinDetails = {
   rank: number;
   symbol: string;
   websiteUrl: string;
+};
+
+export type CoinListData = Pick<
+  CoinDetails,
+  | "24hVolume"
+  | "change"
+  | "iconUrl"
+  | "marketCap"
+  | "name"
+  | "price"
+  | "rank"
+  | "symbol"
+> & {
+  sparkline: string[];
+  uuid: string;
 };
 
 export type CoinCredentials = Partial<
@@ -60,12 +59,6 @@ export type CoinOHLC = {
   low: string | undefined;
 };
 
-export type CoinsTableProps = {
-  coinsArr: CoinListData[] | undefined;
-  tableHead: string[];
-  currency: TCurrency;
-};
-
 export type CoinSupply = {
   maxAmount: string;
   totalSyncedAt: string;
@@ -74,7 +67,7 @@ export type CoinSupply = {
   circulatingAmount: string;
 };
 
-export type CoinForStore = {
+export type PortfolioCoin = {
   uuid: string;
   price: number;
   amount: number;
@@ -83,4 +76,19 @@ export type CoinForStore = {
   iconUrl: string;
 };
 
-export type StoredCoinInfo = Pick<CoinForStore, "amount" | "price" | "uuid">;
+export type PortfolioAsset = Pick<
+  PortfolioCoin,
+  "name" | "symbol" | "uuid" | "iconUrl"
+> & {
+  currentPrice: string[];
+  avgPrice: string[];
+  pool: string[];
+  rank: number;
+};
+
+export type FirebaseCoinData = Pick<PortfolioCoin, "amount" | "price" | "uuid">;
+
+export type CoinSearchResult = Pick<
+  CoinListData,
+  "name" | "iconUrl" | "uuid" | "price" | "symbol"
+>;

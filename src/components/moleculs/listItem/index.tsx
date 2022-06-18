@@ -1,10 +1,10 @@
 import React from "react";
 import { StyledListItem } from "./style";
-import { SearchList } from "../../../types";
+import { CoinSearchResult } from "../../../types";
 import { Img, Paragraph } from "../../atoms";
 import { Link } from "react-router-dom";
 
-const ListItem = ({ iconUrl, name, uuid }: SearchList) => {
+const ListItem = ({ iconUrl, name, uuid }: CoinSearchResult) => {
   return (
     <StyledListItem>
       <Link to={`coin/${uuid}`}>

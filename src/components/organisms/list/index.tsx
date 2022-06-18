@@ -1,11 +1,11 @@
 import React from "react";
 import { ListItem } from "../../moleculs";
 import { StyledList } from "./style";
-import { SearchList } from "../../../types";
+import { CoinSearchResult } from "../../../types";
 import uniqid from "uniqid";
 
 type Props = {
-  searchList: SearchList[] | undefined;
+  searchList: CoinSearchResult[] | undefined;
 };
 
 const List = ({ searchList }: Props) => {

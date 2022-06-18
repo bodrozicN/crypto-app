@@ -1,31 +1,49 @@
 import React from "react";
 import {
   PortfolioHeroProps,
-  CoinForStore,
-  StoredCoinInfo,
+  PortfolioCoin,
+  FirebaseCoinData,
+  PortfolioAsset,
+  TCurrency,
 } from "../../../types";
-import { PortfolioHero, CoinAmount } from "../../organisms";
+import { PortfolioHero, CoinAmount, Table } from "../../organisms";
 
 type Props = {
   heroProps: PortfolioHeroProps;
-  handleSetCoinForStoring: (values: Partial<CoinForStore>) => void;
-  coinStoreProps: {
-    coinForStore: CoinForStore;
-    storedCoins: StoredCoinInfo[];
-    handleAddStoredCoin: (coin: StoredCoinInfo) => void;
+  handleSetCoin: (values: Partial<PortfolioCoin>) => void;
+  storeCoinProps: {
+    coin: PortfolioCoin;
+    storedCoins: FirebaseCoinData[];
+    handleAddCoin: (coin: FirebaseCoinData) => void;
+  };
+  tableProps: {
+    portfolioCoins: PortfolioAsset[] | undefined;
+    portfolioTableHead: string[];
+    currency: TCurrency;
+    handleDeleteCoin: (uuid: string | undefined) => void;
   };
 };
 
 const PortfolioTemplate = (props: Props) => {
-  const { handleSetCoinForStoring, heroProps, coinStoreProps } = props;
+  const { handleSetCoin, heroProps, storeCoinProps, tableProps } = props;
+  const { currency, portfolioCoins, portfolioTableHead, handleDeleteCoin } =
+    tableProps;
+
   return (
     <>
-      <PortfolioHero {...{ handleSetCoinForStoring, heroProps }} />
-      {coinStoreProps.coinForStore.uuid && (
+      <PortfolioHero {...{ handleSetCoin, heroProps }} />
+      <Table
+        type="portfolio"
+        coinsArr={portfolioCoins}
+        tableHead={portfolioTableHead}
+        currency={currency}
+        handleDeleteCoin={handleDeleteCoin}
+      />
+      {storeCoinProps.coin.uuid && (
         <CoinAmount
           {...{
-            handleSetCoinForStoring,
-            ...coinStoreProps,
+            handleSetCoin,
+            ...storeCoinProps,
           }}
         />
       )}
