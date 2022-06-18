@@ -57,4 +57,12 @@ export const StyledSpan = styled.span<ISpan>`
       color: ${theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
       margin-left 0.3rem;
     `}
+
+    ${({ $type }) =>
+    $type === OSpan.pinkSpan &&
+    css`
+      font-family: boldFont;
+      color: #df1c9c;
+      font-size: 1.5rem;
+    `}
 `;

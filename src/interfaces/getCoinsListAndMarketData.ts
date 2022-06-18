@@ -14,6 +14,7 @@ export interface IGetCoinsListAndMarketDataParams {
   orderDirection: TOrderDirection;
   limit: TLimitPerPage;
   offset: number;
+  query?: string;
 }
 
 export interface IGetCoinsListAndMarketDataResponse {

@@ -8,6 +8,7 @@ export const StyledPortfolioHero = styled.section`
   padding-bottom: 8rem;
 
   & > div {
+    position: relative;
     height: 100%;
     ${Grid_12_col}
     ${ScreenWidth}

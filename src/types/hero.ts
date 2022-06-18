@@ -1,6 +1,7 @@
 import { IStats } from "../interfaces";
-import { TCurrency } from ".";
+import { TCurrency, FormProps } from ".";
 import { CoinCredentials, CoinHeroStats, CoinOHLC } from "./coin";
+import { SearchList } from "./searchList";
 
 export type HomeHeroProps = {
   stats: IStats | undefined;
@@ -15,4 +16,10 @@ export type CoinHeroProps = {
   handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   currency: TCurrency;
   ohlc: CoinOHLC;
+};
+
+export type PortfolioHeroProps = {
+  isActiveElement: boolean;
+  formProps: FormProps;
+  searchResult: SearchList[] | undefined;
 };

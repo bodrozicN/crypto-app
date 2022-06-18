@@ -1,8 +1,4 @@
-import {
-  createApi,
-  fetchBaseQuery,
-  FetchBaseQueryError,
-} from "@reduxjs/toolkit/query/react";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { headers } from "./headers";
 import {
   IGetCoinsListAndMarketDataParams,
@@ -37,9 +33,12 @@ export const cryptoApi = createApi({
         orderDirection,
         timePeriod,
         offset,
+        query,
       }) =>
         createRequest(
-          `coins?referenceCurrencyUuid=${currency}&timePeriod=${timePeriod}&orderBy=${orderBy}&orderDirection=${orderDirection}&limit=${limit}&offset=${offset}`
+          `coins?referenceCurrencyUuid=${currency}&timePeriod=${timePeriod}&orderBy=${orderBy}&orderDirection=${orderDirection}&limit=${limit}&offset=${offset}${
+            query ? `&uuids=${query}` : ""
+          }`
         ),
     }),
 
