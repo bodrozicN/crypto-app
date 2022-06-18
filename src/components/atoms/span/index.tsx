@@ -6,6 +6,7 @@ const OSpan = {
   heroSecondary: "heroSecondary",
   heroTertiary: "heroTertiary",
   filterLabel: "filterLabel",
+  pinkSpan: "pinkSpan",
 } as const;
 
 type TSpan = typeof OSpan[keyof typeof OSpan];

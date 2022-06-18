@@ -73,3 +73,14 @@ export type CoinSupply = {
   circulatingSyncedAt: string;
   circulatingAmount: string;
 };
+
+export type CoinForStore = {
+  uuid: string;
+  price: number;
+  amount: number;
+  name: string;
+  symbol: string;
+  iconUrl: string;
+};
+
+export type StoredCoinInfo = Pick<CoinForStore, "amount" | "price" | "uuid">;

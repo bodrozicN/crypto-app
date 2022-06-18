@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAppDispatch } from "../../../redux/hooks";
-import { createUserAccount, logOut, logIn } from "../../../redux/features";
+import { createUserAccount, logOut, logIn } from "../../../redux/thunks";
 import { Overlay } from "./style";
 import { UserCredentials } from "../../../types";
 
