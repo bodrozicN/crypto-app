@@ -1,59 +1,48 @@
 import { useEffect } from "react";
 import { CoinSearchProfile } from "../../moleculs";
-import { CoinForStore, StoredCoinInfo } from "../../../types";
+import { PortfolioCoin, FirebaseCoinData } from "../../../types";
 import { StyledCoinAmount } from "./style";
-import { getDatabase, ref, set } from "firebase/database";
 import { useAppSelector } from "../../../redux/hooks";
+import { writeData } from "../../../redux/thunks";
 
 type Props = {
-  handleSetCoinForStoring: (values: Partial<CoinForStore>) => void;
-  coinForStore: CoinForStore;
-  handleAddStoredCoin: (coin: StoredCoinInfo) => void;
-  storedCoins: StoredCoinInfo[];
+  handleSetCoin: (values: Partial<PortfolioCoin>) => void;
+  coin: PortfolioCoin;
+  handleAddCoin: (coin: FirebaseCoinData) => void;
+  storedCoins: FirebaseCoinData[];
 };
 
 const CoinAmount = ({
-  handleSetCoinForStoring,
-  coinForStore,
-  handleAddStoredCoin,
+  handleSetCoin,
+  coin,
+  handleAddCoin,
   storedCoins,
 }: Props) => {
-  const { amount, price, uuid } = coinForStore;
+  const { amount, price, uuid } = coin;
   const userId = useAppSelector((state) => state.login.user?.uid);
 
   useEffect(() => {
-    function writeData(userId: string | undefined) {
-      const db = getDatabase();
-      set(ref(db, "users/" + userId), {
-        coins: storedCoins,
-      });
-    }
-
-    writeData(userId);
+    writeData(userId, "coins", storedCoins, "users/");
   }, [userId, storedCoins]);
 
   return (
     <StyledCoinAmount>
       <div>
-        <CoinSearchProfile {...coinForStore} />
+        <CoinSearchProfile {...coin} />
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            handleAddStoredCoin({ amount, uuid, price });
+            handleAddCoin({ amount, uuid, price });
           }}
         >
           <input
             type="text"
             placeholder="amount"
-            value={coinForStore.amount}
-            onChange={(e) =>
-              handleSetCoinForStoring({ amount: +e.target.value })
-            }
+            value={coin.amount}
+            onChange={(e) => handleSetCoin({ amount: +e.target.value })}
           />
           <button type="submit">add to redux</button>
-          <button onClick={() => handleSetCoinForStoring({ uuid: "" })}>
-            close
-          </button>
+          <button onClick={() => handleSetCoin({ uuid: "" })}>close</button>
         </form>
       </div>
     </StyledCoinAmount>

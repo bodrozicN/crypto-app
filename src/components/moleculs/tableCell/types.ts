@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { ChratProps } from "../../../types";
 
 export type Props = {
@@ -10,4 +11,5 @@ export type Props = {
   currnecy?: string;
   $reverseOrder?: boolean;
   chartData?: ChratProps | null;
+  children?: ReactNode;
 };

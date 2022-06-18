@@ -1,7 +1,6 @@
 import { IStats } from "../interfaces";
-import { TCurrency, FormProps } from ".";
+import { TCurrency, FormProps, CoinSearchResult } from "../types";
 import { CoinCredentials, CoinHeroStats, CoinOHLC } from "./coin";
-import { SearchList } from "./searchList";
 
 export type HomeHeroProps = {
   stats: IStats | undefined;
@@ -21,5 +20,6 @@ export type CoinHeroProps = {
 export type PortfolioHeroProps = {
   isActiveElement: boolean;
   formProps: FormProps;
-  searchResult: SearchList[] | undefined;
+  searchResult: CoinSearchResult[] | undefined;
+  currentPortfolioValue: string[];
 };

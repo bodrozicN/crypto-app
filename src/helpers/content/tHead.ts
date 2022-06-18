@@ -16,3 +16,13 @@ export const excangesTableHead = [
   "Volume",
   "Recommended",
 ];
+
+export const portfolioTableHead = [
+  "#",
+  "Name",
+  "Price",
+  "Pool %",
+  "Avg Price",
+  "Profit / Loss",
+  "Delete",
+];

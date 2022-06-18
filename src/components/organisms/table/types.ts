@@ -1,4 +1,8 @@
-import { CoinsTableProps, CoinExcanges } from "../../../types";
+import {
+  CoinsTableProps,
+  CoinExcanges,
+  PortfolioTableProps,
+} from "../../../types";
 
 type CoinsTable = {
   type: "coins";
@@ -8,4 +12,9 @@ type ExcangesTable = {
   type: "excanges";
 } & CoinExcanges;
 
-export type Props = CoinsTable | ExcangesTable;
+type PortfolioTable = {
+  type: "portfolio";
+  handleDeleteCoin: (uuid: string | undefined) => void;
+} & PortfolioTableProps;
+
+export type Props = CoinsTable | ExcangesTable | PortfolioTable;

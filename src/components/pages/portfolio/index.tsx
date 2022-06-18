@@ -1,4 +1,3 @@
-import { getDatabase, ref, onValue } from "firebase/database";
 import { useCallback, useEffect, useState } from "react";
 import { useSearch } from "../../../hooks";
 import {
@@ -8,10 +7,19 @@ import {
 import { useAppSelector } from "../../../redux/hooks";
 import {
   PortfolioHeroProps,
-  CoinForStore,
-  StoredCoinInfo,
+  PortfolioCoin,
+  FirebaseCoinData,
+  PortfolioAsset,
+  TCurrency,
 } from "../../../types";
 import { PortfolioTemplate } from "../../templates";
+import {
+  portfolioTableHead,
+  portfolioValue,
+  numberFormatter,
+  createPortfolioCoinList,
+} from "../../../helpers";
+import { writeData, readData } from "../../../redux/thunks";
 
 const Portfolio = () => {
   const userId = useAppSelector((state) => state.login.user?.uid);
@@ -29,11 +37,11 @@ const Portfolio = () => {
     }
   );
 
-  const [storedCoins, setStoredCoins] = useState<StoredCoinInfo[]>([]);
+  const [storedCoins, setStoredCoins] = useState<FirebaseCoinData[]>([]);
 
   const { coins } = useGetCoinsListAndMarketDataQuery(
     {
-      currency: "5k-_VTxqtCEI",
+      currency: "yhjMzLPhuIDl",
       limit: storedCoins.length as any,
       offset: 0,
       query: storedCoins.map(({ uuid }) => uuid).join(","),
@@ -42,16 +50,14 @@ const Portfolio = () => {
       timePeriod: "1y",
     },
     {
-      selectFromResult: ({ data, isError }) => ({
-        stats: data?.data.stats,
+      selectFromResult: ({ data }) => ({
         coins: data?.data.coins,
-        isError,
       }),
     }
   );
 
-  const handleAddStoredCoin = useCallback(
-    (coin: StoredCoinInfo) => {
+  const handleAddCoin = useCallback(
+    (coin: FirebaseCoinData) => {
       const foundCoin = storedCoins.find(({ uuid }) => uuid === coin.uuid);
       if (foundCoin) {
         foundCoin.amount += coin.amount;
@@ -67,7 +73,20 @@ const Portfolio = () => {
     [storedCoins]
   );
 
-  const [coinForStore, setCoinForStore] = useState<CoinForStore>({
+  const handleDeleteCoin = useCallback(
+    (uuid: string | undefined) => {
+      if (!uuid) return;
+      const coinsArr = storedCoins.filter(
+        ({ uuid: coinUuid }) => coinUuid !== uuid
+      );
+      setStoredCoins(coinsArr);
+      writeData<FirebaseCoinData[]>(userId, "coins", coinsArr, "users/");
+    },
+    [storedCoins, userId]
+  );
+
+  // in this state we store all coins data for displaying and calculations
+  const [coin, setCoin] = useState<PortfolioCoin>({
     uuid: "",
     price: 0,
     amount: 0,
@@ -76,47 +95,58 @@ const Portfolio = () => {
     iconUrl: "",
   });
 
-  const handleSetCoinForStoring = useCallback(
-    (values: Partial<CoinForStore>) => {
-      setCoinForStore((prev) => ({ ...prev, ...values }));
-    },
-    []
-  );
+  const handleSetCoin = useCallback((values: Partial<PortfolioCoin>) => {
+    setCoin((prev) => ({ ...prev, ...values }));
+  }, []);
+
+  // in this stoate we store coins for displaying into portfolio table
+  const [portfolioCoins, setCreatePortfolioCoins] = useState<
+    PortfolioAsset[] | undefined
+  >([]);
 
   const heroProps: PortfolioHeroProps = {
     isActiveElement,
     formProps,
     searchResult,
+    // current portfolio value
+    currentPortfolioValue: numberFormatter(
+      portfolioValue(storedCoins, coins),
+      "yhjMzLPhuIDl"
+    ),
   };
+
+  const storeCoinProps = {
+    coin,
+    storedCoins,
+    handleAddCoin,
+  };
+
+  const tableProps = {
+    portfolioCoins,
+    portfolioTableHead,
+    currency: "yhjMzLPhuIDl" as TCurrency,
+    handleDeleteCoin,
+  };
+
+  useEffect(() => {
+    setCreatePortfolioCoins(createPortfolioCoinList(storedCoins, coins));
+  }, [storedCoins, coins]);
 
   // fetch from firebase stored coins
   useEffect(() => {
-    const db = getDatabase();
-    const starCountRef = ref(db, "users/" + userId);
-    onValue(starCountRef, (snapshot) => {
-      const data: StoredCoinInfo[] = snapshot.val().coins;
-      setStoredCoins([...data]);
-    });
+    readData(setStoredCoins, userId, "users/", "coins");
   }, [userId]);
-
-  const coinStoreProps = {
-    coinForStore,
-    storedCoins,
-    handleAddStoredCoin,
-  };
 
   return (
     <>
       <PortfolioTemplate
         {...{
           heroProps,
-          handleSetCoinForStoring,
-          coinStoreProps,
+          handleSetCoin,
+          storeCoinProps,
+          tableProps,
         }}
       />
-      {/* {coins?.map((coin) => {
-        return <div key={coin.uuid}>{coin.name}</div>;
-      })} */}
     </>
   );
 };

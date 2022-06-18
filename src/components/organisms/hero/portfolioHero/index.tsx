@@ -3,15 +3,16 @@ import { StyledPortfolioHero } from "./style";
 import { Heading, Span } from "../../../atoms";
 import { Form } from "../../../moleculs";
 import { PortfolioList } from "../../../organisms";
-import { PortfolioHeroProps, CoinForStore } from "../../../../types";
+import { PortfolioHeroProps, PortfolioCoin } from "../../../../types";
 
 type Props = {
   heroProps: PortfolioHeroProps;
-  handleSetCoinForStoring: (values: Partial<CoinForStore>) => void;
+  handleSetCoin: (values: Partial<PortfolioCoin>) => void;
 };
 
-const PortfolioHero = ({ handleSetCoinForStoring, heroProps }: Props) => {
-  const { isActiveElement, formProps, searchResult } = heroProps;
+const PortfolioHero = ({ handleSetCoin, heroProps }: Props) => {
+  const { isActiveElement, formProps, searchResult, currentPortfolioValue } =
+    heroProps;
   return (
     <StyledPortfolioHero>
       <div>
@@ -20,7 +21,7 @@ const PortfolioHero = ({ handleSetCoinForStoring, heroProps }: Props) => {
           <Span type="heroPrimary" content="Created At" />
         </div>
         <div className="value-container">
-          <Heading type="h1" title="$29.291.50" $isBold />
+          <Heading type="h1" title={currentPortfolioValue} $isBold />
           <Span type="heroPrimary" content="Total value" />
         </div>
         <Form
@@ -30,7 +31,7 @@ const PortfolioHero = ({ handleSetCoinForStoring, heroProps }: Props) => {
           className="add-asset-search"
         />
         {isActiveElement && (
-          <PortfolioList {...{ searchResult, handleSetCoinForStoring }} />
+          <PortfolioList {...{ searchResult, handleSetCoin }} />
         )}
       </div>
     </StyledPortfolioHero>

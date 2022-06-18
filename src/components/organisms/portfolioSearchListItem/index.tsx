@@ -1,19 +1,18 @@
 import React from "react";
-import { SearchList } from "../../../types/searchList";
+import { CoinSearchResult, PortfolioCoin } from "../../../types";
 import { CoinSearchProfile } from "../../moleculs";
-import { CoinForStore } from "../../../types";
 import { StyledPortfolioSearchListItem } from "./style";
 import { Span } from "../../atoms";
 
 type Props = {
-  coin: SearchList;
-  handleSetCoinForStoring: (values: Partial<CoinForStore>) => void;
+  coin: CoinSearchResult;
+  handleSetCoin: (values: Partial<PortfolioCoin>) => void;
 };
 
-const PortfolioSearchListItem = ({ coin, handleSetCoinForStoring }: Props) => {
+const PortfolioSearchListItem = ({ coin, handleSetCoin }: Props) => {
   return (
     <StyledPortfolioSearchListItem
-      onClick={() => handleSetCoinForStoring({ ...coin, price: +coin.price })}
+      onClick={() => handleSetCoin({ ...coin, price: +coin.price })}
     >
       <CoinSearchProfile {...coin} />
       <Span type="pinkSpan" content="Add +" />

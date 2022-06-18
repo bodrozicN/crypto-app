@@ -13,18 +13,25 @@ const TableCell = ({
   symbol,
   $reverseOrder,
   chartData,
+  children,
 }: Props) => {
   return (
     <StyledTableCell $reverseOrder={$reverseOrder}>
-      {rank && <Paragraph type="light" title={rank} />}
-      {src && <Img type="tableImg" src={src} alt={alt} />}
-      {name && <Paragraph type="bold" title={name} />}
-      {symbol && <Symbol $type="primary" title={symbol} />}
-      <span>
-        {currnecy && <Symbol $type="primary" title={currnecy} />}
-        {price && <Paragraph type="bold" title={price} />}
-      </span>
-      {chartData && <Chart type="homePageChart" priceHistory={chartData} />}
+      {children ? (
+        <>{children}</>
+      ) : (
+        <>
+          {rank && <Paragraph type="light" title={rank} />}
+          {src && <Img type="tableImg" src={src} alt={alt} />}
+          {name && <Paragraph type="bold" title={name} />}
+          {symbol && <Symbol $type="primary" title={symbol} />}
+          <span>
+            {currnecy && <Symbol $type="primary" title={currnecy} />}
+            {price && <Paragraph type="bold" title={price} />}
+          </span>
+          {chartData && <Chart type="homePageChart" priceHistory={chartData} />}
+        </>
+      )}
     </StyledTableCell>
   );
 };
