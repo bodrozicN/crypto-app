@@ -23,7 +23,7 @@ export type ChartFilter = {
 
 export type CoinChartSectionProps = {
   timePeriod: TTimePeriod;
-  setTimePeriod: React.Dispatch<React.SetStateAction<TTimePeriod>>;
+  handleSetTimePeriod: (time: TTimePeriod) => void;
   name: string | undefined;
   priceHistory: ChratProps | null;
   chartFilters: ChartFilter[];

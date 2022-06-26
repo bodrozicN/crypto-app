@@ -1,6 +1,6 @@
 import React from "react";
 import { Span, Paragraph } from "../../atoms";
-import { StyledPriceBox } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
   price: string;
@@ -10,13 +10,13 @@ type Props = {
 
 const PriceBox = ({ date, price, title }: Props) => {
   return (
-    <StyledPriceBox>
+    <Wrapper>
       <Span type="heroPrimary" content={title} $switchColor />
       <div>
         <Paragraph type="priceParagraph" title={price} />
         <Span type="heroSecondary" content={date} $switchColor />
       </div>
-    </StyledPriceBox>
+    </Wrapper>
   );
 };
 

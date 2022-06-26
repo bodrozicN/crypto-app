@@ -1,7 +1,8 @@
 import React from "react";
-import { StyledFiltersContainer } from "./style";
+import { Wrapper } from "./style";
 import { Filters } from "../../organisms";
 import { Nav } from "../../moleculs";
+import { nextTick } from "process";
 
 type Props = {
   handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -10,13 +11,18 @@ type Props = {
 
 const FiltersContainer = (props: Props) => {
   return (
-    <StyledFiltersContainer>
+    <Wrapper>
       <div>
         <Nav />
         <Filters {...props} />
       </div>
-    </StyledFiltersContainer>
+    </Wrapper>
   );
 };
 
-export default FiltersContainer;
+export default React.memo(
+  FiltersContainer,
+  (prev, next) =>
+    prev.handleSelect === next.handleSelect &&
+    prev.handleSelectLimit === next.handleSelectLimit
+);

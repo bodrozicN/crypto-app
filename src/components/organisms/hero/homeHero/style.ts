@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Grid_12_col, ScreenWidth, BackgroundImage } from "../../../../style";
 
-export const StyledHomeHero = styled.div`
+export const Wrapper = styled.section`
   ${BackgroundImage};
   height: 43rem;
   padding-top: 4.8rem;

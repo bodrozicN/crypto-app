@@ -1,6 +1,7 @@
 import React from "react";
+import { formatString } from "../../../helpers";
 import { Img, Paragraph, Symbol } from "../../atoms";
-import { StyledCoinSearchProfile } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
   iconUrl: string;
@@ -10,11 +11,11 @@ type Props = {
 
 const CoinSearchProfile = ({ iconUrl, name, symbol }: Props) => {
   return (
-    <StyledCoinSearchProfile>
+    <Wrapper>
       <Img type="tableImg" src={iconUrl} alt={name} />
-      <Paragraph type="bold" title={name} />
-      <Symbol $type="primary" title={symbol} />
-    </StyledCoinSearchProfile>
+      <Paragraph type="bold" title={formatString(name, 8, true)} />
+      <Symbol $type="primary" title={symbol} $withDot />
+    </Wrapper>
   );
 };
 

@@ -1,66 +1,89 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useAppDispatch } from "../../../redux/hooks";
-import { createUserAccount, logOut, logIn } from "../../../redux/thunks";
-import { Overlay } from "./style";
-import { UserCredentials } from "../../../types";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { Wrapper } from "./style";
+import { InputProps, UserCredentials } from "../../../types";
+import { Button, Heading, Span } from "../../atoms";
+import { Form, InputField } from "../../moleculs";
+import { HiOutlineMailOpen } from "react-icons/hi";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { handleDisplayComponent } from "../../../helpers";
+import { useAuth } from "../../../hooks/useAuth";
 
 type Props = {
-  setDisplayLoginBox: React.Dispatch<React.SetStateAction<boolean>>;
+  displayLoginBoxCb: (bool?: boolean) => void;
 };
 
-const LoginBox = ({ setDisplayLoginBox }: Props) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const dispatch = useAppDispatch();
+const LoginBox = ({ displayLoginBoxCb }: Props) => {
+  const ref = useRef<null | HTMLDivElement>(null);
   const [userCredentials, setUserCredentials] = useState<UserCredentials>({
     email: "",
     password: "",
   });
   const [needToSignup, setNeedToSignup] = React.useState<boolean>(false);
 
+  const { loginUser, createUserAccount } = useAuth(userCredentials);
+
+  const inputMail: InputProps = {
+    $type: "small",
+    type: "email",
+    placeholder: "Email",
+    value: userCredentials.email,
+    onChange: (e) =>
+      setUserCredentials({ ...userCredentials, email: e.target.value }),
+  };
+
+  const inputPassword: InputProps = {
+    $type: "small",
+    type: "password",
+    placeholder: "Password",
+    value: userCredentials.password,
+    onChange: (e) =>
+      setUserCredentials({
+        ...userCredentials,
+        password: e.target.value,
+      }),
+  };
+
   useEffect(() => {
-    ref.current?.addEventListener("click", function (event) {
-      const element = event.target as Element;
-      if (!element.closest(".login-form")) setDisplayLoginBox(false);
-    });
-  }, [setDisplayLoginBox]);
+    handleDisplayComponent(ref?.current, ".login-form", displayLoginBoxCb);
+  }, [displayLoginBoxCb]);
+
+  const handleSubmitForm = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      needToSignup ? createUserAccount() : loginUser();
+    },
+    [createUserAccount, loginUser, needToSignup]
+  );
 
   return (
-    <Overlay ref={ref}>
-      <form onSubmit={(e) => e.preventDefault()} className="login-form">
-        <input
-          type="email"
-          placeholder="email"
-          value={userCredentials.email}
-          onChange={(e) =>
-            setUserCredentials({ ...userCredentials, email: e.target.value })
-          }
+    <Wrapper ref={ref}>
+      <Form className="login-form" onSubmit={handleSubmitForm}>
+        <Heading
+          type="h4"
+          title={needToSignup ? "Sign up" : "Log in"}
+          $isBold
         />
-        <input
-          type="password"
-          placeholder="password"
-          value={userCredentials.password}
-          onChange={(e) =>
-            setUserCredentials({
-              ...userCredentials,
-              password: e.target.value,
-            })
-          }
+        <InputField input={inputMail} Icon={HiOutlineMailOpen} />
+        <InputField input={inputPassword} Icon={RiLockPasswordLine} />
+
+        <Button
+          type="submit"
+          $type="loginButton"
+          content={needToSignup ? "Sign up" : "Login"}
+          disabled={userCredentials.password.length < 6}
         />
-        {needToSignup ? (
-          <button onClick={() => dispatch(createUserAccount(userCredentials))}>
-            sign up
-          </button>
-        ) : (
-          <button onClick={() => dispatch(logIn(userCredentials))}>
-            log in
-          </button>
-        )}
-        <button onClick={() => dispatch(logOut())}>logOut</button>
-        <button onClick={() => setNeedToSignup(!needToSignup)}>
-          {needToSignup ? "need to log in" : "need to sign up"}
-        </button>
-      </form>
-    </Overlay>
+
+        <div
+          onClick={() => setNeedToSignup(!needToSignup)}
+          className="switch-wrapper"
+        >
+          <Span
+            type="heroPrimary"
+            content={needToSignup ? "Need to login" : "Need to sign up"}
+          />
+        </div>
+      </Form>
+    </Wrapper>
   );
 };
 

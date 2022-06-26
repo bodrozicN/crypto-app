@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledLink } from "./style";
+import { Wrapper } from "./style";
 
 const OLink = {
   linkPrimary: "linkPrimary",
@@ -16,9 +16,9 @@ type Props = {
 
 const Link = ({ title, to, type }: Props) => {
   return (
-    <StyledLink $type={type} to={to}>
+    <Wrapper $type={type} to={to}>
       {title}
-    </StyledLink>
+    </Wrapper>
   );
 };
 

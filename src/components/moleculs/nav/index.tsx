@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, OLink } from "../../atoms";
-import { StyledNav } from "./style";
+import { Wrapper } from "./style";
 
 const Nav = () => {
   return (
-    <StyledNav>
+    <Wrapper>
       <Link type={OLink.linkPrimary} title="Home" to="/" />
       <Link type={OLink.linkSecondary} title="Portfolio" to="/portfolio" />
-    </StyledNav>
+    </Wrapper>
   );
 };
 

@@ -6,13 +6,14 @@ const CoinsRow = css`
 `;
 
 export const StyledCoinsBodyRow = styled.tr`
-  a {
-    text-decoration: none;
-    color: inherit;
-    ${CoinsRow}
-  }
+  color: inherit;
+  ${CoinsRow}
 `;
 
 export const StyledCoinsHeadRow = styled.tr`
   ${CoinsRow}
+  border-bottom: ${({ theme }) =>
+    theme.isdark
+      ? "1px solid rgb(255,255,255, 0.15)"
+      : "1px solid rgb(44,31,40, 0.15)"}
 `;

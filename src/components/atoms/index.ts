@@ -11,3 +11,4 @@ export { default as Input } from "./input";
 export { default as Anchor } from "./anchor";
 export { default as Svg } from "./svg";
 export { default as Button } from "./button";
+export { default as Label } from "./label";

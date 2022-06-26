@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { handleShowSearchList } from "../helpers";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { handleDisplayComponent } from "../helpers";
 import { FormProps } from "../types";
 import { useDebounce } from "./";
 
@@ -7,6 +7,8 @@ export const useSearch = (className: string) => {
   const [value, setValue] = useState<string>("");
   const [isActiveElement, setIsActiveElement] = useState<boolean>(false);
   const debouncedValue = useDebounce(value, 500);
+
+  const ref = useRef<HTMLInputElement | null>(null);
 
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -18,7 +20,7 @@ export const useSearch = (className: string) => {
   }, []);
 
   useEffect(() => {
-    handleShowSearchList(setIsActiveElement, className);
+    handleDisplayComponent(document.body, className, setIsActiveElement);
   }, [className]);
 
   const formProps: FormProps = {
@@ -31,5 +33,6 @@ export const useSearch = (className: string) => {
     debouncedValue,
     formProps,
     isActiveElement,
+    ref,
   };
 };

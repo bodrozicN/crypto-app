@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Background, ScreenWidth } from "../../../style";
 
-export const StyledPagination = styled.div`
+export const Wrapper = styled.div`
   ${Background};
   padding-top: 4.8rem;
   display: flex;
@@ -33,7 +33,8 @@ export const StyledPagination = styled.div`
   }
 
   .active {
-    background-color: ${({ theme }) => (theme.isDark ? "#EF00B6" : "#2300fa")};
+    background-color: ${({ theme }) =>
+      theme.isDark ? "var(--pink)" : "var(--blue)"};
     color: #fff;
   }
 `;

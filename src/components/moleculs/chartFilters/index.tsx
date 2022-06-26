@@ -1,28 +1,32 @@
 import React from "react";
 import { Button } from "../../atoms";
-import { StyledChartFilters } from "./style";
+import { Wrapper } from "./style";
 import uniqid from "uniqid";
-import { ChartFilter, OTimePeriod, TTimePeriod } from "../../../types";
+import { ChartFilter, TTimePeriod } from "../../../types";
 
 type Props = {
   timePeriod: TTimePeriod;
-  setTimePeriod: React.Dispatch<React.SetStateAction<TTimePeriod>>;
+  handleSetTimePeriod: (time: TTimePeriod) => void;
   chartFilters: ChartFilter[];
 };
 
-const ChartFilters = ({ chartFilters, timePeriod, setTimePeriod }: Props) => {
+const ChartFilters = ({
+  chartFilters,
+  timePeriod,
+  handleSetTimePeriod,
+}: Props) => {
   return (
-    <StyledChartFilters>
+    <Wrapper>
       {chartFilters.map(({ name, value }) => (
         <Button
           key={uniqid()}
           className={value === timePeriod ? "active-btn" : ""}
-          onClick={() => setTimePeriod(value)}
+          onClick={() => handleSetTimePeriod(value)}
           $type="chartButton"
           content={name}
         />
       ))}
-    </StyledChartFilters>
+    </Wrapper>
   );
 };
 

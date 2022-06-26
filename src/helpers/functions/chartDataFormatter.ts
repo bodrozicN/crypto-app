@@ -1,7 +1,5 @@
 import { ChratProps } from "../../types";
 
-// Update this code !!!!!
-
 export function chartDataFormatter(sparkline: string[]): ChratProps {
   const color =
     sparkline[0] > sparkline[sparkline.length - 1] ? "#ff4747" : "#20ff6c";
@@ -53,8 +51,8 @@ export function coinPageChartDataFormatter(arr: PriceHistory[] | undefined) {
 }
 
 function getGradient(ctx: any, chartArea: any, data: any, scales: any) {
-  const { left, right, top, width, height, bottom } = chartArea;
-  const { x, y } = scales;
+  const { bottom } = chartArea;
+  const { y } = scales;
   const gradientBorder = ctx.createLinearGradient(0, 0, 0, bottom);
   let shift = y.getPixelForValue(data.datasets[0].data[0]) / bottom;
 

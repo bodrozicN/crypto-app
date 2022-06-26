@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledListItem = styled.li`
+export const Wrapper = styled.li`
   width: 20rem;
   height: 5rem;
   list-style: none;

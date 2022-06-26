@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 
-interface IStyledButton {
+interface IButton {
   $type: "chartButton" | "paginationButton" | "arrowButton" | "loginButton";
 }
 
-export const StyledButton = styled.button<IStyledButton>`
+export const Wrapper = styled.button<IButton>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,12 +17,12 @@ export const StyledButton = styled.button<IStyledButton>`
   width: 100%;
   height: 4rem;
   width: 4rem;
-  color: ${({ theme }) => (theme.isDark ? "var(--white)" : "#6D6D6D")};
+  color: ${({ theme }) => (theme.isDark ? "#fff" : "#6D6D6D")};
 
   ${({ $type }) =>
     $type === "arrowButton" &&
     css`
-      background-color: #292929;
+      background-color: var(--grey-tertiary);
       font-size: 1.6rem;
     `}
   ${({ $type }) =>
@@ -34,7 +34,7 @@ export const StyledButton = styled.button<IStyledButton>`
     ${({ $type }) =>
     $type === "loginButton" &&
     css`
-      background-color: var(--white);
+      background-color: #fff;
       color: #000;
       font-family: boldFont;
       height: 3.8rem;

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-interface IStyledOhlc {
+interface IOhlc {
   $percentage: number;
 }
 
-export const StyledOhlc = styled.div<IStyledOhlc>`
+export const Wrapper = styled.div<IOhlc>`
   position: relative;
   & > div {
     display: flex;

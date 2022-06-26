@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledImg } from "./style";
+import { Wrapper } from "./style";
 
 export type ImgType = "tableImg" | "detailsImg";
 
@@ -16,7 +16,7 @@ const Image = ({ alt, src, type }: Props) => {
     $type: type,
   };
 
-  return <StyledImg {...imgProps} />;
+  return <Wrapper {...imgProps} />;
 };
 
 export default Image;

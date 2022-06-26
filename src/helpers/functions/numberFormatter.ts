@@ -1,6 +1,10 @@
 import { TCurrency, OCurrency } from "../../types";
 
-export function currencyFormatter(value: string | number, currency: TCurrency) {
+export function currencyFormatter(
+  value: string | number | undefined,
+  currency: TCurrency
+) {
+  if (!value) return [];
   const numValue = +value;
 
   const formatter = (currency: string) => {
@@ -37,16 +41,13 @@ export function currencyFormatter(value: string | number, currency: TCurrency) {
   }
 }
 
-export function numberFormatter(arg1: unknown, arg2: TCurrency): string[];
-export function numberFormatter(arg1: unknown): string[];
-export function numberFormatter(arg1: unknown, arg2?: unknown): string[] {
-  if (typeof arg1 === "undefined") return [];
-  const numberValue = Math.abs(arg1 as number);
-  if (isNaN(numberValue)) return ["", "no data"];
-  if (!arg2) return ["%", numberValue.toFixed(2)];
-  return currencyFormatter(numberValue, arg2 as TCurrency);
+export function percentFormatter(value: number | string | undefined) {
+  if (!value) return [];
+  value = +value;
+  return ["%", value < 0 ? (value * -1).toFixed(2) : value.toFixed(2)];
 }
 
+// function for converting large values
 export function nFormatter(num: number | string, digits: number) {
   num = +num;
   const lookup = [

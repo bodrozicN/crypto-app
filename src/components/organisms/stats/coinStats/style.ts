@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { Grid_12_col } from "../../../../style";
 
-export const StyledCoinStats = styled.div`
+export const Wrapper = styled.div`
   ${Grid_12_col};
   row-gap: 3.4rem;
   position: relative;
@@ -20,7 +20,7 @@ export const StyledCoinStats = styled.div`
     left: 16%;
     height: 100%;
     width: 1px;
-    background-color: white;
+    background-color: #fff;
     opacity: 0.3;
   }
 

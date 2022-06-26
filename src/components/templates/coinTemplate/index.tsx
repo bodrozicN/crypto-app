@@ -1,5 +1,5 @@
 import React from "react";
-import { dateFormatter, numberFormatter } from "../../../helpers";
+import { dateFormatter, currencyFormatter } from "../../../helpers";
 import { Heading } from "../../atoms";
 import { PriceBox } from "../../moleculs";
 import { ChartSection, CoinHero, CoinSupply, Table } from "../../organisms";
@@ -17,7 +17,7 @@ const CoinTemplate = ({
   coinSupply,
   ath,
 }: Props) => {
-  const athPrice = numberFormatter(ath?.price, "yhjMzLPhuIDl");
+  const athPrice = currencyFormatter(ath?.price, "yhjMzLPhuIDl");
 
   return (
     <StyledCoinTemplate>

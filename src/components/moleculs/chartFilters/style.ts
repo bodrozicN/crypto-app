@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const StyledChartFilters = styled.div`
+export const Wrapper = styled.div`
   border-radius: 400px;
   background-color: ${({ theme }) =>
-    theme.isDark ? "#292929" : "var(--grey-light-4)"};
+    theme.isDark ? "#292929" : "var(--grey-secondary)"};
   display: flex;
   align-items: center;
   justify-content: space-between;

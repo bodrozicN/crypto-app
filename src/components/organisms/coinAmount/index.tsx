@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { CoinSearchProfile } from "../../moleculs";
 import { PortfolioCoin, FirebaseCoinData } from "../../../types";
-import { StyledCoinAmount } from "./style";
+import { Wrapper } from "./style";
 import { useAppSelector } from "../../../redux/hooks";
 import { writeData } from "../../../redux/thunks";
+import { AiOutlineClose } from "react-icons/ai";
+import { Button, Span } from "../../atoms";
+import { currencyFormatter } from "../../../helpers";
 
 type Props = {
   handleSetCoin: (values: Partial<PortfolioCoin>) => void;
@@ -26,9 +29,17 @@ const CoinAmount = ({
   }, [userId, storedCoins]);
 
   return (
-    <StyledCoinAmount>
+    <Wrapper>
       <div>
-        <CoinSearchProfile {...coin} />
+        <div className="heading">
+          <CoinSearchProfile {...coin} />
+          <Button
+            $type="paginationButton"
+            onClick={() => handleSetCoin({ uuid: "" })}
+          >
+            <AiOutlineClose />
+          </Button>
+        </div>
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -39,13 +50,27 @@ const CoinAmount = ({
             type="text"
             placeholder="amount"
             value={coin.amount}
-            onChange={(e) => handleSetCoin({ amount: +e.target.value })}
+            onChange={(e) =>
+              +e.target.value > 0 &&
+              +e.target.value < 50000 &&
+              handleSetCoin({ amount: +e.target.value })
+            }
           />
-          <button type="submit">add to redux</button>
-          <button onClick={() => handleSetCoin({ uuid: "" })}>close</button>
+
+          <div className="price-box">
+            <Span type="heroSecondary" content={coin.symbol} />
+            <Span
+              type="heroPrimary"
+              content={`USD ${currencyFormatter(
+                coin.price,
+                "yhjMzLPhuIDl"
+              ).join("")}`}
+            />
+          </div>
+          <Button className="add-btn" $type="loginButton" content="Add +" />
         </form>
       </div>
-    </StyledCoinAmount>
+    </Wrapper>
   );
 };
 

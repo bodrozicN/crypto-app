@@ -1,7 +1,10 @@
 import React from "react";
+import { formatString } from "../../../../helpers";
 import { PortfolioAsset, TCurrency } from "../../../../types";
 import { TableCell } from "../../../moleculs";
 import { StyledTr } from "./styled";
+import { AiOutlineDelete } from "react-icons/ai";
+import { Button } from "../../../atoms";
 
 type Props = {
   item: PortfolioAsset;
@@ -16,19 +19,34 @@ const PortfolioTbodyTr = ({ item, handleDeleteCoin }: Props) => {
   return (
     <StyledTr>
       <TableCell rank={rank} />
-      <TableCell src={iconUrl} alt={name} name={name} symbol={symbol} />
-      <TableCell currnecy={currentPrice[0]} price={currentPrice[1]} />
-      <TableCell currnecy={pool[0]} price={pool[1]} $reverseOrder />
-      <TableCell currnecy={avgPrice[0]} price={avgPrice[1]} />
-      <TableCell price={`${avgPrice[1]}/${currentPrice[1]}`} />
+      <TableCell
+        src={iconUrl}
+        alt={name}
+        name={formatString(name, 7, true)}
+        symbol={symbol}
+        uuid={uuid}
+      />
+      <TableCell
+        currnecy={currentPrice[0]}
+        price={currentPrice[1]}
+        uuid={uuid}
+      />
+      <TableCell currnecy={pool[0]} price={pool[1]} uuid={uuid} $reverseOrder />
+      <TableCell currnecy={avgPrice[0]} price={avgPrice[1]} uuid={uuid} />
+      <TableCell
+        price={`${avgPrice.join("")} / ${currentPrice.join("")}`}
+        uuid={uuid}
+      />
       <TableCell>
-        <button
+        <Button
+          className="delete-btn"
+          $type="arrowButton"
           onClick={() => {
             handleDeleteCoin(uuid);
           }}
         >
-          delete
-        </button>
+          <AiOutlineDelete />
+        </Button>
       </TableCell>
     </StyledTr>
   );

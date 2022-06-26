@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledAnchor = styled.a`
+export const Wrapper = styled.a`
   font-family: BoldFont;
   text-decoration: none;
   color: #fff;

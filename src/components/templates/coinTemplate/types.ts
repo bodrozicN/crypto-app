@@ -1,7 +1,7 @@
 import {
   CoinChartSectionProps,
   CoinCredentials,
-  CoinExcanges,
+  ExcangesTableProps,
   CoinHeroStats,
   CoinOHLC,
   CoinSupply,
@@ -15,7 +15,7 @@ export type Props = {
   coinCredentials: CoinCredentials;
   coinHeroStats: CoinHeroStats;
   handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  excangeTable: CoinExcanges;
+  excangeTable: ExcangesTableProps;
   coinSupply: CoinSupply | undefined;
   ath:
     | {

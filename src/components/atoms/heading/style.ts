@@ -5,7 +5,7 @@ type IHeadingPrimary = {
 };
 
 const Header = css<IHeadingPrimary>`
-  color: var(--white);
+  color: #fff;
   font-family: ${({ $isBold }) => ($isBold ? "boldFont" : "lightFont")};
 `;
 
@@ -19,8 +19,7 @@ export const HeadingPrimary = styled.h1`
 export const HeadingQuaternary = styled.h4`
   ${Header}
   cursor: default;
-  color: ${({ theme }) =>
-    theme.isDark ? "var(--white)" : "var(--grey-dark-2)"};
+  color: ${({ theme }) => (theme.isDark ? "#fff" : "var(--grey-quaternary)")};
   font-size: 2.4rem;
 `;
 

@@ -2,11 +2,11 @@ import React from "react";
 import { ChartFilter, ChratProps, TTimePeriod } from "../../../types";
 import { Chart, Heading } from "../../atoms";
 import { ChartFilters } from "../../moleculs";
-import { StyledChartSection } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
   timePeriod: TTimePeriod;
-  setTimePeriod: React.Dispatch<React.SetStateAction<TTimePeriod>>;
+  handleSetTimePeriod: (time: TTimePeriod) => void;
   name: string | undefined;
   priceHistory: ChratProps | null;
   chartFilters: ChartFilter[];
@@ -14,19 +14,17 @@ type Props = {
 
 const ChartSection = (props: Props) => {
   return (
-    <StyledChartSection>
+    <Wrapper>
       <div>
         {props.name ? (
           <Heading type="h4" title={`${props.name} Price Chart`} $isBold />
-        ) : (
-          <div></div>
-        )}
+        ) : null}
         <ChartFilters {...props} />
       </div>
       {props.priceHistory && (
         <Chart type="coinPageChart" priceHistory={props.priceHistory} />
       )}
-    </StyledChartSection>
+    </Wrapper>
   );
 };
 

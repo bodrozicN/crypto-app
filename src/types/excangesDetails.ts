@@ -1,5 +1,3 @@
-import { TCurrency } from "./";
-
 export type ExcangesDetails = {
   "24hVolume": string;
   btcPrice: string;
@@ -8,10 +6,4 @@ export type ExcangesDetails = {
   price: string;
   rank: number;
   recommended: true;
-};
-
-export type CoinExcanges = {
-  excanges: ExcangesDetails[] | undefined;
-  currency: TCurrency;
-  tableHead: string[];
 };

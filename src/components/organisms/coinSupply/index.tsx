@@ -1,6 +1,6 @@
 import React from "react";
 import { Stat } from "../../moleculs";
-import { StyledCoinSupply } from "./style";
+import { Wrapper } from "./style";
 import { CoinSupply as TCoinSupply } from "../../../types";
 import { nFormatter, dateFormatter } from "../../../helpers";
 
@@ -9,7 +9,7 @@ const CoinSupply = (props: TCoinSupply) => {
     props;
 
   return (
-    <StyledCoinSupply>
+    <Wrapper>
       <div>
         <Stat
           title="Total Supply"
@@ -32,8 +32,8 @@ const CoinSupply = (props: TCoinSupply) => {
           $switchColor
         />
       </div>
-    </StyledCoinSupply>
+    </Wrapper>
   );
 };
 
-export default React.memo(CoinSupply);
+export default CoinSupply;

@@ -1,6 +1,6 @@
 import React from "react";
 import { ListItem } from "../../moleculs";
-import { StyledList } from "./style";
+import { Wrapper } from "./style";
 import { CoinSearchResult } from "../../../types";
 import uniqid from "uniqid";
 
@@ -10,11 +10,11 @@ type Props = {
 
 const List = ({ searchList }: Props) => {
   return (
-    <StyledList>
+    <Wrapper>
       {searchList?.map((coin) => (
         <ListItem key={uniqid()} {...coin} />
       ))}
-    </StyledList>
+    </Wrapper>
   );
 };
 

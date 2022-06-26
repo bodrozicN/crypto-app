@@ -1,28 +1,29 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSearch } from "../../../hooks";
 import {
-  useGetCoinsListAndMarketDataQuery,
+  useGetCoinsListQuery,
   useGetSearchRecommendationsQuery,
 } from "../../../redux/api";
-import { useAppSelector } from "../../../redux/hooks";
 import {
   PortfolioHeroProps,
   PortfolioCoin,
+  TCurrency,
+  PortfolioTableProps,
   FirebaseCoinData,
   PortfolioAsset,
-  TCurrency,
 } from "../../../types";
 import { PortfolioTemplate } from "../../templates";
 import {
   portfolioTableHead,
   portfolioValue,
-  numberFormatter,
+  currencyFormatter,
   createPortfolioCoinList,
 } from "../../../helpers";
-import { writeData, readData } from "../../../redux/thunks";
+import { useAppSelector } from "../../../redux/hooks";
+import { RootState } from "../../../redux";
+import { readData, writeData } from "../../../redux/thunks";
 
 const Portfolio = () => {
-  const userId = useAppSelector((state) => state.login.user?.uid);
   const {
     debouncedValue: query,
     isActiveElement,
@@ -37,9 +38,12 @@ const Portfolio = () => {
     }
   );
 
+  const userId = useAppSelector((state: RootState) => state.login.user?.uid);
+
+  // coins arr stored in firebase database
   const [storedCoins, setStoredCoins] = useState<FirebaseCoinData[]>([]);
 
-  const { coins } = useGetCoinsListAndMarketDataQuery(
+  const { coins } = useGetCoinsListQuery(
     {
       currency: "yhjMzLPhuIDl",
       limit: storedCoins.length as any,
@@ -56,6 +60,7 @@ const Portfolio = () => {
     }
   );
 
+  // add coin in firebase database
   const handleAddCoin = useCallback(
     (coin: FirebaseCoinData) => {
       const foundCoin = storedCoins.find(({ uuid }) => uuid === coin.uuid);
@@ -73,6 +78,11 @@ const Portfolio = () => {
     [storedCoins]
   );
 
+  const [portfolioCoins, setCreatePortfolioCoins] = useState<
+    PortfolioAsset[] | undefined
+  >([]);
+
+  // delete coin from firebase
   const handleDeleteCoin = useCallback(
     (uuid: string | undefined) => {
       if (!uuid) return;
@@ -85,7 +95,16 @@ const Portfolio = () => {
     [storedCoins, userId]
   );
 
-  // in this state we store all coins data for displaying and calculations
+  // trigger useeffect when coins array is changed
+  useEffect(() => {
+    setCreatePortfolioCoins(() => createPortfolioCoinList(storedCoins, coins));
+  }, [storedCoins, coins, userId]);
+
+  useEffect(() => {
+    userId && readData(setStoredCoins, userId, "users/", "coins");
+  }, [userId]);
+
+  // store data about coin for adding in portfolio
   const [coin, setCoin] = useState<PortfolioCoin>({
     uuid: "",
     price: 0,
@@ -99,20 +118,16 @@ const Portfolio = () => {
     setCoin((prev) => ({ ...prev, ...values }));
   }, []);
 
-  // in this stoate we store coins for displaying into portfolio table
-  const [portfolioCoins, setCreatePortfolioCoins] = useState<
-    PortfolioAsset[] | undefined
-  >([]);
+  const currentPortfolioValue = currencyFormatter(
+    portfolioValue(storedCoins, coins),
+    "yhjMzLPhuIDl"
+  );
 
   const heroProps: PortfolioHeroProps = {
     isActiveElement,
     formProps,
     searchResult,
-    // current portfolio value
-    currentPortfolioValue: numberFormatter(
-      portfolioValue(storedCoins, coins),
-      "yhjMzLPhuIDl"
-    ),
+    currentPortfolioValue,
   };
 
   const storeCoinProps = {
@@ -121,34 +136,23 @@ const Portfolio = () => {
     handleAddCoin,
   };
 
-  const tableProps = {
-    portfolioCoins,
-    portfolioTableHead,
+  const tableProps: PortfolioTableProps = {
+    coinsArr: portfolioCoins,
+    tableHead: portfolioTableHead,
     currency: "yhjMzLPhuIDl" as TCurrency,
     handleDeleteCoin,
   };
 
-  useEffect(() => {
-    setCreatePortfolioCoins(createPortfolioCoinList(storedCoins, coins));
-  }, [storedCoins, coins]);
-
-  // fetch from firebase stored coins
-  useEffect(() => {
-    readData(setStoredCoins, userId, "users/", "coins");
-  }, [userId]);
-
   return (
-    <>
-      <PortfolioTemplate
-        {...{
-          heroProps,
-          handleSetCoin,
-          storeCoinProps,
-          tableProps,
-        }}
-      />
-    </>
+    <PortfolioTemplate
+      {...{
+        heroProps,
+        handleSetCoin,
+        storeCoinProps,
+        tableProps,
+      }}
+    />
   );
 };
 
-export default Portfolio;
+export default React.memo(Portfolio);

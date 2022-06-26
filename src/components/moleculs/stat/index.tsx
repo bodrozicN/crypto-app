@@ -1,38 +1,31 @@
 import React from "react";
 import { Span, OSpan } from "../../atoms";
-import { StyledStat } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
   title: string;
   value: unknown;
-  char?: string;
   $switchColor?: boolean;
 };
 
-const Stat = ({ title, value, char, $switchColor }: Props) => {
+const Stat = ({ title, value, $switchColor }: Props) => {
   return (
-    <StyledStat>
-      <Span
-        type={OSpan.heroPrimary}
-        content={title}
-        $switchColor={$switchColor}
-      />
-      <span>
-        {/* if we have a char prop it wil render currency char */}
-        {char && (
+    <Wrapper>
+      <>
+        <Span
+          type={OSpan.heroPrimary}
+          content={title}
+          $switchColor={$switchColor}
+        />
+        {value && (
           <Span
-            type={OSpan.heroTertiary}
-            content={char}
+            type={OSpan.heroSecondary}
+            content={value}
             $switchColor={$switchColor}
           />
         )}
-        <Span
-          type={OSpan.heroSecondary}
-          content={value}
-          $switchColor={$switchColor}
-        />
-      </span>
-    </StyledStat>
+      </>
+    </Wrapper>
   );
 };
 

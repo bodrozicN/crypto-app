@@ -1,19 +1,19 @@
 import React from "react";
 import { Heading } from "../../atoms";
-import { StyledHeadingHero } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
-  value1: string | number;
-  value2: string | number;
+  value1: unknown;
+  value2: unknown;
 };
 
 const HeroHeading = ({ value1, value2 }: Props) => {
   return (
-    <StyledHeadingHero>
+    <Wrapper>
       <Heading title={value1} type="h1" $isBold />
       <Heading title={value2} type="h1" />
-    </StyledHeadingHero>
+    </Wrapper>
   );
 };
 
-export default React.memo(HeroHeading);
+export default HeroHeading;

@@ -6,7 +6,7 @@ interface ILink {
   $type: TLink;
 }
 
-export const StyledLink = styled(Link)<ILink>`
+export const Wrapper = styled(Link)<ILink>`
   font-size: 1.4rem;
   text-decoration: none;
   height: 100%;
@@ -23,9 +23,7 @@ export const StyledLink = styled(Link)<ILink>`
     $type === OLink.linkPrimary &&
     css`
       color: #fff;
-      background-color: ${theme.isDark
-        ? "#EF00B6"
-        : "rgb(var(--blue-primary))"};
+      background-color: ${theme.isDark ? "var(--pink)" : "var(--blue)"};
       border-radius: 300px;
     `}
 
@@ -33,6 +31,6 @@ export const StyledLink = styled(Link)<ILink>`
   ${({ $type, theme }) =>
     $type === OLink.linkSecondary &&
     css`
-      color: ${theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
+      color: ${theme.isDark ? "#fff" : "var(--grey-primary)"};
     `}
 `;

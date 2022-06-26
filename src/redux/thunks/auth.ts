@@ -14,6 +14,7 @@ export const logIn = createAsyncThunk(
       const state: any = getState();
       if (state.login.user) throw new Error("User already logged in");
       const { user } = await signInWithEmailAndPassword(auth, email, password);
+      alert("Welcome back");
       return user;
     } catch (error) {
       console.error(error);
@@ -33,6 +34,7 @@ export const createUserAccount = createAsyncThunk(
         email,
         password
       );
+      alert("Account created");
       return user;
     } catch (error) {
       console.log(error);
@@ -44,6 +46,7 @@ export const createUserAccount = createAsyncThunk(
 export const logOut = createAsyncThunk("user/logOut", async () => {
   try {
     signOut(auth);
+    alert("Logged out");
   } catch (error) {
     console.log(error);
     throw error;

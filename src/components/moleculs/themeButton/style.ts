@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const StyledThemeButton = styled.div`
+export const Wrapper = styled.div`
   position: relative;
   cursor: pointer;
   width: 7rem;
   height: 4rem;
   border-radius: 600px;
-  background-color: var(--white);
+  background-color: #fff;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -20,12 +20,10 @@ export const StyledThemeButton = styled.div`
   }
 
   .icon--sun {
-    color: ${({ theme }) =>
-      theme.isDark ? "rgb(var(--blue-primary))" : "var(--white)"};
+    color: ${({ theme }) => (theme.isDark ? "#DF1C9D" : "#fff")};
   }
   .icon--moon {
-    color: ${({ theme }) =>
-      theme.isDark ? "var(--white)" : "rgb(var(--blue-primary))"};
+    color: ${({ theme }) => (theme.isDark ? "#fff" : "#DF1C9D")};
   }
 
   span {
@@ -33,7 +31,7 @@ export const StyledThemeButton = styled.div`
     content: "";
     height: 3.5rem;
     width: 3.5rem;
-    background-color: rgb(var(--blue-primary));
+    background-color: #df1c9d;
     border-radius: 50%;
     transition: transform 0.4s;
     transform: ${({ theme }) =>

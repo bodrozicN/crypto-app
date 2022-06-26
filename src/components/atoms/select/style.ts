@@ -11,12 +11,18 @@ const Select = css`
 export const HeroSelect = styled.select`
   ${Select}
   width: 7.5rem;
-  color: var(--white);
+  color: #fff;
+
+  & > option {
+    color: black;
+  }
 `;
 
 export const BodySelect = styled.select`
   ${Select}
   width: 10.5rem;
-  color: ${({ theme }) =>
-    theme.isDark ? "var(--white)" : "rgb(var(--blue-primary))"};
+  color: ${({ theme }) => (theme.isDark ? "#fff" : "var(--blue)")};
+  & > option {
+    color: black;
+  }
 `;

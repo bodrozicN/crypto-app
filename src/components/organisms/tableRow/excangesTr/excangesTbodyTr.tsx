@@ -2,7 +2,7 @@ import React from "react";
 import { ExcangesDetails, TCurrency } from "../../../../types";
 import { TableCell } from "../../../moleculs";
 import { StyledExcangesBodyTr } from "./style";
-import { numberFormatter, formatString } from "../../../../helpers";
+import { currencyFormatter, formatString } from "../../../../helpers";
 
 type Props = {
   item: ExcangesDetails | undefined;
@@ -10,9 +10,9 @@ type Props = {
 };
 
 const ExcangesTbodyTr = ({ item, currency }: Props) => {
-  const [curr, price] = numberFormatter(item?.price, currency);
-  const [, btcPrice] = numberFormatter(item?.btcPrice, currency);
-  const [, volume] = numberFormatter(item?.["24hVolume"], currency);
+  const [curr, price] = currencyFormatter(item?.price, currency);
+  const [, btcPrice] = currencyFormatter(item?.btcPrice, currency);
+  const [, volume] = currencyFormatter(item?.["24hVolume"], currency);
 
   return (
     <StyledExcangesBodyTr>

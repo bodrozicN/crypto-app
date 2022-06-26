@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Background, ScreenWidth } from "../../../style";
 
-export const StyledChartSection = styled.section`
+export const Wrapper = styled.section`
   ${Background}
 
   & > div:first-child {

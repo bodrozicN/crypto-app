@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BackgroundImage, Grid_12_col, ScreenWidth } from "../../../../style";
 
-export const StyledPortfolioHero = styled.section`
+export const Wrapper = styled.section`
   ${BackgroundImage}
   height: 42rem;
   padding-top: 7.6rem;
@@ -14,11 +14,11 @@ export const StyledPortfolioHero = styled.section`
     ${ScreenWidth}
 
     & > *:nth-child(1) {
-      grid-column: 1 / 8;
+      grid-column: 1 / 6;
     }
     & > *:nth-child(2) {
       margin-left: auto;
-      grid-column: 8 / -1;
+      grid-column: 6 / -1;
     }
 
     & > *:nth-child(3) {

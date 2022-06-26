@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BackgroundImage, Grid_12_col, ScreenWidth } from "../../../../style";
 
-export const StyledCoinHero = styled.div`
+export const Wrapper = styled.section`
   ${BackgroundImage};
 
   height: 60.5rem;

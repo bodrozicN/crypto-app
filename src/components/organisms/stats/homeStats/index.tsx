@@ -1,24 +1,23 @@
 import React from "react";
-import { StyledStats } from "./style";
+import { Wrapper } from "./style";
 import { Stat, Filter } from "../../../moleculs";
-import { numberFormatter } from "../../../../helpers";
+import { currencyFormatter } from "../../../../helpers";
 import { HomeHeroProps, OFIlter } from "../../../../types";
 
 const HomeStats = ({ handleSelectFilters, stats, currency }: HomeHeroProps) => {
-  const [char, volume] = numberFormatter(stats?.total24hVolume, currency);
-  const [, marketCap] = numberFormatter(stats?.totalMarketCap, currency);
+  const [curr, volume] = currencyFormatter(stats?.total24hVolume, currency);
+  const [, marketCap] = currencyFormatter(stats?.totalMarketCap, currency);
 
   return (
-    <StyledStats>
+    <Wrapper>
       <Stat title="Coins" value={stats?.totalCoins} />
       <Stat title="Excanges" value={stats?.totalExchanges} />
       <Stat title="Markets" value={stats?.totalMarkets} />
-      <Stat title="24h Volume" value={volume} char={char} />
-      <Stat title="Total Market Cap" value={marketCap} char={char} />
-
+      <Stat title="24h Volume" value={curr && `${curr} ${volume}`} />
+      <Stat title="Total Market Cap" value={curr && `${curr} ${marketCap}`} />
       <Filter onChange={handleSelectFilters} type={OFIlter.currency} />
-    </StyledStats>
+    </Wrapper>
   );
 };
 
-export default React.memo(HomeStats);
+export default HomeStats;

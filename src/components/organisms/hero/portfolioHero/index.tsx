@@ -1,9 +1,16 @@
 import React from "react";
-import { StyledPortfolioHero } from "./style";
+import { Wrapper } from "./style";
 import { Heading, Span } from "../../../atoms";
-import { Form } from "../../../moleculs";
+import { Form, InputField } from "../../../moleculs";
 import { PortfolioList } from "../../../organisms";
-import { PortfolioHeroProps, PortfolioCoin } from "../../../../types";
+import {
+  PortfolioHeroProps,
+  PortfolioCoin,
+  InputProps,
+} from "../../../../types";
+import { useAppSelector } from "../../../../redux/hooks";
+import { RootState } from "../../../../redux";
+import { FiSearch } from "react-icons/fi";
 
 type Props = {
   heroProps: PortfolioHeroProps;
@@ -11,30 +18,52 @@ type Props = {
 };
 
 const PortfolioHero = ({ handleSetCoin, heroProps }: Props) => {
-  const { isActiveElement, formProps, searchResult, currentPortfolioValue } =
-    heroProps;
+  const {
+    isActiveElement,
+    searchResult,
+    currentPortfolioValue,
+    formProps: { onChange, onSubmit, value },
+  } = heroProps;
+
+  const user = useAppSelector((state: RootState) => state.login.user);
+
+  const inputProps: InputProps = {
+    $type: "medium",
+    type: "text",
+    onChange,
+    value,
+    placeholder: "Search for an asset to add...",
+    className: "add-asset-search",
+    disabled: !user,
+  };
+
   return (
-    <StyledPortfolioHero>
+    <Wrapper>
       <div>
         <div className="container">
           <Heading type="h1" title="My Portfolio" $isBold />
-          <Span type="heroPrimary" content="Created At" />
+          {/* <Span type="heroPrimary" content="Created At" /> */}
         </div>
         <div className="value-container">
-          <Heading type="h1" title={currentPortfolioValue} $isBold />
-          <Span type="heroPrimary" content="Total value" />
+          {currentPortfolioValue[0] && (
+            <>
+              <Heading
+                type="h1"
+                title={`${currentPortfolioValue[0]} ${currentPortfolioValue[1]}`}
+                $isBold
+              />
+              <Span type="heroPrimary" content="Total value" />
+            </>
+          )}
         </div>
-        <Form
-          {...formProps}
-          $type="large"
-          placeHolder="Search for an asset to add..."
-          className="add-asset-search"
-        />
-        {isActiveElement && (
+        <Form onSubmit={onSubmit}>
+          <InputField input={inputProps} Icon={FiSearch} />
+        </Form>
+        {isActiveElement && user && (
           <PortfolioList {...{ searchResult, handleSetCoin }} />
         )}
       </div>
-    </StyledPortfolioHero>
+    </Wrapper>
   );
 };
 

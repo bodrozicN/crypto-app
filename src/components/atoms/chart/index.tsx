@@ -38,6 +38,9 @@ const options = {
     },
   },
   plugins: {
+    tooltip: {
+      enabled: false,
+    },
     legend: {
       position: "top" as const,
       display: false,

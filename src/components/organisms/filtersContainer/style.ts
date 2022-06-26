@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { ScreenWidth, Grid_12_col } from "../../../style";
 
-export const StyledFiltersContainer = styled.div`
-  background-color: ${({ theme }) =>
-    theme.isDark ? "var(--grey-dark-1)" : "var(--grey-light-4)"};
+export const Wrapper = styled.section`
+  background: ${({ theme }) =>
+    theme.isDark ? "var(--grey-tertiary)" : "var(--grey-secondary)"};
   height: 12.5rem;
+  transition: background 0.2s;
   & > div {
     ${ScreenWidth};
     ${Grid_12_col};

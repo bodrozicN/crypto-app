@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Grid_9_col } from "../../../style";
 
-export const StyledFilters = styled.div`
+export const Wrapper = styled.div`
   ${Grid_9_col}
 
   & > *:nth-child(1) {

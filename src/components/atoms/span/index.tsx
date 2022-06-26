@@ -1,10 +1,9 @@
 import React from "react";
-import { StyledSpan } from "./style";
+import { Wrapper } from "./style";
 
 const OSpan = {
   heroPrimary: "heroPrimary",
   heroSecondary: "heroSecondary",
-  heroTertiary: "heroTertiary",
   filterLabel: "filterLabel",
   pinkSpan: "pinkSpan",
 } as const;
@@ -19,9 +18,9 @@ type Props = {
 
 const Span = ({ content, type, $switchColor }: Props) => {
   return (
-    <StyledSpan $type={type} $switchColor={$switchColor}>
+    <Wrapper $type={type} $switchColor={$switchColor}>
       {content as string}
-    </StyledSpan>
+    </Wrapper>
   );
 };
 

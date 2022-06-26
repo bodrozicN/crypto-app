@@ -1,14 +1,10 @@
-import React from "react";
-import { FormProps } from "../../../types";
-import { StyledInput } from "./style";
+import { forwardRef } from "react";
+import { InputProps } from "../../../types";
+import { Wrapper } from "./style";
 
-type Props = Pick<FormProps, "value" | "onChange"> & {
-  placeholder: string;
-  className?: string;
-};
-
-const Input = (props: Props) => {
-  return <StyledInput {...props} />;
-};
-
+const Input = forwardRef(
+  (props: InputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+    return <Wrapper {...props} ref={ref} />;
+  }
+);
 export default Input;

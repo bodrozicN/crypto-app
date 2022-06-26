@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { headers } from "./headers";
 import {
-  IGetCoinsListAndMarketDataParams,
-  IGetCoinsListAndMarketDataResponse,
+  IGetCoinsListParams,
+  IGetCoinsListResponse,
   IGetSearchRecommendationsParams,
   IGetSearchRecommendationsResponse,
   IGetCoinDetailsResponse,
@@ -12,7 +12,9 @@ import {
   IGetCoinParams,
   IGetCoinSupplyParams,
   IGetCoinSupplyResponse,
+  IGetCoinsStats,
 } from "../interfaces";
+import { TCurrency } from "../types";
 
 const url = process.env.REACT_APP_BACIC_URL!;
 
@@ -22,10 +24,7 @@ export const cryptoApi = createApi({
   reducerPath: "cryptoApi",
   baseQuery: fetchBaseQuery({ baseUrl: url }),
   endpoints: (builder) => ({
-    getCoinsListAndMarketData: builder.query<
-      IGetCoinsListAndMarketDataResponse,
-      IGetCoinsListAndMarketDataParams
-    >({
+    getCoinsList: builder.query<IGetCoinsListResponse, IGetCoinsListParams>({
       query: ({
         currency,
         limit,
@@ -40,6 +39,11 @@ export const cryptoApi = createApi({
             query ? `&uuids=${query}` : ""
           }`
         ),
+    }),
+
+    getStats: builder.query<IGetCoinsStats, { currency: TCurrency }>({
+      query: ({ currency }) =>
+        createRequest(`stats?referenceCurrencyUuid=${currency}`),
     }),
 
     getSearchRecommendations: builder.query<
@@ -90,7 +94,8 @@ export const cryptoApi = createApi({
 });
 
 export const {
-  useGetCoinsListAndMarketDataQuery,
+  useGetStatsQuery,
+  useGetCoinsListQuery,
   useGetSearchRecommendationsQuery,
   useGetCoinOhlcQuery,
   useGetCoinQuery,

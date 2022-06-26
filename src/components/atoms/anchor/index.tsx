@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledAnchor } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
   href: any;
@@ -8,9 +8,9 @@ type Props = {
 
 const Anchor = ({ href, title }: Props) => {
   return href ? (
-    <StyledAnchor href={href as string} target="_blank">
+    <Wrapper href={href as string} target="_blank">
       {title as string}
-    </StyledAnchor>
+    </Wrapper>
   ) : null;
 };
 

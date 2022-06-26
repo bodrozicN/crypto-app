@@ -12,4 +12,5 @@ export type Props = {
   $reverseOrder?: boolean;
   chartData?: ChratProps | null;
   children?: ReactNode;
+  uuid?: string;
 };

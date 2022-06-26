@@ -4,7 +4,8 @@ import { Grid_7_col } from "../../../../style";
 const TR = css`
   ${Grid_7_col}
   align-items: center;
-  padding-bottom: 3.2rem;
+
+  padding: 1.6rem 0;
 
   *:nth-child(1) {
     grid-column: 1 / 2;
@@ -28,6 +29,10 @@ const TR = css`
 
 export const StyledExcangesTr = styled.tr`
   ${TR}
+  border-bottom: ${({ theme }) =>
+    theme.isdark
+      ? "1px solid rgb(255,255,255, 0.15)"
+      : "1px solid rgb(44,31,40, 0.15)"};
   th:nth-child(2) {
     margin-left: -1.5rem;
   }

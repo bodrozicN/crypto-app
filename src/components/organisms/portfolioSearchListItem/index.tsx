@@ -1,7 +1,7 @@
 import React from "react";
 import { CoinSearchResult, PortfolioCoin } from "../../../types";
 import { CoinSearchProfile } from "../../moleculs";
-import { StyledPortfolioSearchListItem } from "./style";
+import { Wrapper } from "./style";
 import { Span } from "../../atoms";
 
 type Props = {
@@ -11,12 +11,10 @@ type Props = {
 
 const PortfolioSearchListItem = ({ coin, handleSetCoin }: Props) => {
   return (
-    <StyledPortfolioSearchListItem
-      onClick={() => handleSetCoin({ ...coin, price: +coin.price })}
-    >
+    <Wrapper onClick={() => handleSetCoin({ ...coin, price: +coin.price })}>
       <CoinSearchProfile {...coin} />
       <Span type="pinkSpan" content="Add +" />
-    </StyledPortfolioSearchListItem>
+    </Wrapper>
   );
 };
 

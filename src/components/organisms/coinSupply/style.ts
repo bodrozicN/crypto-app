@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledCoinSupply = styled.div`
+export const Wrapper = styled.div`
   & > *:nth-child(1) {
     margin-bottom: 2.2rem;
     background-color: ${({ theme }) => (theme.isDark ? "#292929" : "#fff")};
@@ -25,7 +25,7 @@ export const StyledCoinSupply = styled.div`
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: white;
+      background-color: #fff;
       opacity: 0.06;
     }
   }

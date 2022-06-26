@@ -28,21 +28,22 @@ export const FlexPage = css`
 `;
 
 export const ScreenWidth = css`
-  max-width: var(--screen-width-desktop);
+  max-width: var(--desktop-width);
   margin: 0 auto;
 `;
 
 export const BackgroundImage = css`
-  background-image: ${({ theme }) =>
-    theme.isDark ? `url(${img2})` : `url(${img})`};
+  background: ${({ theme }) => (theme.isDark ? `url(${img2})` : `url(${img})`)};
   background-color: rgb(0, 0, 0);
   background-position: center;
   background-size: cover;
+  transition: background 0.2s;
 `;
 
 export const Background = css`
   background-color: ${({ theme }) =>
-    theme.isDark ? "var(--grey-dark-2)" : "var(--white)"};
+    theme.isDark ? "var(--grey-quaternary)" : "var(--white)"};
+  transition: background 0.2s;
 `;
 
 export const TableRow_12_col = css`

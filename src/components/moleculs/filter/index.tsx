@@ -1,6 +1,6 @@
 import React from "react";
 import { Select, Span, OSpan } from "../../atoms";
-import { StyledFilter } from "./style";
+import { Wrapper } from "./style";
 import { TFilter, OFIlter } from "../../../types";
 
 type Props = {
@@ -14,10 +14,10 @@ const Filter = (props: Props) => {
     props.type === OFIlter.currency ? OSpan.heroPrimary : OSpan.filterLabel;
 
   return (
-    <StyledFilter>
+    <Wrapper>
       <Span type={spanType} content={props.type} />
       <Select type={props.type} onChange={props.onChange} />
-    </StyledFilter>
+    </Wrapper>
   );
 };
 

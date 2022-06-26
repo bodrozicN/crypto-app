@@ -12,3 +12,5 @@ export { default as PriceLine } from "./priceLine";
 export { default as ChartFilters } from "./chartFilters";
 export { default as PriceBox } from "./priceBox";
 export { default as CoinSearchProfile } from "./coinSearchProfile";
+export { default as MessageContainer } from "./messageContainer";
+export { default as InputField } from "./inputField";

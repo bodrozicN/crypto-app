@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { ScreenWidth, Background } from "../../../style";
 
-export const StyledTable = styled.table`
+export const Wrapper = styled.table`
   ${Background}
   &,
   & > * {

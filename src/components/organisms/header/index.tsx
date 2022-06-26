@@ -1,17 +1,27 @@
-import React, { useRef, useState } from "react";
-import { Logo, Form, ThemeButton } from "../../moleculs";
-import { StyledHeader } from "./style";
+import { useCallback, useState } from "react";
+import { Logo, Form, ThemeButton, InputField } from "../../moleculs";
+import { Wrapper } from "./style";
 import { List, LoginBox } from "../../organisms";
 import { useGetSearchRecommendationsQuery } from "../../../redux/api";
 import { useTheme, useSearch } from "../../../hooks";
 import { Button } from "../../atoms";
+import { useAppSelector } from "../../../redux/hooks";
+import { RootState } from "../../../redux";
+import { InputProps } from "../../../types";
+import { FiSearch } from "react-icons/fi";
+import { useAuth } from "../../../hooks/useAuth";
 
 const Header = () => {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const { logoutUser } = useAuth();
+  const { user } = useAppSelector((state: RootState) => state.login);
   const [displayLoginBox, setDisplayLoginBox] = useState<boolean>(false);
   const { changeTheme } = useTheme();
-  const { debouncedValue, isActiveElement, formProps } =
-    useSearch(".searchInput");
+  const {
+    debouncedValue,
+    isActiveElement,
+    ref,
+    formProps: { onChange, onSubmit, value },
+  } = useSearch(".search-input");
   const { coins: searchList } = useGetSearchRecommendationsQuery(
     { query: debouncedValue },
     {
@@ -21,29 +31,38 @@ const Header = () => {
     }
   );
 
+  const inputProps: InputProps = {
+    $type: "small",
+    type: "text",
+    onChange,
+    value,
+    placeholder: "Search...",
+    className: "search-input",
+  };
+
+  const displayLoginBoxCb = useCallback((bool?: boolean) => {
+    setDisplayLoginBox(Boolean(bool));
+  }, []);
+
   return (
-    <StyledHeader>
+    <Wrapper>
       <div>
         <Logo value1="Crypto" value2="App" />
         <ThemeButton onClick={changeTheme} />
+
         <Button
           $type="loginButton"
-          onClick={() => setDisplayLoginBox(true)}
-          content="Login"
+          onClick={user ? logoutUser : displayLoginBoxCb}
+          content={user ? "Logout" : "Login"}
         />
-        <Form
-          $type="small"
-          placeHolder="Search..."
-          {...formProps}
-          className="searchInput"
-        />
-        {isActiveElement && <List searchList={searchList} />}
-        {displayLoginBox && (
-          <LoginBox setDisplayLoginBox={setDisplayLoginBox} />
-        )}
+        <Form {...{ onSubmit }}>
+          <InputField input={inputProps} Icon={FiSearch} ref={ref} />
+        </Form>
+        {isActiveElement && <List {...{ searchList }} />}
+        {displayLoginBox && <LoginBox {...{ displayLoginBoxCb }} />}
       </div>
-    </StyledHeader>
+    </Wrapper>
   );
 };
 
-export default React.memo(Header);
+export default Header;

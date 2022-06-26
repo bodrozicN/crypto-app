@@ -7,7 +7,7 @@ import {
 } from "../types";
 import { IStats } from "./";
 import { CoinListData } from "../types";
-export interface IGetCoinsListAndMarketDataParams {
+export interface IGetCoinsListParams {
   currency: TCurrency;
   timePeriod: TTimePeriod;
   orderBy: TOrderBy;
@@ -17,9 +17,12 @@ export interface IGetCoinsListAndMarketDataParams {
   query?: string;
 }
 
-export interface IGetCoinsListAndMarketDataResponse {
+export interface IGetCoinsListResponse {
   data: {
-    stats: IStats;
     coins: CoinListData[];
   };
+}
+
+export interface IGetCoinsStats {
+  data: IStats;
 }

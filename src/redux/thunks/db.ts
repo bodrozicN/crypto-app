@@ -21,7 +21,7 @@ export function readData<T>(
   const db = getDatabase();
   const starCountRef = ref(db, query + userId);
   onValue(starCountRef, (snapshot) => {
-    const data: T = snapshot.val()[value];
+    const data: T = snapshot.val()[value] ? snapshot.val()[value] : [];
     setState(data);
   });
 }

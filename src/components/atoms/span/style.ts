@@ -3,8 +3,8 @@ import { OSpan, TSpan } from "./";
 
 function getCorrectColor($switchColor: boolean | undefined, isDark: boolean) {
   let color: string;
-  if ($switchColor) color = isDark ? "white" : "#2c2c2c";
-  else color = "white";
+  if ($switchColor) color = isDark ? "#fff" : "#2c2c2c";
+  else color = "#fff";
   return color;
 }
 
@@ -13,9 +13,9 @@ interface ISpan {
   $switchColor?: boolean;
 }
 
-export const StyledSpan = styled.span<ISpan>`
+export const Wrapper = styled.span<ISpan>`
   font-size: 1.4rem;
-  color: var(--white);
+  color: #fff;
   cursor: default;
   font-weight: 400;
 
@@ -30,7 +30,7 @@ export const StyledSpan = styled.span<ISpan>`
     $type === OSpan.heroPrimary &&
     css`
       font-family: lightFont;
-      color: white;
+      color: #fff;
     `}
 
   // styleing for values in hero section
@@ -40,21 +40,13 @@ export const StyledSpan = styled.span<ISpan>`
       font-family: boldFont;
     `}
 
-    // styleing for currency char in hero section
-      ${({ $type, theme }) =>
-    $type === OSpan.heroTertiary &&
-    css`
-      color: var(--grey-light-1);
-      font-family: boldFont;
-    `}
-
     // styleing for labels in filter section
   ${({ $type, theme }) =>
     $type === OSpan.filterLabel &&
     css`
       display: block;
       font-family: lightFont;
-      color: ${theme.isDark ? "var(--white)" : "var(--grey-light-2)"};
+      color: ${theme.isDark ? "#fff" : "var(--grey-primary)"};
       margin-left 0.3rem;
     `}
 

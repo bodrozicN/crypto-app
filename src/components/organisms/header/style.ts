@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Grid_12_col, BackgroundImage, ScreenWidth } from "../../../style";
 
-export const StyledHeader = styled.header`
+export const Wrapper = styled.header`
   ${BackgroundImage}
   background-position: top;
   background-color: rgb(0, 0, 0, 0.15);

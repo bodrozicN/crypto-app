@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-interface IStyledPriceLine {
+interface IPriceLine {
   $percentage: number;
 }
 
-export const StyledPriceLine = styled.span<IStyledPriceLine>`
+export const Wrapper = styled.span<IPriceLine>`
   &,
   &::before {
     height: 1px;

@@ -1,6 +1,6 @@
 import {
   CoinsTableProps,
-  CoinExcanges,
+  ExcangesTableProps,
   PortfolioTableProps,
 } from "../../../types";
 
@@ -10,7 +10,7 @@ type CoinsTable = {
 
 type ExcangesTable = {
   type: "excanges";
-} & CoinExcanges;
+} & ExcangesTableProps;
 
 type PortfolioTable = {
   type: "portfolio";

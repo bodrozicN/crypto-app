@@ -1,20 +1,21 @@
 import React from "react";
-import { StyledButton } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
   $type: "chartButton" | "paginationButton" | "arrowButton" | "loginButton";
   content?: unknown;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   children?: React.ReactNode;
+  type?: "button" | "submit" | "reset" | undefined;
 };
 
 const Button = (props: Props) => {
   return (
-    <StyledButton {...props}>
+    <Wrapper {...props}>
       {props.children ? props.children : (props.content as string)}
-    </StyledButton>
+    </Wrapper>
   );
 };
 

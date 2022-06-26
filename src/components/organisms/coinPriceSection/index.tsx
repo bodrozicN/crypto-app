@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { StyledOhlc } from "./style";
+import { Wrapper } from "./style";
 import { Stat, PriceLine } from "../../moleculs";
 import { Heading } from "../../atoms";
-import { numberFormatter } from "../../../helpers";
+import { currencyFormatter } from "../../../helpers";
 import { TCurrency, CoinOHLC } from "../../../types";
 
 type Props = {
@@ -12,9 +12,9 @@ type Props = {
 
 const CoinPriceSection = ({ currency, ohlc }: Props) => {
   const { low, high, close } = ohlc;
-  const [curr, lowPrice] = numberFormatter(low, currency);
-  const [, highPrice] = numberFormatter(high, currency);
-  const closePrice = numberFormatter(close, currency);
+  const lowPrice = currencyFormatter(low, currency);
+  const highPrice = currencyFormatter(high, currency);
+  const closePrice = currencyFormatter(close, currency);
 
   const [fillPercentage, setFillPercentage] = React.useState(0);
 
@@ -34,14 +34,20 @@ const CoinPriceSection = ({ currency, ohlc }: Props) => {
   }, [close, high, low]);
 
   return (
-    <StyledOhlc $percentage={fillPercentage}>
+    <Wrapper $percentage={fillPercentage}>
       <div>
-        <Stat title="Low" value={lowPrice} char={curr} />
-        <Stat title="High" value={highPrice} char={curr} />
+        <Stat
+          title="Low"
+          value={lowPrice[0] && `${lowPrice[0]} ${lowPrice[1]}`}
+        />
+        <Stat
+          title="High"
+          value={highPrice[0] && `${highPrice[0]} ${highPrice[1]}`}
+        />
       </div>
       <PriceLine $percentage={fillPercentage} />
       <Heading type="h1" title={closePrice} $isBold />
-    </StyledOhlc>
+    </Wrapper>
   );
 };
 

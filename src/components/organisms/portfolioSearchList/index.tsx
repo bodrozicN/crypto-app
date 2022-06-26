@@ -1,7 +1,8 @@
 import React from "react";
 import { CoinSearchResult, PortfolioCoin } from "../../../types";
-import { StyledPortfolioSearchList } from "./style";
+import { Wrapper } from "./style";
 import { PortfolioSearchListItem } from "../../organisms";
+import uniqid from "uniqid";
 
 type Props = {
   searchResult: CoinSearchResult[] | undefined;
@@ -10,13 +11,17 @@ type Props = {
 
 const PortfolioList = ({ searchResult, handleSetCoin }: Props) => {
   return (
-    <StyledPortfolioSearchList>
+    <Wrapper>
       {searchResult?.map((item) => {
         return (
-          <PortfolioSearchListItem coin={item} handleSetCoin={handleSetCoin} />
+          <PortfolioSearchListItem
+            key={uniqid()}
+            coin={item}
+            handleSetCoin={handleSetCoin}
+          />
         );
       })}
-    </StyledPortfolioSearchList>
+    </Wrapper>
   );
 };
 

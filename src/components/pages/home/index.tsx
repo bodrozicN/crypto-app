@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { HomeTemplate } from "../../templates";
 import { useFilters, usePagination } from "../../../hooks";
-import { useGetCoinsListAndMarketDataQuery } from "../../../redux/api";
+import { useGetCoinsListQuery, useGetStatsQuery } from "../../../redux/api";
 import { coinTableHead } from "../../../helpers";
 import { CoinsTableProps, HomeHeroProps, Pagination } from "../../../types";
 
 const Home = () => {
   const [numOfCoins, setNumOfCoins] = useState<number | undefined>(undefined);
+
+  // const [additionalQuery, setAditionalQuery] = useState("jebimali");
+
+  // const [searchParams, setsearchparams] = useSearchParams(additionalQuery);
+
+  // console.log(searchParams.toString());
+
+  // useEffect(() => {
+  //   setsearchparams(additionalQuery);
+  // }, [additionalQuery, setsearchparams]);
 
   const {
     handleChangePage,
@@ -17,13 +27,21 @@ const Home = () => {
     handleSelect: handleSelectLimit,
   } = usePagination(numOfCoins);
   const { handleSelect: handleSelectFilters, ...props } = useFilters();
-  const { coins, stats, isError } = useGetCoinsListAndMarketDataQuery(
+  const { coins, isError } = useGetCoinsListQuery(
     { ...props, offset, limit },
     {
       selectFromResult: ({ data, isError }) => ({
-        stats: data?.data.stats,
         coins: data?.data.coins,
         isError,
+      }),
+    }
+  );
+
+  const { stats } = useGetStatsQuery(
+    { currency: props.currency },
+    {
+      selectFromResult: ({ data, isError }) => ({
+        stats: data?.data,
       }),
     }
   );

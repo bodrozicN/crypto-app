@@ -3,7 +3,10 @@ import { Background, FlexPage, Grid_12_col, ScreenWidth } from "../../../style";
 
 export const StyledCoinTemplate = styled.div`
   ${FlexPage}
-  ${Background}
+  ${Background} 
+
+
+ 
 
   & > *:nth-child(2) {
     padding-top: 7.8rem;

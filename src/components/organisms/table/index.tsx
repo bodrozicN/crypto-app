@@ -1,37 +1,37 @@
 import React from "react";
 import TableBody from "../tableBody";
 import TableHead from "../tableHead";
-import { StyledTable } from "./style";
+import { Wrapper } from "./style";
 import { Props } from "./types";
 
 const Table = (props: Props) => {
   switch (props.type) {
     case "coins":
       return (
-        <StyledTable>
+        <Wrapper>
           <TableHead type="coins" theadContent={props.tableHead} />
           <TableBody
             type="coins"
             items={props.coinsArr}
             currency={props.currency}
           />
-        </StyledTable>
+        </Wrapper>
       );
     case "excanges":
       return (
-        <StyledTable>
+        <Wrapper>
           <TableHead type="excanges" theadContent={props.tableHead} />
           <TableBody
             type="excanges"
             currency={props.currency}
             items={props.excanges}
           />
-        </StyledTable>
+        </Wrapper>
       );
 
     case "portfolio":
       return (
-        <StyledTable>
+        <Wrapper>
           <TableHead type="coins" theadContent={props.tableHead} />
           <TableBody
             type="portfolio"
@@ -39,7 +39,7 @@ const Table = (props: Props) => {
             currency={props.currency}
             handleDeleteCoin={props.handleDeleteCoin}
           />
-        </StyledTable>
+        </Wrapper>
       );
   }
 };

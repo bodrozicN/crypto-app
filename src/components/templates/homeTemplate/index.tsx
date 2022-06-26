@@ -1,5 +1,11 @@
 import React from "react";
-import { FiltersContainer, HomeHero, Table, Pagination } from "../../organisms";
+import {
+  FiltersContainer,
+  HomeHero,
+  Table,
+  Pagination,
+  Error,
+} from "../../organisms";
 import { StyledHomeTemplate } from "./style";
 import { Props } from "./types";
 
@@ -8,7 +14,13 @@ const HomeTemplate = (props: Props) => {
 
   if (isError) {
     //toDo: add error component
-    return <>Error occured</>;
+    return (
+      <Error
+        href="#"
+        linkTitle="Visit App"
+        title="You probbably don't have api key. Please visit following link"
+      />
+    );
   }
 
   return (
@@ -19,8 +31,12 @@ const HomeTemplate = (props: Props) => {
         handleSelectLimit={heroProps.handleSelectLimit}
       />
 
-      <Table type="coins" {...tableProps} />
-      <Pagination {...paginationProps} />
+      {tableProps.coinsArr && (
+        <>
+          <Table type="coins" {...tableProps} />
+          <Pagination {...paginationProps} />
+        </>
+      )}
     </StyledHomeTemplate>
   );
 };

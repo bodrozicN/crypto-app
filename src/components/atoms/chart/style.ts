@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
 
-interface IStyledWrapper {
+interface IWrapper {
   $type: "homePageChart" | "coinPageChart";
 }
 
-export const Wrapper = styled.div<IStyledWrapper>`
+export const Wrapper = styled.div<IWrapper>`
   height: 2.8rem;
   width: 100%;
 

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Grid_9_col } from "../../../../style";
 
-export const StyledStats = styled.div`
+export const Wrapper = styled.div`
   ${Grid_9_col}
   row-gap: 4.8rem;
 

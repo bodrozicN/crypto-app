@@ -1,20 +1,22 @@
 import styled from "styled-components";
 
-export const StyledInput = styled.input`
+interface IInput {
+  $type: "small" | "medium";
+}
+
+export const Wrapper = styled.input<IInput>`
+  width: 100%;
+  height: ${({ $type }) => ($type === "small" ? "3.8rem" : "5.2rem")};
+  border-radius: 400px;
+  outline: none;
+  border: none;
   font-family: lightFont;
   font-size: 1.4rem;
-  color: var(--white);
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 300px;
-  outline: none;
-  padding-left: 3rem;
   background-color: rgba(255, 255, 255, 0.18);
+  padding-left: 3.5rem;
 
+  &,
   &::placeholder {
-    font-family: lightFont;
-    font-size: 1.4rem;
-    color: var(--white);
+    color: #fff;
   }
 `;

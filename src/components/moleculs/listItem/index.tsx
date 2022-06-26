@@ -1,20 +1,16 @@
 import React from "react";
-import { StyledListItem } from "./style";
+import { Wrapper } from "./style";
 import { CoinSearchResult } from "../../../types";
-import { Img, Paragraph } from "../../atoms";
 import { Link } from "react-router-dom";
+import CoinSearchProfile from "../coinSearchProfile";
 
-const ListItem = ({ iconUrl, name, uuid }: CoinSearchResult) => {
+const ListItem = (props: CoinSearchResult) => {
   return (
-    <StyledListItem>
-      <Link to={`coin/${uuid}`}>
-        <Img type="tableImg" src={iconUrl} alt={name} />
-        <Paragraph
-          type="bold"
-          title={name.length > 12 ? name.slice(0, 12) + "..." : name}
-        />
+    <Wrapper>
+      <Link to={`coin/${props.uuid}`}>
+        <CoinSearchProfile {...props} />
       </Link>
-    </StyledListItem>
+    </Wrapper>
   );
 };
 

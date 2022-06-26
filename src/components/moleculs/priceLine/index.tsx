@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledPriceLine } from "./style";
+import { Wrapper } from "./style";
 import { Svg } from "../../atoms";
 
 type Props = {
@@ -10,7 +10,7 @@ const PriceLine = (props: Props) => {
   return (
     <>
       <Svg />
-      <StyledPriceLine {...props} />
+      <Wrapper {...props} />
     </>
   );
 };

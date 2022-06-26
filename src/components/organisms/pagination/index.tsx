@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledPagination } from "./style";
+import { Wrapper } from "./style";
 import { Button } from "../../atoms";
 import { Pagination as PaginationProps } from "../../../types";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -7,7 +7,6 @@ import uniqid from "uniqid";
 
 const Pagination = (props: PaginationProps) => {
   const { page, lastPage, handleChangePage } = props;
-
   let pages: number[] = [];
 
   if (page < 4) pages = [0, 1, 2, 3, 4];
@@ -17,7 +16,7 @@ const Pagination = (props: PaginationProps) => {
     pages = [lastPage - 4, lastPage - 3, lastPage - 2, lastPage - 1];
 
   return (
-    <StyledPagination>
+    <Wrapper>
       {lastPage && (
         <div>
           <Button
@@ -52,7 +51,6 @@ const Pagination = (props: PaginationProps) => {
               />
             )}
           </div>
-
           <Button
             disabled={page === lastPage - 1}
             $type="arrowButton"
@@ -64,8 +62,14 @@ const Pagination = (props: PaginationProps) => {
           </Button>
         </div>
       )}
-    </StyledPagination>
+    </Wrapper>
   );
 };
 
-export default Pagination;
+export default React.memo(
+  Pagination,
+  (prev, next) =>
+    prev.handleChangePage === next.handleChangePage &&
+    prev.lastPage === next.lastPage &&
+    prev.page === next.page
+);

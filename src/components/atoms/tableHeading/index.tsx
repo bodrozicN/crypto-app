@@ -1,12 +1,12 @@
 import React from "react";
-import { StyledTableHeading } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
   title: unknown;
 };
 
 const TableHeading = ({ title }: Props) => {
-  return <StyledTableHeading>{title as string}</StyledTableHeading>;
+  return <Wrapper>{title as string}</Wrapper>;
 };
 
 export default TableHeading;

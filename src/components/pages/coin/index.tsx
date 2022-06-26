@@ -1,22 +1,16 @@
+import React, { useCallback, useState } from "react";
 import { CoinTemplate } from "../../templates";
 import { useFilters } from "../../../hooks";
 import { useParams } from "react-router-dom";
-import { useMemo, useState } from "react";
-import {
-  CoinChartSectionProps,
-  CoinCredentials,
-  CoinExcanges,
-  CoinHeroStats,
-  CoinOHLC,
-  OTimePeriod,
-  TTimePeriod,
+//prettier-ignore
+import { 
+  CoinChartSectionProps, CoinCredentials, ExcangesTableProps, CoinHeroStats,
+  CoinOHLC, OTimePeriod, TTimePeriod,
 } from "../../../types";
+//prettier-ignore
 import {
-  useGetCoinExcangesQuery,
-  useGetCoinOhlcQuery,
-  useGetCoinPriceHistoryQuery,
-  useGetCoinQuery,
-  useGetCoinSupplyQuery,
+  useGetCoinExcangesQuery, useGetCoinOhlcQuery, useGetCoinPriceHistoryQuery,
+  useGetCoinQuery, useGetCoinSupplyQuery,
 } from "../../../redux/api";
 import {
   coinPageChartDataFormatter,
@@ -84,56 +78,48 @@ const Coin = () => {
     }
   );
 
-  const ohlc: CoinOHLC = useMemo(
-    () => ({
-      low: coinOhlc && coinOhlc[0]?.low,
-      high: coinOhlc && coinOhlc[0]?.high,
-      close: coinOhlc && coinOhlc[0]?.close,
-    }),
-    [coinOhlc]
-  );
+  const handleSetTimePeriod = useCallback((time: TTimePeriod) => {
+    setTimePeriod(time);
+  }, []);
+
+  const ohlc: CoinOHLC = {
+    low: coinOhlc && coinOhlc[0]?.low,
+    high: coinOhlc && coinOhlc[0]?.high,
+    close: coinOhlc && coinOhlc[0]?.close,
+  };
 
   const chartProps: CoinChartSectionProps = {
     timePeriod,
-    setTimePeriod,
+    handleSetTimePeriod,
     name: coinDetails?.name,
     priceHistory,
     chartFilters,
   };
 
-  const excangeTable: CoinExcanges = useMemo(
-    () => ({
-      excanges,
-      currency,
-      tableHead: excangesTableHead,
-    }),
-    [currency, excanges]
-  );
+  const excangeTable: ExcangesTableProps = {
+    excanges,
+    currency,
+    tableHead: excangesTableHead,
+  };
 
-  const coinCredentials: CoinCredentials = useMemo(
-    () => ({
-      name: coinDetails?.name,
-      symbol: coinDetails?.symbol,
-      iconUrl: coinDetails?.iconUrl,
-      rank: coinDetails?.rank,
-    }),
-    [coinDetails]
-  );
+  const coinCredentials: CoinCredentials = {
+    name: coinDetails?.name,
+    symbol: coinDetails?.symbol,
+    iconUrl: coinDetails?.iconUrl,
+    rank: coinDetails?.rank,
+  };
 
-  const coinHeroStats: CoinHeroStats = useMemo(
-    () => ({
-      "24hVolume": coinDetails?.["24hVolume"],
-      change: coinDetails?.change,
-      listedAt: coinDetails?.listedAt,
-      marketCap: coinDetails?.marketCap,
-      numberOfExchanges: coinDetails?.numberOfExchanges,
-      numberOfMarkets: coinDetails?.numberOfMarkets,
-      symbol: coinDetails?.symbol,
-      websiteUrl: coinDetails?.websiteUrl,
-      name: coinDetails?.name,
-    }),
-    [coinDetails]
-  );
+  const coinHeroStats: CoinHeroStats = {
+    "24hVolume": coinDetails?.["24hVolume"],
+    change: coinDetails?.change,
+    listedAt: coinDetails?.listedAt,
+    marketCap: coinDetails?.marketCap,
+    numberOfExchanges: coinDetails?.numberOfExchanges,
+    numberOfMarkets: coinDetails?.numberOfMarkets,
+    symbol: coinDetails?.symbol,
+    websiteUrl: coinDetails?.websiteUrl,
+    name: coinDetails?.name,
+  };
 
   return (
     <CoinTemplate

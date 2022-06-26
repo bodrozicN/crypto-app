@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
-interface IStyledTableCell {
+interface ITableCell {
   $reverseOrder?: boolean;
 }
 
-export const StyledTableCell = styled.td<IStyledTableCell>`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  text-decoration: none;
-  color: inherit;
-  & > span {
+export const Wrapper = styled.td<ITableCell>`
+  height: 100%;
+  & > div {
+    cursor: pointer;
+    height: 100%;
     display: flex;
-    gap: 0.5rem;
-    ${({ $reverseOrder }) => $reverseOrder && "flex-direction: row-reverse"};
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    & > span {
+      display: flex;
+      gap: 0.5rem;
+      ${({ $reverseOrder }) => $reverseOrder && "flex-direction: row-reverse"};
+    }
   }
 `;

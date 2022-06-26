@@ -1,30 +1,17 @@
-import React from "react";
-import { FormWrapper } from "./style";
-import { Input } from "../../atoms";
-import { CgSearch } from "react-icons/cg";
-import { FormProps } from "../../../types";
+import React, { ReactNode } from "react";
+import { Wrapper } from "./style";
 
-type Props = FormProps & {
-  $type: "small" | "large";
-  placeHolder: string;
+type Props = {
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  children?: ReactNode;
   className?: string;
 };
 
-const Form = (props: Props) => {
-  const { onChange, value, onSubmit, placeHolder, className, $type } = props;
+const Form = ({ onSubmit, children, className }: Props) => {
   return (
-    <FormWrapper $type={$type}>
-      <CgSearch className="searchIcon" />
-      <form onSubmit={onSubmit}>
-        <Input
-          placeholder={placeHolder}
-          onChange={onChange}
-          value={value}
-          className={className}
-        />
-      </form>
-    </FormWrapper>
+    <Wrapper onSubmit={onSubmit} className={className}>
+      {children}
+    </Wrapper>
   );
 };
-
-export default React.memo(Form);
+export default Form;

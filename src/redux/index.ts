@@ -10,7 +10,10 @@ export const store = configureStore({
     [cryptoApi.reducerPath]: cryptoApi.reducer,
   },
 
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 setupListeners(store.dispatch);

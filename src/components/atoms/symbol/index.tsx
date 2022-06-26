@@ -1,13 +1,14 @@
 import React from "react";
-import { StyledCoinSymbol } from "./style";
+import { Wrapper } from "./style";
 
 type Props = {
   title: unknown;
   $type: "primary" | "secondary";
+  $withDot?: boolean;
 };
 
-const Symbol = ({ title, $type }: Props) => {
-  return <StyledCoinSymbol $type={$type}>{title as string}</StyledCoinSymbol>;
+const Symbol = ({ title, $type, $withDot }: Props) => {
+  return <Wrapper {...{ $type, $withDot }}>{title as string}</Wrapper>;
 };
 
 export default Symbol;
