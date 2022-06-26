@@ -13,10 +13,9 @@ const HomeTemplate = (props: Props) => {
   const { heroProps, tableProps, isError, paginationProps } = props;
 
   if (isError) {
-    //toDo: add error component
     return (
       <Error
-        href="#"
+        href="https://bestcryptoapp.netlify.app/"
         linkTitle="Visit App"
         title="You probbably don't have api key. Please visit following link"
       />
