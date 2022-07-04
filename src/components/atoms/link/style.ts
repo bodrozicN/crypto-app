@@ -33,4 +33,8 @@ export const Wrapper = styled(Link)<ILink>`
     css`
       color: ${theme.isDark ? "#fff" : "var(--grey-primary)"};
     `}
+
+    @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;

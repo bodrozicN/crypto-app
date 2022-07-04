@@ -22,14 +22,7 @@ const TableCell = ({
   return (
     <Wrapper $reverseOrder={$reverseOrder}>
       {children ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          {children}
-        </div>
+        <div className="cell-container">{children}</div>
       ) : (
         <div
           // do not change route if uuid is not provided
@@ -41,7 +34,14 @@ const TableCell = ({
           {rank && <Paragraph type="light" title={rank} />}
           {src && <Img type="tableImg" src={src} alt={alt} />}
           {name && <Paragraph type="bold" title={name} />}
-          {symbol && <Symbol $type="primary" $withDot title={symbol} />}
+          {symbol && (
+            <Symbol
+              className="coin__symbol"
+              $type="primary"
+              $withDot
+              title={symbol}
+            />
+          )}
           <span>
             {currnecy && <Symbol $type="primary" title={currnecy} />}
             {price && <Paragraph type="bold" title={price} />}

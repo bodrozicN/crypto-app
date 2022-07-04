@@ -20,4 +20,14 @@ export const Wrapper = styled.td<ITableCell>`
       ${({ $reverseOrder }) => $reverseOrder && "flex-direction: row-reverse"};
     }
   }
+
+  @media (max-width: 768px) {
+    .coin__symbol {
+      display: none;
+    }
+
+    & > div {
+      gap: 0.5rem;
+    }
+  }
 `;

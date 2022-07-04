@@ -14,7 +14,7 @@ export const excangesTableHead = [
   "Price",
   "Price BTC",
   "Volume",
-  "Recommended",
+  // "Recommended",
 ];
 
 export const portfolioTableHead = [

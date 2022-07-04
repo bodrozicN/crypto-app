@@ -41,4 +41,10 @@ export const Wrapper = styled.button<IButton>`
       width: 100%;
       border-radius: 300px;
     `}
+
+    @media (max-width:768px) {
+    font-size: 1.3rem;
+    height: 3rem;
+    width: 3rem;
+  }
 `;

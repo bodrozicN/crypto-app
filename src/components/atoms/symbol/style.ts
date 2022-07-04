@@ -46,4 +46,8 @@ export const Wrapper = styled.div<ICoinSymbol>`
         border-radius: 50%;
       }
     `}
+
+  @media (max-width:768px) {
+    font-size: 1.1rem;
+  }
 `;

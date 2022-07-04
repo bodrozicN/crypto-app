@@ -10,4 +10,8 @@ export const Wrapper = styled.nav`
     theme.isDark ? "var(--grey-quaternary)" : "#fff"};
   border-radius: 400px;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 12rem;
+  }
 `;

@@ -30,7 +30,7 @@ const Portfolio = () => {
     formProps,
   } = useSearch(".add-asset-search");
   const { searchResult } = useGetSearchRecommendationsQuery(
-    { query },
+    { query: query || "b" },
     {
       selectFromResult: ({ data }) => ({
         searchResult: data?.data.coins,
