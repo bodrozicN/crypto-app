@@ -30,6 +30,8 @@ export const FlexPage = css`
 export const ScreenWidth = css`
   max-width: var(--desktop-width);
   margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 `;
 
 export const BackgroundImage = css`
@@ -72,5 +74,30 @@ export const TableRow_12_col = css`
   }
   & > *:nth-child(7) {
     grid-column: 11 / -1;
+  }
+
+  @media (max-width: 900px) {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    & > *:nth-child(7) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    height: 7.6rem;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    & > *:nth-child(6) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 450px) {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    & > *:nth-child(5) {
+      display: none;
+    }
   }
 `;

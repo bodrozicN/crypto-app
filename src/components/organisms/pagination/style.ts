@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: space-between;
 
-    & > div:nth-child(2) {
+    .pagination-buttons {
       display: flex;
       align-items: center;
       height: 4rem;
@@ -36,5 +36,11 @@ export const Wrapper = styled.div`
     background-color: ${({ theme }) =>
       theme.isDark ? "var(--pink)" : "var(--blue)"};
     color: #fff;
+  }
+
+  @media (max-width: 560px) {
+    .pagination-buttons {
+      display: none !important;
+    }
   }
 `;

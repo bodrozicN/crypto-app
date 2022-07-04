@@ -8,16 +8,6 @@ import { CoinsTableProps, HomeHeroProps, Pagination } from "../../../types";
 const Home = () => {
   const [numOfCoins, setNumOfCoins] = useState<number | undefined>(undefined);
 
-  // const [additionalQuery, setAditionalQuery] = useState("jebimali");
-
-  // const [searchParams, setsearchparams] = useSearchParams(additionalQuery);
-
-  // console.log(searchParams.toString());
-
-  // useEffect(() => {
-  //   setsearchparams(additionalQuery);
-  // }, [additionalQuery, setsearchparams]);
-
   const {
     handleChangePage,
     limit,

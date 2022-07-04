@@ -27,7 +27,7 @@ const Pagination = (props: PaginationProps) => {
             <IoIosArrowBack />
           </Button>
 
-          <div>
+          <div className="pagination-buttons">
             {pages.map((page) => (
               <Button
                 key={uniqid()}

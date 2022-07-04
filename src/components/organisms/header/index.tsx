@@ -23,7 +23,7 @@ const Header = () => {
     formProps: { onChange, onSubmit, value },
   } = useSearch(".search-input");
   const { coins: searchList } = useGetSearchRecommendationsQuery(
-    { query: debouncedValue },
+    { query: debouncedValue || "b" },
     {
       selectFromResult: ({ data }) => ({
         coins: data?.data.coins,

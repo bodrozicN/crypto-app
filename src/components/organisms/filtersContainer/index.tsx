@@ -2,7 +2,6 @@ import React from "react";
 import { Wrapper } from "./style";
 import { Filters } from "../../organisms";
 import { Nav } from "../../moleculs";
-import { nextTick } from "process";
 
 type Props = {
   handleSelect: (event: React.ChangeEvent<HTMLSelectElement>) => void;

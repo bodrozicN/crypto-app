@@ -17,4 +17,20 @@ export const Wrapper = styled.div`
   & > *:nth-child(6) {
     grid-column: 7 / -1;
   }
+
+  @media (max-width: 375px) {
+    column-gap: 0.5rem;
+    & > *:nth-child(1),
+    & > *:nth-child(4) {
+      grid-column: 1 / 5;
+    }
+    & > *:nth-child(2),
+    & > *:nth-child(5) {
+      grid-column: 5 / 9;
+    }
+    & > *:nth-child(3),
+    & > *:nth-child(6) {
+      grid-column: 9 / -1;
+    }
+  }
 `;

@@ -57,4 +57,8 @@ export const Wrapper = styled.span<ISpan>`
       color: #df1c9c;
       font-size: 1.5rem;
     `}
+
+    @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;

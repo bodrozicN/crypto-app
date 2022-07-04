@@ -6,6 +6,10 @@ const Select = css`
   background-color: transparent;
   border: none;
   outline: none;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;
 
 export const HeroSelect = styled.select`
@@ -24,5 +28,9 @@ export const BodySelect = styled.select`
   color: ${({ theme }) => (theme.isDark ? "#fff" : "var(--blue)")};
   & > option {
     color: black;
+  }
+
+  @media (max-width: 768px) {
+    width: 6rem;
   }
 `;

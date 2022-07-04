@@ -23,4 +23,13 @@ export const Wrapper = styled.section`
       grid-column: 1 / 10;
     }
   }
+
+  @media (max-width: 560px) {
+    & > div {
+      & > div:nth-child(2) {
+        grid-column: 1 / -1;
+        column-gap: 0.5;
+      }
+    }
+  }
 `;

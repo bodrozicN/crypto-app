@@ -14,6 +14,10 @@ export const HeadingPrimary = styled.h1`
   font-size: 8rem;
   line-height: 100px;
   cursor: default;
+
+  @media (max-width: 768px) {
+    font-size: 5.5rem;
+  }
 `;
 
 export const HeadingQuaternary = styled.h4`
