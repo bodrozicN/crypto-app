@@ -2,7 +2,7 @@ import React from "react";
 import { formatString } from "../../../../helpers";
 import { PortfolioAsset, TCurrency } from "../../../../types";
 import { TableCell } from "../../../moleculs";
-import { StyledTr } from "./styled";
+import { StyledPortfolioTr } from "./styled";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Button } from "../../../atoms";
 
@@ -17,7 +17,7 @@ const PortfolioTbodyTr = ({ item, handleDeleteCoin }: Props) => {
     item;
 
   return (
-    <StyledTr>
+    <StyledPortfolioTr>
       <TableCell rank={rank} />
       <TableCell
         src={iconUrl}
@@ -48,7 +48,7 @@ const PortfolioTbodyTr = ({ item, handleDeleteCoin }: Props) => {
           <AiOutlineDelete />
         </Button>
       </TableCell>
-    </StyledTr>
+    </StyledPortfolioTr>
   );
 };
 

@@ -5,5 +5,7 @@ export const Wrapper = styled.ul`
   top: 100%;
   right: 0%;
   z-index: 10;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--grey-tertiary);
+  border-radius: 8px;
+  padding: 1.6rem;
 `;

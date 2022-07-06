@@ -32,7 +32,7 @@ const Table = (props: Props) => {
     case "portfolio":
       return (
         <Wrapper>
-          <TableHead type="coins" theadContent={props.tableHead} />
+          <TableHead type="portfolio" theadContent={props.tableHead} />
           <TableBody
             type="portfolio"
             items={props.coinsArr}

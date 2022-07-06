@@ -40,11 +40,8 @@ const PortfolioHero = ({ handleSetCoin, heroProps }: Props) => {
   return (
     <Wrapper>
       <div>
-        <div className="container">
-          <Heading type="h1" title="My Portfolio" $isBold />
-          {/* <Span type="heroPrimary" content="Created At" /> */}
-        </div>
-        <div className="value-container">
+        <Heading type="h1" title="My Portfolio" $isBold />
+        <div>
           {currentPortfolioValue[0] && (
             <>
               <Heading

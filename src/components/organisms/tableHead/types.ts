@@ -1,4 +1,4 @@
 export type Props = {
-  type: "coins" | "excanges";
+  type: "coins" | "excanges" | "portfolio";
   theadContent: string[];
 };
