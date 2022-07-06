@@ -91,7 +91,6 @@ const Coin = () => {
   const chartProps: CoinChartSectionProps = {
     timePeriod,
     handleSetTimePeriod,
-    name: coinDetails?.name,
     priceHistory,
     chartFilters,
   };

@@ -18,8 +18,11 @@ export const Wrapper = styled.p<IParagraph>`
       font-size: 3.6rem;
       font-family: boldFont;
     `}
-
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-  }
+  ${({ $type }) =>
+    ($type === "light" || $type === "bold") &&
+    css`
+      @media (max-width: 768px) {
+        font-size: 1.1rem;
+      }
+    `}
 `;

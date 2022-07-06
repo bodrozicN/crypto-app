@@ -18,7 +18,7 @@ export const Wrapper = styled.img<IImg>`
     `}
 
   @media (max-width: 560px) {
-    height: 3rem;
-    width: 3rem;
+    /* height: 3rem;
+    width: 3rem; */
   }
 `;

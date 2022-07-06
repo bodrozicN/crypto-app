@@ -7,7 +7,6 @@ import { Wrapper } from "./style";
 type Props = {
   timePeriod: TTimePeriod;
   handleSetTimePeriod: (time: TTimePeriod) => void;
-  name: string | undefined;
   priceHistory: ChratProps | null;
   chartFilters: ChartFilter[];
 };
@@ -16,9 +15,7 @@ const ChartSection = (props: Props) => {
   return (
     <Wrapper>
       <div>
-        {props.name ? (
-          <Heading type="h4" title={`${props.name} Price Chart`} $isBold />
-        ) : null}
+        <Heading type="h4" title="Price Chart" $isBold />
         <ChartFilters {...props} />
       </div>
       {props.priceHistory && (

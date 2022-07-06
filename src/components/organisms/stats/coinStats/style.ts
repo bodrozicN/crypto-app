@@ -42,4 +42,32 @@ export const Wrapper = styled.div`
   & > *:nth-child(8) {
     grid-column: 11 / -1;
   }
+
+  @media (max-width: 560px) {
+    &::after {
+      content: "";
+      display: none;
+    }
+
+    row-gap: 2.4rem;
+    column-gap: 5px;
+    & > *:nth-child(1),
+    & > *:nth-child(5) {
+      grid-column: 1 / 3;
+    }
+
+    & > *:nth-child(2),
+    & > *:nth-child(6) {
+      grid-column: 3 / 7;
+    }
+
+    & > *:nth-child(3),
+    & > *:nth-child(7) {
+      grid-column: 7 / 10;
+    }
+    & > *:nth-child(4),
+    & > *:nth-child(8) {
+      grid-column: 10 / -1;
+    }
+  }
 `;

@@ -24,4 +24,10 @@ export const Wrapper = styled.span<IPriceLine>`
   display: inline-block;
   width: ${({ $percentage }) => $percentage}%;
   height: 1px;
+
+  @media (max-width: 768px) {
+    &::before {
+      top: -5px;
+    }
+  }
 `;
