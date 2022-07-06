@@ -28,12 +28,27 @@ export const Wrapper = styled.section`
     }
   }
 
-  .value-container {
-    display: flex;
-    flex-direction: column;
-    gap: 2.2rem;
-    & > *:nth-child(2) {
-      margin-left: auto;
+  @media (max-width: 768px) {
+    padding-top: 2.6rem;
+    & > div {
+      & > *:nth-child(1) {
+        grid-column: 1 / -1;
+      }
+      & > *:nth-child(2) {
+        grid-column: 1 / -1;
+        margin: 0;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 1.6rem;
+      }
+
+      & > *:nth-child(3) {
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+        margin-top: auto;
+      }
     }
   }
 `;

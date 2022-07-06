@@ -76,7 +76,7 @@ export const TableRow_12_col = css`
     grid-column: 11 / -1;
   }
 
-  @media (max-width: 900px) {
+  /* @media (max-width: 900px) {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     & > *:nth-child(7) {
@@ -99,5 +99,5 @@ export const TableRow_12_col = css`
     & > *:nth-child(5) {
       display: none;
     }
-  }
+  } */
 `;
