@@ -6,6 +6,7 @@ interface IOhlc {
 
 export const Wrapper = styled.div<IOhlc>`
   position: relative;
+
   & > div {
     display: flex;
     align-items: center;
@@ -23,5 +24,11 @@ export const Wrapper = styled.div<IOhlc>`
   svg {
     position: absolute;
     left: ${({ $percentage }) => $percentage - 1}%;
+  }
+
+  @media (max-width: 560px) {
+    h1 {
+      margin-top: 0rem;
+    }
   }
 `;

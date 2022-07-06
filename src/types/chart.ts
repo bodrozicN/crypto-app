@@ -24,7 +24,6 @@ export type ChartFilter = {
 export type CoinChartSectionProps = {
   timePeriod: TTimePeriod;
   handleSetTimePeriod: (time: TTimePeriod) => void;
-  name: string | undefined;
   priceHistory: ChratProps | null;
   chartFilters: ChartFilter[];
 };

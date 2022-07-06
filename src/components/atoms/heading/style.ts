@@ -16,7 +16,7 @@ export const HeadingPrimary = styled.h1`
   cursor: default;
 
   @media (max-width: 1024px) {
-    font-size: 5.5rem;
+    font-size: 4rem;
   }
 `;
 

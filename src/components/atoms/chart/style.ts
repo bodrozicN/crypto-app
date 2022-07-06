@@ -12,5 +12,9 @@ export const Wrapper = styled.div<IWrapper>`
     $type === "coinPageChart" &&
     css`
       height: 37.8rem;
+
+      @media (max-width: 768px) {
+        height: 25rem;
+      }
     `}
 `;

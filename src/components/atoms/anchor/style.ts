@@ -5,4 +5,8 @@ export const Wrapper = styled.a`
   text-decoration: none;
   color: #fff;
   font-size: 1.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
 `;

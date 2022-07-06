@@ -26,10 +26,11 @@ const CoinTemplate = ({
       />
       <ChartSection {...chartProps} />
       <div>
-        <div>
+        <div className="container__info">
           {coinSupply && ath && (
             <div className="container">
               <Heading type="h4" title="Coin supply" $isBold />
+
               <CoinSupply {...coinSupply} />
               <PriceBox
                 price={`${athPrice[0]} ${athPrice[1]}`}
