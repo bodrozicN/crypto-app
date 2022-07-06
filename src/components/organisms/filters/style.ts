@@ -19,4 +19,23 @@ export const Wrapper = styled.div`
   & > *:nth-child(4) {
     grid-column: 8 / -1;
   }
+
+  @media (max-width: 560px) {
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1rem;
+    & > *:nth-child(1) {
+      grid-column: 1 / 5;
+    }
+    & > *:nth-child(2) {
+      grid-column: 5 / -1;
+    }
+    & > *:nth-child(3) {
+      grid-row: 2 / 3;
+      grid-column: 1 / 5;
+    }
+    & > *:nth-child(4) {
+      grid-row: 2 / 3;
+      grid-column: 5 / -1;
+    }
+  }
 `;

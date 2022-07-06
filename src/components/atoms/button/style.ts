@@ -26,6 +26,15 @@ export const Wrapper = styled.button<IButton>`
       font-size: 1.6rem;
     `}
   ${({ $type }) =>
+    ($type === "paginationButton" || $type === "arrowButton") &&
+    css`
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+        height: 3rem;
+        width: 3rem;
+      }
+    `}
+  ${({ $type }) =>
     $type === "chartButton" &&
     css`
       font-size: 1.4rem;
@@ -38,13 +47,12 @@ export const Wrapper = styled.button<IButton>`
       color: #000;
       font-family: boldFont;
       height: 3.8rem;
-      width: 100%;
+      width: 10rem;
       border-radius: 300px;
-    `}
 
-    @media (max-width:768px) {
-    font-size: 1.3rem;
-    height: 3rem;
-    width: 3rem;
-  }
+      @media (max-width: 768px) {
+        width: 7rem;
+        font-size: 1.1rem;
+      }
+    `}
 `;

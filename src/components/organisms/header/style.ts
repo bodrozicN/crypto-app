@@ -27,4 +27,38 @@ export const Wrapper = styled.header`
       grid-column: 11 / -1;
     }
   }
+
+  @media (max-width: 1024px) {
+    & > div {
+      & > *:nth-child(1) {
+        grid-column: 1 / 2;
+      }
+      & > *:nth-child(2) {
+        grid-column: 2 / 3;
+      }
+      & > *:nth-child(3) {
+        grid-column: 3 / 4;
+      }
+      & > *:nth-child(4) {
+        grid-column: 8 / -1;
+      }
+    }
+  }
+
+  @media (max-width: 560px) {
+    & > div {
+      column-gap: 5px;
+      & > *:nth-child(4) {
+        grid-column: 6 / -1;
+      }
+    }
+  }
+
+  @media (max-width: 375px) {
+    & > div {
+      & > *:nth-child(4) {
+        grid-column: 4 / -1;
+      }
+    }
+  }
 `;

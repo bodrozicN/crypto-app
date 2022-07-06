@@ -15,7 +15,7 @@ export const HeadingPrimary = styled.h1`
   line-height: 100px;
   cursor: default;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     font-size: 5.5rem;
   }
 `;
