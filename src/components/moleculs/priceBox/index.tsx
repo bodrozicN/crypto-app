@@ -11,10 +11,10 @@ type Props = {
 const PriceBox = ({ date, price, title }: Props) => {
   return (
     <Wrapper>
-      <Span type="heroPrimary" content={title} $switchColor />
+      <Span $type="heroPrimary" content={title} $switchColor />
       <div>
         <Paragraph type="priceParagraph" title={price} />
-        <Span type="heroSecondary" content={date} $switchColor />
+        <Span $type="heroSecondary" content={date} $switchColor />
       </div>
     </Wrapper>
   );

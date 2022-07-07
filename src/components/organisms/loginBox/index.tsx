@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Wrapper } from "./style";
 import { InputProps, UserCredentials } from "../../../types";
-import { Button, Heading, Span } from "../../atoms";
+import { Button, Heading, Span, LoadingSpinner } from "../../atoms";
 import { Form, InputField } from "../../moleculs";
 import { HiOutlineMailOpen } from "react-icons/hi";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -20,7 +20,8 @@ const LoginBox = ({ displayLoginBoxCb }: Props) => {
   });
   const [needToSignup, setNeedToSignup] = React.useState<boolean>(false);
 
-  const { loginUser, createUserAccount } = useAuth(userCredentials);
+  const { createUserAccount, loginUser, isError, isSuccess, isLoading } =
+    useAuth(userCredentials);
 
   const inputMail: InputProps = {
     $type: "small",
@@ -43,10 +44,6 @@ const LoginBox = ({ displayLoginBoxCb }: Props) => {
       }),
   };
 
-  useEffect(() => {
-    handleDisplayComponent(ref?.current, ".login-form", displayLoginBoxCb);
-  }, [displayLoginBoxCb]);
-
   const handleSubmitForm = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -55,33 +52,54 @@ const LoginBox = ({ displayLoginBoxCb }: Props) => {
     [createUserAccount, loginUser, needToSignup]
   );
 
+  useEffect(() => {
+    handleDisplayComponent(ref?.current, ".login-form", displayLoginBoxCb);
+  }, [displayLoginBoxCb]);
+
+  useEffect(() => {
+    displayLoginBoxCb(!isSuccess);
+  }, [displayLoginBoxCb, isSuccess]);
+
+  // if password.length < 6 or user already exist display error message
+  let errMsg;
+  if (userCredentials.password.length < 6)
+    errMsg = "Password must have minimum 6 characters";
+  else if (isError) errMsg = "Wrong credentials";
+  else errMsg = "";
+
   return (
     <Wrapper ref={ref}>
       <Form className="login-form" onSubmit={handleSubmitForm}>
-        <Heading
-          type="h4"
-          title={needToSignup ? "Sign up" : "Log in"}
-          $isBold
-        />
-        <InputField input={inputMail} Icon={HiOutlineMailOpen} />
-        <InputField input={inputPassword} Icon={RiLockPasswordLine} />
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            <Heading
+              type="h4"
+              title={needToSignup ? "Sign up" : "Log in"}
+              $isBold
+            />
+            <InputField input={inputMail} Icon={HiOutlineMailOpen} />
+            <InputField input={inputPassword} Icon={RiLockPasswordLine} />
 
-        <Button
-          type="submit"
-          $type="loginButton"
-          content={needToSignup ? "Sign up" : "Login"}
-          disabled={userCredentials.password.length < 6}
-        />
+            <Span className="error__msg" $type="heroPrimary" content={errMsg} />
 
-        <div
-          onClick={() => setNeedToSignup(!needToSignup)}
-          className="switch-wrapper"
-        >
-          <Span
-            type="heroPrimary"
-            content={needToSignup ? "Need to login" : "Need to sign up"}
-          />
-        </div>
+            <Button
+              type="submit"
+              $type="loginButton"
+              content={needToSignup ? "Sign up" : "Login"}
+              disabled={userCredentials.password.length < 6}
+            />
+
+            <div onClick={() => setNeedToSignup(!needToSignup)}>
+              <Span
+                className="switch-wrapper"
+                $type="heroPrimary"
+                content={needToSignup ? "Need to login" : "Need to sign up"}
+              />
+            </div>
+          </>
+        )}
       </Form>
     </Wrapper>
   );

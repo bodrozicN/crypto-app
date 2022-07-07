@@ -15,7 +15,7 @@ const PortfolioTemplate = (props: Props) => {
       {user ? (
         <Table type="portfolio" {...tableProps} />
       ) : (
-        <MessageContainer content="Please login or create account" />
+        <MessageContainer content="Please login or create account, then add coins" />
       )}
       {storeCoinProps.coin.uuid && (
         <CoinAmount

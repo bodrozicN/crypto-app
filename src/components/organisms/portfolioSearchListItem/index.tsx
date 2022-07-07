@@ -13,7 +13,7 @@ const PortfolioSearchListItem = ({ coin, handleSetCoin }: Props) => {
   return (
     <Wrapper onClick={() => handleSetCoin({ ...coin, price: +coin.price })}>
       <CoinSearchProfile {...coin} />
-      <Span type="pinkSpan" content="Add +" />
+      <Span $type="pinkSpan" content="Add +" />
     </Wrapper>
   );
 };
