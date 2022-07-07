@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useAppDispatch } from "../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import {
   logOut,
   createUserAccount as createUser,
@@ -9,8 +9,10 @@ import { UserCredentials } from "../types";
 
 export function useAuth(userCredentials?: UserCredentials) {
   const dispatch = useAppDispatch();
-
-  const loginUser = useCallback(() => {
+  const { isError, isLoading, isSuccess } = useAppSelector(
+    (state) => state.login
+  );
+  const loginUser = useCallback(async () => {
     if (!userCredentials?.email || !userCredentials?.password) return;
     dispatch(logIn(userCredentials));
   }, [dispatch, userCredentials]);
@@ -25,5 +27,12 @@ export function useAuth(userCredentials?: UserCredentials) {
     dispatch(createUser(userCredentials));
   }, [dispatch, userCredentials]);
 
-  return { loginUser, logoutUser, createUserAccount };
+  return {
+    loginUser,
+    logoutUser,
+    createUserAccount,
+    isError,
+    isLoading,
+    isSuccess,
+  };
 }

@@ -13,13 +13,13 @@ const Stat = ({ title, value, $switchColor }: Props) => {
     <Wrapper>
       <>
         <Span
-          type={OSpan.heroPrimary}
+          $type={OSpan.heroPrimary}
           content={title}
           $switchColor={$switchColor}
         />
         {value && (
           <Span
-            type={OSpan.heroSecondary}
+            $type={OSpan.heroSecondary}
             content={value}
             $switchColor={$switchColor}
           />

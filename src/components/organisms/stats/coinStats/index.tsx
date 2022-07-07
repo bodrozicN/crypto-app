@@ -33,7 +33,7 @@ const CoinStats = ({ coinHeroStats, handleSelect, currency }: Props) => {
       <Stat title="Change" value={change && `${change} ${percent}`} />
       <Stat title="Listed at" value={listedAt} />
       <div className="anchor-container">
-        <Span type="heroPrimary" content="Website" />
+        <Span $type="heroPrimary" content="Website" />
         <Anchor href={coinHeroStats.websiteUrl} title="Go to site" />
       </div>
       <Stat title="Market Cap" value={curr && `${curr} ${marketCap}`} />

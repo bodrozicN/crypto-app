@@ -21,12 +21,27 @@ export const Wrapper = styled.div`
     flex-direction: column;
     gap: 1.6rem;
     border-radius: 7px;
-    width: 30rem;
+    height: 30rem;
+    width: 35rem;
   }
 
   .switch-wrapper {
-    & > * {
-      cursor: pointer;
+    cursor: pointer;
+  }
+  .error__msg {
+    margin-right: auto;
+    margin-left: 1rem;
+    color: var(--red-light-theme);
+    opacity: 1;
+  }
+
+  .hide {
+    opacity: 0;
+  }
+
+  @media (max-width: 375px) {
+    form {
+      width: 90%;
     }
   }
 `;

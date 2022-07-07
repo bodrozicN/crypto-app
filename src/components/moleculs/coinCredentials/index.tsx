@@ -10,8 +10,8 @@ const CoinCredentials = (props: TCoinCredentials) => {
     <Wrapper>
       <Img type="detailsImg" src={iconUrl} alt={name} />
       <Heading type="h1" title={formatString(name, 8, true)} $isBold />
-      <Span type="heroPrimary" content="Rank" />
-      <Span type="heroPrimary" content={`# ${rank}`} />
+      <Span $type="heroPrimary" content="Rank" />
+      <Span $type="heroPrimary" content={`# ${rank}`} />
     </Wrapper>
   );
 };

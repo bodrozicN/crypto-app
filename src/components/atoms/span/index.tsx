@@ -11,17 +11,14 @@ const OSpan = {
 type TSpan = typeof OSpan[keyof typeof OSpan];
 
 type Props = {
-  type: TSpan;
+  $type: TSpan;
   content: unknown;
   $switchColor?: boolean;
+  className?: string;
 };
 
-const Span = ({ content, type, $switchColor }: Props) => {
-  return (
-    <Wrapper $type={type} $switchColor={$switchColor}>
-      {content as string}
-    </Wrapper>
-  );
+const Span = (props: Props) => {
+  return <Wrapper {...props}>{props.content as string}</Wrapper>;
 };
 
 export { Span, type TSpan, OSpan };

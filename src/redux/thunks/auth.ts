@@ -9,12 +9,9 @@ import { UserCredentials } from "../../types";
 
 export const logIn = createAsyncThunk(
   "user/logIn",
-  async ({ email, password }: UserCredentials, { getState }) => {
+  async ({ email, password }: UserCredentials) => {
     try {
-      const state: any = getState();
-      if (state.login.user) throw new Error("User already logged in");
       const { user } = await signInWithEmailAndPassword(auth, email, password);
-      alert("Welcome back");
       return user;
     } catch (error) {
       console.error(error);
@@ -25,19 +22,17 @@ export const logIn = createAsyncThunk(
 
 export const createUserAccount = createAsyncThunk(
   "user/createUserAccount",
-  async ({ email, password }: UserCredentials, { getState }) => {
-    const state: any = getState();
+  async ({ email, password }: UserCredentials) => {
     try {
-      if (state.login.user) throw new Error("User is already logged in");
       const { user } = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      alert("Account created");
+
       return user;
     } catch (error) {
-      console.log(error);
+      console.error(error);
       throw error;
     }
   }
@@ -46,9 +41,8 @@ export const createUserAccount = createAsyncThunk(
 export const logOut = createAsyncThunk("user/logOut", async () => {
   try {
     signOut(auth);
-    alert("Logged out");
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 });

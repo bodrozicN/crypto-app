@@ -5,8 +5,9 @@ import { theme, login } from "./features";
 
 export const store = configureStore({
   reducer: {
-    theme: theme,
-    login: login,
+    theme,
+    login,
+
     [cryptoApi.reducerPath]: cryptoApi.reducer,
   },
 

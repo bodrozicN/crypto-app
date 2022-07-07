@@ -49,7 +49,7 @@ const PortfolioHero = ({ handleSetCoin, heroProps }: Props) => {
                 title={`${currentPortfolioValue[0]} ${currentPortfolioValue[1]}`}
                 $isBold
               />
-              <Span type="heroPrimary" content="Total value" />
+              <Span $type="heroPrimary" content="Total value" />
             </>
           )}
         </div>

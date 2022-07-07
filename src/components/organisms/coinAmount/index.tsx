@@ -58,9 +58,9 @@ const CoinAmount = ({
           />
 
           <div className="price-box">
-            <Span type="heroSecondary" content={coin.symbol} />
+            <Span $type="heroSecondary" content={coin.symbol} />
             <Span
-              type="heroPrimary"
+              $type="heroPrimary"
               content={`USD ${currencyFormatter(
                 coin.price,
                 "yhjMzLPhuIDl"

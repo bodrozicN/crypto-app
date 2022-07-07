@@ -15,7 +15,7 @@ const Filter = (props: Props) => {
 
   return (
     <Wrapper>
-      <Span type={spanType} content={props.type} />
+      <Span $type={spanType} content={props.type} />
       <Select type={props.type} onChange={props.onChange} />
     </Wrapper>
   );
