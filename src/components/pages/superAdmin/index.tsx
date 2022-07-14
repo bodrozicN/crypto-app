@@ -4,10 +4,6 @@ import { getDatabase, ref, onValue, set } from "firebase/database";
 import { FirebaseCoinData } from "../../../types";
 import { Wrapper } from "./style";
 import { useAppSelector } from "../../../redux/hooks";
-import { getAuth, deleteUser } from "firebase/auth";
-import { async } from "@firebase/util";
-import { auth } from "../../../services";
-import { writeData } from "../../../redux/thunks";
 
 type UserData = {
   isAdmin?: boolean;
@@ -21,7 +17,7 @@ type User = {
 
 const SuperAdmin = () => {
   const loggedUserUid = useAppSelector((state) => state.login.user?.uid);
-  const adminId = "8oTyY58EPTMB7NhY0suaLOtvRlG3";
+  const adminId = "iVN7Ccp1juaD4Lsm9162Vsx3sRi2";
   const [users, setUsers] = useState<User[]>([]);
   const [popupCoins, setPopupCoins] = useState<FirebaseCoinData[] | undefined>(
     []
@@ -73,7 +69,7 @@ const SuperAdmin = () => {
 
     setUsers(usersFiltered);
     const db = getDatabase();
-    set(ref(db, "/"), {
+    set(ref(db, "/users"), {
       users: [...usersArr],
     });
   };
