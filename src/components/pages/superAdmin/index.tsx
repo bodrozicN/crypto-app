@@ -17,7 +17,7 @@ type User = {
 
 const SuperAdmin = () => {
   const loggedUserUid = useAppSelector((state) => state.login.user?.uid);
-  const adminId = "iVN7Ccp1juaD4Lsm9162Vsx3sRi2";
+  const adminId = "VGXN9T8V1dRrO4UYYFQuEQ3vLay2";
   const [users, setUsers] = useState<User[]>([]);
   const [popupCoins, setPopupCoins] = useState<FirebaseCoinData[] | undefined>(
     []

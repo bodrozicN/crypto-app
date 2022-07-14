@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style";
 import { useTheme } from "./hooks";
@@ -22,6 +22,7 @@ function App() {
         <Suspense fallback={<p>Loading...</p>}>
           <Router>
             <Header />
+            <Link to="/superAdmin">superadmin</Link>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="coin/:uuid" element={<Coin />} />
