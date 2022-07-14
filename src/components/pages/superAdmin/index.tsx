@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import uniqid from "uniqid";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, set } from "firebase/database";
 import { FirebaseCoinData } from "../../../types";
 import { Wrapper } from "./style";
+import { useAppSelector } from "../../../redux/hooks";
 
 type UserData = {
   isAdmin?: boolean;
@@ -15,11 +16,14 @@ type User = {
 };
 
 const SuperAdmin = () => {
+  const loggedUserUid = useAppSelector((state) => state.login.user?.uid);
+  const adminId = "VGXN9T8V1dRrO4UYYFQuEQ3vLay2";
   const [users, setUsers] = useState<User[]>([]);
   const [popupCoins, setPopupCoins] = useState<FirebaseCoinData[] | undefined>(
     []
   );
-  const [dipslayPopup, setDisplayPopup] = useState<boolean>(false);
+
+  const [isAdminLogged, setIsAdminLogged] = useState(loggedUserUid === adminId);
 
   useEffect(() => {
     const db = getDatabase();
@@ -27,6 +31,7 @@ const SuperAdmin = () => {
     const starCountRef = ref(db, "users/" + "" + "");
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
+      // console.log(data);
       const users = Object.entries(data).map((userArr) => {
         const userData = userArr[1] as UserData;
         const userId = userArr[0];
@@ -39,14 +44,34 @@ const SuperAdmin = () => {
     });
   }, []);
 
-  // console.log(users[0]?.userData.coins[0]);
-
   const displayPopupCoins = (id: string) => {
     const user = users.find((user) => user.userId === id);
-
     console.log(user?.userData.coins);
     setPopupCoins(user?.userData.coins);
-    // setDisplayPopup(true);
+  };
+
+  const removeUser = async (id: string) => {
+    let usersFiltered = users.filter((user) => user.userId !== id);
+
+    console.log(usersFiltered);
+
+    const usersArr = usersFiltered.map((user) => {
+      const modifiedUser = {
+        [user.userId]: {
+          isAdmin: user.userData.isAdmin,
+          coins: user.userData.coins,
+        },
+      };
+      return modifiedUser;
+    });
+
+    console.log(...usersArr);
+
+    setUsers(usersFiltered);
+    const db = getDatabase();
+    set(ref(db, "/users"), {
+      users: [...usersArr],
+    });
   };
 
   return (
@@ -68,12 +93,19 @@ const SuperAdmin = () => {
         </div>
       )}
       <ul>
-        {users.map(({ userId }, idx) => {
+        {users.map(({ userId, userData }, idx) => {
           return (
-            <li key={uniqid()} onClick={() => displayPopupCoins(userId)}>
-              {/* <span>{idx + 1}</span> */}
-              <span>{userId}</span>
-            </li>
+            <div key={uniqid()} className="user-uuid-container">
+              <li onClick={() => displayPopupCoins(userId)}>
+                <span>{userId}</span>
+              </li>
+              <button
+                disabled={!isAdminLogged}
+                onClick={() => removeUser(userId)}
+              >
+                delete if you are admin
+              </button>
+            </div>
           );
         })}
       </ul>
