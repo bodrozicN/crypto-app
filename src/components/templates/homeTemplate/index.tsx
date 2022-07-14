@@ -15,7 +15,7 @@ const HomeTemplate = (props: Props) => {
   if (isError) {
     return (
       <Error
-        href="https://bestcryptoapp.netlify.app/"
+        href="https://enchanting-tiramisu-92fac5.netlify.app/"
         linkTitle="Visit App"
         title="You probbably don't have api key. Please visit following link"
       />

@@ -10,6 +10,7 @@ const Home = lazy(() => import("./components/pages/home"));
 const Coin = lazy(() => import("./components/pages/coin"));
 const Portfolio = lazy(() => import("./components/pages/portfolio"));
 const Error = lazy(() => import("./components/pages/error"));
+const SuperAdmin = lazy(() => import("./components/pages/superAdmin"));
 
 function App() {
   const { isDark } = useTheme();
@@ -25,6 +26,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="coin/:uuid" element={<Coin />} />
               <Route path="portfolio" element={<Portfolio />} />
+              <Route path="superAdmin" element={<SuperAdmin />} />
               <Route path="*" element={<Error />} />
             </Routes>
           </Router>
