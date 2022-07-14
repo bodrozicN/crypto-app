@@ -11,9 +11,6 @@ export const Wrapper = styled.div`
     top: 0%;
     left: 0%;
     background-color: orangered;
-
-    .popup-container {
-    }
   }
 
   font-family: boldFont;
@@ -32,5 +29,10 @@ export const Wrapper = styled.div`
       list-style: none;
       cursor: pointer;
     }
+  }
+  .user-uuid-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 `;
