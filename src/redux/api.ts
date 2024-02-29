@@ -16,7 +16,7 @@ import {
 } from "../interfaces";
 import { TCurrency } from "../types";
 
-const url = process.env.REACT_APP_BACIC_URL!;
+const url = import.meta.env.VITE_APP_BASIC_URL!;
 
 const createRequest = (url: string) => ({ url, headers });
 
