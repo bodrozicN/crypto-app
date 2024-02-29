@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Header } from "../components/organisms";
+import Header from "@/shared/sections/header/Header";
 
 export default function EntryPage() {
   return (
