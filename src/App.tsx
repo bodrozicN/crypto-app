@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "./style";
-import { useTheme } from "./hooks";
-import "./style/style.css";
+import { GlobalStyle } from "@/style";
+import { useTheme } from "@/hooks";
+import "@/style/style.css";
 
 import { RouterProvider } from "react-router-dom";
-import { router } from "./router/router";
+import { router } from "@/router/router";
 
 function App() {
   const { isDark } = useTheme();
