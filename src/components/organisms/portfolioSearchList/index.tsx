@@ -1,8 +1,6 @@
-import React from "react";
 import { CoinSearchResult, PortfolioCoin } from "../../../types";
 import { Wrapper } from "./style";
 import { PortfolioSearchListItem } from "../../organisms";
-import uniqid from "uniqid";
 
 type Props = {
   searchResult: CoinSearchResult[] | undefined;
@@ -15,7 +13,7 @@ const PortfolioList = ({ searchResult, handleSetCoin }: Props) => {
       {searchResult?.map((item) => {
         return (
           <PortfolioSearchListItem
-            key={uniqid()}
+            key={item.uuid}
             coin={item}
             handleSetCoin={handleSetCoin}
           />

@@ -1,4 +1,3 @@
-import uniqid from "uniqid";
 import {
   CoinListData,
   ExcangesDetails,
@@ -22,8 +21,8 @@ const TableBody = ({ currency, items, type, handleDeleteCoin }: Props) => {
 
   return (
     <tbody>
-      {items?.map((item: any) => (
-        <BodyRow {...{ item, key: uniqid(), currency, handleDeleteCoin }} />
+      {items?.map((item: any, index) => (
+        <BodyRow {...{ item, key: index, currency, handleDeleteCoin }} />
       ))}
     </tbody>
   );

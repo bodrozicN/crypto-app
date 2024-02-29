@@ -1,6 +1,4 @@
-import React from "react";
 import { TableHeading } from "../../../atoms";
-import uniqid from "uniqid";
 import { StyledExcangesTr } from "./style";
 
 type Props = {
@@ -10,8 +8,8 @@ type Props = {
 const ExcangesTheadTr = ({ theadContent }: Props) => {
   return (
     <StyledExcangesTr>
-      {theadContent.map((title) => (
-        <TableHeading title={title} key={uniqid()} />
+      {theadContent.map((title, index) => (
+        <TableHeading title={title} key={`${title}${index}`} />
       ))}
     </StyledExcangesTr>
   );

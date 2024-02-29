@@ -1,9 +1,8 @@
-import React from "react";
 import { Wrapper } from "./style";
 import { Button } from "../../atoms";
 import { Pagination as PaginationProps } from "../../../types";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import uniqid from "uniqid";
+import { memo } from "react";
 
 const Pagination = (props: PaginationProps) => {
   const { page, lastPage, handleChangePage } = props;
@@ -28,9 +27,9 @@ const Pagination = (props: PaginationProps) => {
           </Button>
 
           <div className="pagination-buttons">
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
-                key={uniqid()}
+                key={`${page}/${index}`}
                 className={page === props.page ? "active" : ""}
                 $type="paginationButton"
                 onClick={() => handleChangePage(page)}
@@ -66,7 +65,7 @@ const Pagination = (props: PaginationProps) => {
   );
 };
 
-export default React.memo(
+export default memo(
   Pagination,
   (prev, next) =>
     prev.handleChangePage === next.handleChangePage &&
