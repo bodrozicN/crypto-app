@@ -1,7 +1,5 @@
-import React from "react";
 import { Button } from "../../atoms";
 import { Wrapper } from "./style";
-import uniqid from "uniqid";
 import { ChartFilter, TTimePeriod } from "../../../types";
 
 type Props = {
@@ -17,9 +15,9 @@ const ChartFilters = ({
 }: Props) => {
   return (
     <Wrapper>
-      {chartFilters.map(({ name, value }) => (
+      {chartFilters.map(({ name, value }, index) => (
         <Button
-          key={uniqid()}
+          key={`${name}${value}${index}`}
           className={value === timePeriod ? "active-btn" : ""}
           onClick={() => handleSetTimePeriod(value)}
           $type="chartButton"

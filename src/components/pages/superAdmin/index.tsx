@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import uniqid from "uniqid";
 import { getDatabase, ref, onValue, set } from "firebase/database";
 import { FirebaseCoinData } from "../../../types";
 import { Wrapper } from "./style";
@@ -87,7 +86,7 @@ const SuperAdmin = () => {
               close
             </button>
             {popupCoins?.map((coin) => {
-              return <p key={uniqid()}>{JSON.stringify(coin)}</p>;
+              return <p key={coin.uuid}>{JSON.stringify(coin)}</p>;
             })}
           </div>
         </div>
@@ -95,7 +94,7 @@ const SuperAdmin = () => {
       <ul>
         {users.map(({ userId, userData }, idx) => {
           return (
-            <div key={uniqid()} className="user-uuid-container">
+            <div key={userId} className="user-uuid-container">
               <li onClick={() => displayPopupCoins(userId)}>
                 <span>{userId}</span>
               </li>

@@ -1,7 +1,5 @@
-import React from "react";
 import { TableHeading } from "../../../atoms";
 import { StyledPortfolioTr } from "./styled";
-import uniqid from "uniqid";
 
 type Props = {
   theadContent: string[];
@@ -10,8 +8,8 @@ type Props = {
 const PortfolioTheadTr = ({ theadContent }: Props) => {
   return (
     <StyledPortfolioTr>
-      {theadContent.map((title) => (
-        <TableHeading key={uniqid()} title={title} />
+      {theadContent.map((title, index) => (
+        <TableHeading key={`${title}${index}`} title={title} />
       ))}
     </StyledPortfolioTr>
   );
