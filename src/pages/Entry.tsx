@@ -3,7 +3,7 @@ import Header from "@/shared/sections/header/Header";
 import { Header as HeaderOld } from "@/components/organisms";
 
 export default function EntryPage() {
-  const showNewHeader = false;
+  const showNewHeader = true;
 
   const HeaderComponent = showNewHeader ? Header : HeaderOld;
 
