@@ -6,3 +6,7 @@
   font-family: boldFont;
   src: url("../fonts/Gilroy-ExtraBold.otf");
 }
+
+a {
+  text-decoration: none;
+}
